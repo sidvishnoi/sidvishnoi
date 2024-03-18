@@ -1,0 +1,61 @@
+---
+import ExperienceItem from './ExperienceItem.astro';
+---
+
+<section class="experience">
+	<h2>Work Experience</h2>
+
+	<ExperienceItem
+		title="Monetized - Full-Stack Developer"
+		duration={['Aug 2021', 'Present']}
+		time="132w"
+	>
+		End-to-end development of <a href="https://www.monetized.link"
+			>monetized.link</a
+		> / <a href="https://www.keyosk.co">keyosk.co</a>, a no-code paywall
+		platform for publishers. Building a multi-tenant SvelteKit powered frontend,
+		with <abbr title="Google Cloud Platform">GCP</abbr>, Firebase, ElasticSearch
+		on backend; and managing content purchases and creators payouts via Stripe;
+		Web3 support; and a lot of devops.
+	</ExperienceItem>
+
+	<ExperienceItem
+		title="Grant for the Web - Technical Scholar"
+		duration={['Aug 2020', 'Apr 2021']}
+		time="34w"
+	>
+		Implemented Web Monetization API (a proposed Web Standard) prototype in
+		Mozilla Firefox to help develop a reference implementation and provide
+		feedback to the specification.
+	</ExperienceItem>
+
+	<ExperienceItem
+		title="Mozilla Open Source Support (MOSS) Program"
+		duration={['May 2020', 'Jul 2020']}
+		time="13w"
+	>
+		ReSpec is a publication system in which W3C Standards are written. As the
+		core maintainer, I developed new features, overhauled the project
+		documentation, and contributed to various specifications.
+	</ExperienceItem>
+
+	<ExperienceItem
+		title="Chegg - Software Development Engineer Internship"
+		duration={['Jan 2019', 'Jul 2019']}
+		time="26w"
+	>
+		UI engineer for Chegg Prep, working with React, TypeScript, CSS in JS and
+		Node.js. Boosted performance of CheggIndia.com and made site mobile
+		friendly. Developed multiple internal tools, involving UI design, ticket
+		automation and integration with internal APIs.
+	</ExperienceItem>
+
+	<ExperienceItem
+		title="Mozilla - Google Summer of Code Internship"
+		duration={['May 2018', 'Aug 2018']}
+		time="16w"
+	>
+		During my internship, I developed new features in ReSpec with a focus on UX,
+		automation and maintainability.
+	</ExperienceItem>
+</section>

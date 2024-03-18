@@ -1,0 +1,291 @@
+:root {
+	--font-family: 'Source Sans Pro', 'Lato', 'Helvetica', 'Open Sans', 'Arial',
+		sans-serif;
+	--font-monospace: 'DejaVu Sans Mono', 'Fira Code', 'Courier New', monospace;
+	--border-main: 2px solid #ccc;
+	--left-width: 63%;
+	--right-width: 37%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+body {
+	background: #fff;
+	width: 100%;
+	max-width: 21cm;
+	margin: 0 auto;
+	min-height: 29.7cm;
+	min-height: calc(29.7cm + 0.5cm);
+	display: flex;
+	flex-direction: column;
+	font-family: var(--font-family);
+	text-rendering: optimizeLegibility;
+}
+
+hr {
+	margin: 1em 0;
+	background: none;
+	border: none;
+	border-top: var(--border-main);
+	height: 2px;
+}
+
+.icon {
+	max-width: 16px;
+	margin-right: 0.5em;
+	user-select: none;
+	display: inline-block;
+}
+
+a {
+	color: #0d4ac5;
+}
+
+a:hover,
+a:focus {
+	outline: none;
+	background: hsl(116deg 100% 50% / 30%);
+	box-shadow: 0px 0 0 0.1em hsl(176deg 100% 50% / 30%);
+}
+
+.monospace {
+	font-family: var(--font-monospace);
+}
+
+.no-select {
+	user-select: none;
+}
+
+.visually-hidden {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+h1,
+h2,
+strong {
+	font-weight: 700;
+}
+
+.with-icon {
+	display: flex;
+	align-items: center;
+}
+
+address {
+	font-style: normal;
+}
+
+li {
+	margin-left: 1em;
+}
+
+.empty-line {
+	display: block;
+	height: 1em;
+}
+
+.header {
+	position: relative;
+}
+
+.header h1,
+.header p {
+	line-height: 1.2;
+	padding: 0.5rem 1rem 0.2rem;
+	text-transform: uppercase;
+}
+
+.header h1 {
+	font-size: 2.6em;
+}
+
+.header h1 span:nth-child(2) {
+	font-weight: 400;
+}
+
+.header p {
+	padding-top: 0;
+	margin: 0 0 0.6em;
+	font-weight: 400;
+	font-size: 1.2em;
+}
+
+.header a {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	font-size: 14px;
+}
+
+main {
+	display: flex;
+	border-top: var(--border-main);
+	height: 100%;
+	overflow: hidden;
+}
+
+main .left,
+main .right {
+	padding: 0.5em 1em;
+}
+
+main .left {
+	width: var(--left-width);
+	border-right: var(--border-main);
+}
+
+main .right {
+	width: var(--right-width);
+}
+
+h2 {
+	margin: 0.5em 0;
+	font-size: 1.3rem;
+	line-height: 1.4;
+	text-transform: uppercase;
+	position: relative;
+}
+
+h2:after {
+	position: absolute;
+	display: block;
+	content: '';
+	width: 40px;
+	height: 0;
+	border-bottom: var(--border-main);
+}
+
+h3 {
+	font-size: 1rem;
+}
+
+div section + section {
+	margin: 1em 0;
+}
+
+div section + section::before {
+	content: '';
+	display: block;
+	border-top: var(--border-main);
+	height: 2px;
+}
+
+article + article {
+	margin-top: 1em;
+}
+
+.projects article header > * {
+	display: inline-block;
+}
+
+.projects article header a::before {
+	color: initial;
+	content: '(';
+}
+.projects article header a::after {
+	color: initial;
+	content: ')';
+}
+
+.contact {
+	font-size: 0.9em;
+}
+
+.contact dl {
+	display: grid;
+	grid-template-columns: max-content auto;
+	column-gap: 0.5em;
+	row-gap: 0.1em;
+}
+.contact dl dt {
+	grid-column-start: 1;
+	font-family: var(--font-monospace);
+	display: inline-flex;
+	align-items: center;
+}
+.contact dl dd {
+	grid-column-start: 2;
+}
+
+@media only print {
+	.noprint {
+		display: none;
+	}
+
+	abbr {
+		text-decoration: none;
+	}
+
+	section.no-border::before {
+		border-top: 0;
+	}
+
+	section {
+		page-break-inside: avoid;
+	}
+
+	body {
+		/* A4 sheet */
+		width: 21cm;
+		/* height: 29.7cm;
+    max-height: 29.7cm; */
+	}
+}
+
+@media screen and (max-width: 42em) {
+	:root {
+		--left-width: 100%;
+		--right-width: 100%;
+	}
+	body {
+		width: 100%;
+		height: 100%;
+	}
+	main {
+		flex-direction: column;
+		border-top: none;
+	}
+	main .left {
+		border-right: none;
+	}
+	.header {
+		box-shadow: 0 2px 2px 0px #f1efef;
+	}
+	.header h1 {
+		margin-top: 0.5em;
+		font-size: 2em;
+	}
+	.header p {
+		font-size: 1em;
+	}
+	.education {
+		flex-direction: column;
+	}
+	.education > div:nth-child(n + 1) {
+		padding: 0.4em 0;
+	}
+	.header a {
+		font-size: 12px;
+		top: 0.5rem;
+		right: 0.5rem;
+	}
+}

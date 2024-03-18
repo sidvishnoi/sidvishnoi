@@ -1,0 +1,54 @@
+---
+type Props = {
+	title: string;
+	meta?: Partial<{
+		canonical: URL;
+		shareImage: URL;
+		description: string;
+		keywords: string;
+	}>;
+	preload?: Array<{ href: string; as: string }>;
+};
+const {
+	title,
+	meta: {
+		canonical = new URL(Astro.url.pathname, Astro.site),
+		shareImage,
+		description,
+		keywords,
+	} = {},
+	preload,
+} = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		{
+			preload &&
+				preload.map((e) => <link rel="preload" href={e.href} as={e.as} />)
+		}
+
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		{canonical && <link rel="canonical" href={canonical} />}
+		{canonical && <meta property="og:url" content={canonical} />}
+
+		{shareImage && <meta property="og:image" content={shareImage} />}
+		{shareImage && <meta name="twitter:image" content={shareImage} />}
+		{description && <meta name="description" content={description} />}
+		{description && <meta property="og:description" content={description} />}
+		{keywords && <meta name="keywords" content={keywords} />}
+
+		<slot name="head" />
+	</head>
+
+	<body>
+		<slot />
+	</body>
+</html>

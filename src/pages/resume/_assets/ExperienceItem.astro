@@ -1,0 +1,17 @@
+---
+interface Props {
+	title: string;
+	time: string;
+	duration: [start: string, end: string];
+}
+
+const { title, time, duration } = Astro.props;
+---
+
+<article>
+	<h3>{title}</h3>
+	<time datetime={time}>{duration[0]} – {duration[1]}</time>
+	<p>
+		<slot />
+	</p>
+</article>

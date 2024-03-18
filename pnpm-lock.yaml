@@ -11,6 +11,9 @@ devDependencies:
   '@astrojs/sitemap':
     specifier: ^3.1.1
     version: 3.1.1
+  '@fontsource/source-sans-pro':
+    specifier: ^5.0.8
+    version: 5.0.8
   astro:
     specifier: ^4.5.5
     version: 4.5.5(typescript@5.4.2)
@@ -881,6 +884,10 @@ packages:
   /@fastify/busboy@2.1.1:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
+    dev: true
+
+  /@fontsource/source-sans-pro@5.0.8:
+    resolution: {integrity: sha512-5U2UvIYRkCMozZ388gCE73PEpa2MFgN/0t9O4a1FF7bGT/MIneQWSL1XpWZ8iMVYdh6ntxRf3iFA6slCIuFgkg==}
     dev: true
 
   /@jridgewell/gen-mapping@0.3.5:

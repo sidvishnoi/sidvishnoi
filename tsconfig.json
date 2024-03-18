@@ -10,6 +10,14 @@
 		"target": "ESNext",
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-		"strict": true
+		"strict": true,
+		"baseUrl": "./",
+		"paths": {
+			"$components/*": ["src/components/*"],
+			"$assets/*": ["src/assets/*"],
+			"$lib/*": ["src/lib/*"],
+			"$layouts/*": ["src/layouts/*"],
+			"$api/*": ["src/pages/api/*"]
+		}
 	}
 }

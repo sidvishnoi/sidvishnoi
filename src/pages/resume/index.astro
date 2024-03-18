@@ -1,0 +1,41 @@
+---
+import BaseLayout from '$layouts/BaseLayout.astro';
+import '$assets/resume.css';
+import '@fontsource/source-sans-pro/latin-400.css';
+import '@fontsource/source-sans-pro/latin-700.css';
+
+import Header from './_assets/Header.astro';
+import Experience from './_assets/Experience.astro';
+import OpenSource from './_assets/OpenSource.astro';
+import Projects from './_assets/Projects.astro';
+import Contact from './_assets/Contact.astro';
+import Achievements from './_assets/Achievements.astro';
+import Skills from './_assets/Skills.astro';
+import References from './_assets/References.astro';
+import Education from './_assets/Education.astro';
+---
+
+<BaseLayout
+	title="Sudhanshu Vishnoi — Resume"
+	meta={{
+		description: `Sudhanshu Vishnoi (Sid Vishnoi) is passionate about web development and building software. He loves to work with JavaScript and C++, with a growing curiosity towards Rust.`,
+	}}
+>
+	<Header />
+
+	<main>
+		<div class="left">
+			<Experience />
+			<OpenSource />
+			<Projects />
+		</div>
+
+		<div class="right">
+			<Contact />
+			<Education />
+			<Achievements />
+			<Skills />
+			<References />
+		</div>
+	</main>
+</BaseLayout>
