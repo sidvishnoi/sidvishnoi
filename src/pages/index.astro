@@ -1,16 +1,207 @@
 ---
-
+import HomeLayout from '$layouts/HomeLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<HomeLayout title="Sudhanshu Vishnoi">
+	<header class="header" id="main">
+		<h1 class="title">
+			<a href="/"><span>Sudhanshu</span> <span>Vishnoi</span></a>
+		</h1>
+		<p class="subtitle">I like web development and building software.</p>
+		<nav class="primary">
+			<a href="/about" class="button">About</a>
+			<a href="/resume" class="button">Resume</a>
+		</nav>
+	</header>
+
+	<section class="container-main projects">
+		<h2 id="projects">Projects</h2>
+		<ul>
+			<li>
+				<h3>
+					<a href="https://community.webmonetization.org/sid"
+						>Web Monetization</a
+					>
+				</h3>
+				<p>
+					Exploring how Web Monetization can be integrated into the Web Platform
+					by creating a reference implementation in Firefox.
+				</p>
+			</li>
+			<li>
+				<h3><a href="https://github.com/w3c/respec/">ReSpec</a></h3>
+				<p>
+					A tool for creating technical documents and web standards, extensively
+					used at W3C.
+				</p>
+			</li>
+			<li>
+				<h3>
+					<a href="https://github.com/sidvishnoi/brotli-cli">Brotli CLI</a>
+				</h3>
+				<p>a lightweight CLI to quickly compress files with Brotli.</p>
+			</li>
+			<li>
+				<h3>
+					<a href="https://sidvishnoi.github.io/socket-chat/">Socket Chat</a>
+				</h3>
+				<p>
+					A Chat Application using Unix network sockets featuring user
+					authentication, multiple chatrooms and private messaging &amp;
+					terminal based user interface (inspired by IRC).
+				</p>
+			</li>
+			<li>
+				<h3>
+					<a href="https://github.com/sidvishnoi/esm-to-cjs">esm-to-cjs</a>
+				</h3>
+				<p>
+					Transform ESM to Common JS for present NodeJS, without any junk
+					wrappers or useless renaming.
+				</p>
+			</li>
+			<li>
+				<h3><a href="https://github.com/sidvishnoi/birk">Birk</a></h3>
+				<p>
+					A fast dependency-free HTML template engine with syntax similar to
+					Ruby's Liquid, written in JavaScript.
+				</p>
+			</li>
+			<li>
+				<h3><a href="https://sidvishnoi.github.io/bleu/">Bleu</a></h3>
+				<p>
+					a fully featured and extensible smart static website generator. With
+					Bleu, every build is incremental build. Built with NodeJS.
+				</p>
+			</li>
+			<li>
+				<h3>
+					<a href="https://sidvishnoi.github.io/fb-dev-interest/"
+						>Merge Facebook Dev Circles by Interests</a
+					>
+				</h3>
+				<p>
+					A Chrome extension that filters through Facebook Dev Circles around
+					the world to get only the interesting posts in your feed.
+				</p>
+			</li>
+		</ul>
+	</section>
+</HomeLayout>
+
+<style>
+	/* projects */
+	.projects {
+		max-width: calc(100% - 2 * var(--border-thickness));
+		margin: 0 auto;
+		padding: 1em;
+		font-size: 1.5rem;
+		font-size: calc(16px + (24 - 16) * (100vw - 320px) / (750 - 320));
+	}
+
+	@media (min-width: 750px) {
+		.projects {
+			font-size: 24px;
+		}
+	}
+
+	.projects h2 {
+		font-size: 2em;
+		display: flex;
+		width: 100%;
+		margin: 1em auto;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	.projects h2:before,
+	.projects h2:after {
+		content: '';
+		border-top: 1rem double var(--color-dark);
+		margin: 0 1rem 0 0;
+		flex: 1 0 1rem;
+	}
+
+	.projects h2:after {
+		margin: 0 0 0 1rem;
+	}
+
+	.projects ul {
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+	}
+
+	.projects li {
+		text-align: right;
+		padding: 1em;
+	}
+
+	.projects p {
+		max-width: 80ch;
+		margin-left: auto;
+		padding: 0 0.5em;
+	}
+
+	.projects h3 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		font-size: 1.2em;
+		line-height: 1.1;
+	}
+
+	.projects h3:before {
+		content: '';
+		display: block;
+		flex: 1;
+		height: 1em;
+		background: transparent;
+	}
+
+	.projects:not(:focus-within) li:hover h3:before,
+	.projects li:focus-within h3:before {
+		background: var(--color-dark);
+	}
+
+	.projects:hover li:hover,
+	.projects li:focus-within {
+		background: var(--color-light);
+	}
+
+	.projects h3 a {
+		text-transform: uppercase;
+		color: var(--color);
+		background: transparent;
+		padding: 0.2em 0.5em;
+		text-decoration: none;
+	}
+
+	.projects:not(:focus-within) li:hover h3 a,
+	.projects h3 a:focus {
+		color: var(--background);
+		background: var(--color);
+		outline: none;
+	}
+
+	@media (max-width: 640px) {
+		.projects {
+			padding: 0;
+		}
+		.projects li {
+			text-align: left;
+			padding: 2em 0;
+		}
+		.projects li:last-of-type {
+			padding-bottom: 1em;
+		}
+		.projects p {
+			width: 100%;
+		}
+		.projects h3:before {
+			order: 2;
+		}
+	}
+</style>

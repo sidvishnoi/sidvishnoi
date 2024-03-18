@@ -1,0 +1,71 @@
+---
+import HomeLayout from '$layouts/HomeLayout.astro';
+import SocialNav from '$components/SocialNav.astro';
+---
+
+<HomeLayout
+	title="About — Sudhanshu Vishnoi — Independent software engineer, full-stack developer"
+	hideSocial
+>
+	<header class="header" id="main">
+		<h1 class="title">
+			<a href="/"><span>Sudhanshu</span> <span>Vishnoi</span></a>
+		</h1>
+		<h2 class="subtitle">About</h2>
+	</header>
+
+	<p>
+		I'm an independent software engineer and full-stack web developer, with a
+		focus on front-end development. I love to work with JavaScript and C++, and
+		have a growing interest in Rust. I'm more commonly known by my pseudonym,
+		Sid Vishnoi.
+	</p>
+
+	<p>
+		I bring extensive experience in front-end technologies, including in-depth
+		knowledge of ECMAScript, CSS, and HTML. I also have experience working with
+		common frameworks, such as React. I’m adept at learning new languages and
+		technologies. I’m also very comfortable with Git, GitHub, and open-source
+		workflows, code review, test-driven development, and the tooling in general.
+	</p>
+
+	<p>
+		I've been coding since 2009, and decided to take on software development
+		professionally in 2016. In 2018, I was a Google Summer of Code scholar for
+		Mozilla. Since then, I’ve continued to be an active contributor in the
+		open-source community, where I’ve focused on bringing new tools and services
+		that are widely in use at the W3C. I presented my W3C tooling-related work
+		at W3C TPAC 2019 in Fukuoka, Japan. In 2020, I was awarded Mozilla Open
+		Source Support (MOSS) award to work on an open-source project.
+	</p>
+
+	<p>
+		While not at computer, I take a more human form. I like to watch sunset,
+		clouds and birds, and take care of my terrace garden.
+	</p>
+
+	<SocialNav />
+</HomeLayout>
+
+<style>
+	:global(main) {
+		max-width: calc(100% - 2 * var(--border-thickness));
+		margin: 0 auto;
+		padding: 0 1em 1em;
+		font-size: calc(16px + (20 - 16) * (100vw - 320px) / (750 - 320));
+	}
+
+	p {
+		max-width: 70ch;
+		margin: auto;
+	}
+
+	p + p {
+		margin-top: 1em;
+	}
+
+	:global(main .social) {
+		margin-top: 2em;
+		justify-content: center !important;
+	}
+</style>

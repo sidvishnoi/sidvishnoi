@@ -1,0 +1,126 @@
+---
+import socialIconsSvg from '$assets/icons/social.svg?url';
+---
+
+<nav class="social">
+	<a
+		title="@sidvishnoi on Github"
+		href="https://github.com/sidvishnoi"
+		class="icon-github"
+	>
+		<svg width="24"
+			><use xlink:href={`${socialIconsSvg}#icon-github`}></use></svg
+		>
+	</a>
+	<a
+		title="@sid_vishnoi on Twitter"
+		href="https://twitter.com/sid_vishnoi"
+		class="icon-twitter"
+	>
+		<svg width="24"
+			><use xlink:href={`${socialIconsSvg}#icon-twitter`}></use></svg
+		>
+	</a>
+	<a
+		title="@sudhanshu-vishnoi on Linkedin"
+		href="https://linkedin.com/in/sudhanshu-vishnoi"
+		class="icon-linkedin"
+	>
+		<svg width="24"
+			><use xlink:href={`${socialIconsSvg}#icon-linkedin`}></use></svg
+		>
+	</a>
+	<a
+		title="@sidvishnoi on Dev.to"
+		href="https://dev.to/sidvishnoi"
+		class="icon-dev"
+	>
+		<svg width="24"><use xlink:href={`${socialIconsSvg}#icon-dev`}></use></svg>
+	</a>
+	<a
+		title="@sid-vishnoi on StackOverflow"
+		href="https://stackoverflow.com/users/3367669/sid-vishnoi"
+		class="icon-stackoverflow"
+	>
+		<svg width="24"
+			><use xlink:href={`${socialIconsSvg}#icon-stackoverflow`}></use></svg
+		>
+	</a>
+	<a
+		title="@sidvishnoi on CodePen"
+		href="https://codepen.io/sidvishnoi/"
+		class="icon-codepen"
+	>
+		<svg width="24"
+			><use xlink:href={`${socialIconsSvg}#icon-codepen`}></use></svg
+		>
+	</a>
+</nav>
+
+<style>
+	.social {
+		display: grid;
+		grid-template-columns: repeat(6, max-content);
+		grid-gap: 0.5rem;
+		gap: 0.5rem;
+		justify-content: end;
+		overflow-x: auto;
+	}
+	.social a {
+		padding: 0.5em;
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		background: var(--background);
+		border: 4px solid var(--icon-color);
+		border-radius: 50%;
+		transition: background-color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+	}
+	html[data-theme='dark'] .social a {
+		border-color: var(--color-light);
+	}
+	.social a svg {
+		width: 24px;
+		height: 24px;
+		fill: var(--color);
+	}
+	.social a:hover,
+	.social a:focus {
+		background-color: var(--icon-color);
+	}
+	.social a:hover svg,
+	.social a:focus svg {
+		fill: #000;
+	}
+	.social a.icon-twitter {
+		--icon-color: #1ca2f2;
+	}
+	.social a.icon-github {
+		--icon-color: #0366d6;
+	}
+	.social a.icon-dev {
+		--icon-color: #4e57ef;
+	}
+	.social a.icon-stackoverflow {
+		--icon-color: #f48024;
+	}
+	.social a.icon-linkedin {
+		--icon-color: #0084bf;
+	}
+	.social a.icon-codepen {
+		--icon-color: #fcd000;
+	}
+
+	@media (max-width: 640px) {
+		.social {
+			justify-content: center;
+		}
+		.social a {
+			border-width: 2px;
+		}
+		.social a svg {
+			width: 16px;
+			height: 16px;
+		}
+	}
+</style>
