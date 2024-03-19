@@ -4,6 +4,7 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 
 <nav class="social">
 	<a
+		rel="me"
 		title="@sidvishnoi on Github"
 		href="https://github.com/sidvishnoi"
 		class="icon-github"
@@ -13,15 +14,17 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		>
 	</a>
 	<a
-		title="@sid_vishnoi on Twitter"
-		href="https://twitter.com/sid_vishnoi"
-		class="icon-twitter"
+		rel="me"
+		title="@sidvishnoi on Mastodon.social"
+		href="https://mastodon.social/@sidvishnoi"
+		class="icon-mastodon"
 	>
 		<svg width="24"
-			><use xlink:href={`${socialIconsSvg}#icon-twitter`}></use></svg
+			><use xlink:href={`${socialIconsSvg}#icon-mastodon`}></use></svg
 		>
 	</a>
 	<a
+		rel="me"
 		title="@sudhanshu-vishnoi on Linkedin"
 		href="https://linkedin.com/in/sudhanshu-vishnoi"
 		class="icon-linkedin"
@@ -31,6 +34,7 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		>
 	</a>
 	<a
+		rel="me"
 		title="@sidvishnoi on Dev.to"
 		href="https://dev.to/sidvishnoi"
 		class="icon-dev"
@@ -38,6 +42,7 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		<svg width="24"><use xlink:href={`${socialIconsSvg}#icon-dev`}></use></svg>
 	</a>
 	<a
+		rel="me"
 		title="@sid-vishnoi on StackOverflow"
 		href="https://stackoverflow.com/users/3367669/sid-vishnoi"
 		class="icon-stackoverflow"
@@ -47,6 +52,7 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		>
 	</a>
 	<a
+		rel="me"
 		title="@sidvishnoi on CodePen"
 		href="https://codepen.io/sidvishnoi/"
 		class="icon-codepen"
@@ -90,22 +96,29 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 	}
 	.social a:hover svg,
 	.social a:focus svg {
-		fill: #000;
+		fill: var(--icon-fill, #000);
 	}
 	.social a.icon-twitter {
 		--icon-color: #1ca2f2;
 	}
+	.social a.icon-mastodon {
+		--icon-color: #6364ff;
+		--icon-fill: #fff;
+	}
 	.social a.icon-github {
-		--icon-color: #0366d6;
+		--icon-color: #000;
+		--icon-fill: #fff;
 	}
 	.social a.icon-dev {
 		--icon-color: #4e57ef;
+		--icon-fill: #fff;
 	}
 	.social a.icon-stackoverflow {
 		--icon-color: #f48024;
 	}
 	.social a.icon-linkedin {
 		--icon-color: #0084bf;
+		--icon-fill: #fff;
 	}
 	.social a.icon-codepen {
 		--icon-color: #fcd000;
