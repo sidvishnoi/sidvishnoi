@@ -9,6 +9,7 @@ export default defineConfig({
 	build: {
 		inlineStylesheets: 'always',
 	},
+	devToolbar: { enabled: false },
 	image: {
 		service: passthroughImageService(),
 	},
