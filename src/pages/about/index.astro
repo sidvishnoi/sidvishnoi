@@ -1,6 +1,8 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
 import SocialNav from '$components/SocialNav.astro';
+
+import { Content } from './_about.md';
 ---
 
 <HomeLayout
@@ -14,40 +16,13 @@ import SocialNav from '$components/SocialNav.astro';
 		<h2 class="subtitle">About</h2>
 	</header>
 
-	<p>
-		I'm an independent software engineer and full-stack web developer, with a
-		focus on front-end development. I love to work with JavaScript and C++, and
-		have a growing interest in Rust.
-	</p>
-
-	<p>
-		I bring extensive experience in front-end technologies, including in-depth
-		knowledge of ECMAScript, CSS, and HTML. I also have experience working with
-		common frameworks, such as React. I’m adept at learning new languages and
-		technologies. I’m also very comfortable with Git, GitHub, and open-source
-		workflows, code review, test-driven development, and the tooling in general.
-	</p>
-
-	<p>
-		I've been coding since 2009, and decided to take on software development
-		professionally in 2016. In 2018, I was a Google Summer of Code scholar for
-		Mozilla. Since then, I’ve continued to be an active contributor in the
-		open-source community, where I’ve focused on bringing new tools and services
-		that are widely in use at the W3C. I presented my W3C tooling-related work
-		at W3C TPAC 2019 in Fukuoka, Japan. In 2020, I was awarded Mozilla Open
-		Source Support (MOSS) award to work on an open-source project.
-	</p>
-
-	<p>
-		While not at computer, I take a more human form. I like to watch sunset,
-		clouds and birds, and take care of my terrace garden.
-	</p>
+	<Content />
 
 	<SocialNav />
 </HomeLayout>
 
-<style>
-	:global(main) {
+<style is:global>
+	main {
 		max-width: calc(100% - 2 * var(--border-thickness));
 		margin: 0 auto;
 		padding: 0 1em 1em;
@@ -63,7 +38,18 @@ import SocialNav from '$components/SocialNav.astro';
 		margin-top: 1em;
 	}
 
-	:global(main .social) {
+	a {
+		color: var(--color-d, blue);
+	}
+
+	hr {
+		margin: 2em auto;
+		border: 2px solid var(--color-c, aquagreen);
+		border-radius: 10px;
+		max-width: 60%;
+	}
+
+	main .social {
 		margin-top: 2em;
 		justify-content: center !important;
 	}

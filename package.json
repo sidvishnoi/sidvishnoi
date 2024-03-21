@@ -20,6 +20,7 @@
 		"astro": "^4.5.5",
 		"prettier": "^3.2.5",
 		"prettier-plugin-astro": "^0.13.0",
+		"remark-breaks": "^4.0.0",
 		"typescript": "^5.4.2",
 		"wrangler": "^3.34.2"
 	}

@@ -1,5 +1,6 @@
 :root {
-	--font-family: Dank Mono, Inconsolata, Fira Mono, Fira Code, monospace;
+	--font-family: Dank Mono, Source Code Pro, Inconsolata, Fira Mono, Fira Code,
+		monospace;
 
 	--border-thickness: 10px;
 	--color-a: hsl(44, 86%, 52%);
