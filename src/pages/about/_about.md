@@ -2,7 +2,7 @@ I'm Sid, a passionate software engineer and full-stack web developer with a knac
 
 I love working with TypeScript, CSS and C++ and have a growing interest in Rust. I'm a quick learner and adept at picking up new languages and tools.
 
-I bring extensive experience in web-related technologies, including in-depth knowledge of ECMAScript, CSS, HTML, and HTTP. I also have experience working with common frameworks such as Svelte and React. I'm adept at learning new languages and technologies. I'm also very comfortable with Git, GitHub, open-source workflows, code review, test-driven development, and tooling in general.
+I bring extensive experience in web-related technologies, including in-depth knowledge of ECMAScript, CSS, HTML, and HTTP. I also have experience working with common frontend frameworks such as Svelte and React. I'm adept at learning new languages and technologies.
 
 ---
 
