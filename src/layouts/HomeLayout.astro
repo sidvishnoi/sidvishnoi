@@ -12,13 +12,6 @@ const { title, preload, meta, hideSocial = false } = Astro.props;
 ---
 
 <BaseLayout {title} {preload} {meta}>
-	<Fragment slot="head">
-		<link
-			href="https://fonts.googleapis.com/css?family=Inconsolata"
-			rel="stylesheet"
-		/>
-	</Fragment>
-
 	<a href="#main" class="visually-hidden" id="jump-to-main"
 		>Jump to main content</a
 	>
