@@ -227,11 +227,9 @@ img {
 	text-decoration: none;
 	color: var(--color);
 }
-.header .title span:nth-child(2) {
-	font-weight: 400;
-}
 .header .subtitle {
 	font-size: 5vmin;
+	font-weight: normal;
 }
 
 .button {
