@@ -56,9 +56,9 @@ const { title, preload, meta, hideSocial = false } = Astro.props;
 <script>
 	const $id = (id: string) => document.getElementById(id);
 
-	const preferences = document.forms.namedItem('preferences');
+	const preferences = document.forms.namedItem('preferences')!;
 
-	const setTheme = (theme) => {
+	const setTheme = (theme: string) => {
 		localStorage.setItem('theme', theme);
 		document.documentElement.dataset.theme = theme;
 	};
@@ -69,15 +69,15 @@ const { title, preload, meta, hideSocial = false } = Astro.props;
 	preferences.theme.value = currentTheme;
 	setTheme(currentTheme);
 
-	preferences.addEventListener('change', (event) => {
-		if (event.target.name === 'theme') {
+	preferences.addEventListener('change', (ev) => {
+		if (ev.target instanceof HTMLInputElement && ev.target.name === 'theme') {
 			setTheme(preferences.theme.value);
 		}
 	});
 
-	$id('preferences-menu-toggle').addEventListener('click', () => {
-		const isVisible = $id('preferences').hidden;
-		$id('preferences').hidden = !isVisible;
+	$id('preferences-menu-toggle')!.addEventListener('click', () => {
+		const isVisible = $id('preferences')!.hidden;
+		$id('preferences')!.hidden = !isVisible;
 		if (isVisible) {
 			preferences.tabIndex = 0;
 			preferences.focus();
