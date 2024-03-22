@@ -1,6 +1,6 @@
 :root {
-	--font-family: Dank Mono, Source Code Pro, Inconsolata, Fira Mono, Fira Code,
-		monospace;
+	--font-family: Optima, Candara, Avenir, Corbel, 'URW Gothic', Montserrat,
+		'Noto Sans', source-sans-pro, sans-serif;
 
 	--border-thickness: 10px;
 	--color-a: hsl(44, 86%, 52%);
