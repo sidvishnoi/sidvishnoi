@@ -1,0 +1,118 @@
+---
+import HomeLayout from '$layouts/HomeLayout.astro';
+import '$assets/style.css';
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+	frontmatter: CollectionEntry<'posts'>['data'];
+};
+
+const { frontmatter: fm } = Astro.props;
+const { title, description } = fm;
+const shareImage = fm.image?.url ? new URL(fm.image?.url) : undefined;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const formatDate = (date: Date) =>
+	date.toLocaleDateString('en', {
+		dateStyle: 'long',
+	});
+---
+
+<HomeLayout
+	title=`${title} | Sid Vishnoi's blog`
+	meta={{ canonical, description, shareImage }}
+	hideSocial
+>
+	<header class="header">
+		<h1 class="title">
+			<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
+		</h1>
+		<nav class="primary" style="margin-top: -1rem;">
+			<a href="/about/" class="button">About</a>
+			<a href="/blog/" class="button">Blog</a>
+			<a href="/resume/" class="button">Resume</a>
+		</nav>
+	</header>
+
+	<article id="main">
+		<header>
+			<h1 class="subtitle" style="font-weight: bold">
+				<a href={canonical.href}>{title}</a>
+			</h1>
+
+			<div class="meta">
+				<p>
+					Published <time datetime={fm.pubDate.toISOString()}
+						>{formatDate(fm.pubDate)}</time
+					>
+					{
+						fm.modDate && (
+							<Fragment>
+								and last updated{' '}
+								<time datetime={fm.modDate.toISOString()}>
+									{formatDate(fm.modDate)}
+								</time>
+							</Fragment>
+						)
+					}
+				</p>
+			</div>
+		</header>
+
+		<slot />
+	</article>
+</HomeLayout>
+
+<style is:global>
+	article {
+		max-width: calc(100% - 2 * var(--border-thickness));
+		margin: 0 auto;
+		margin-top: 3rem;
+		font-size: calc(16px + (20 - 16) * (100vw - 320px) / (750 - 320));
+		padding: 0 1em 1em;
+	}
+
+	article h1 {
+		max-width: 65ch;
+	}
+
+	article h1 a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	article header .meta {
+		margin-bottom: 2rem;
+		border-bottom: 1px solid #ddd;
+		font-size: smaller;
+		color: var(--color-alt, #777);
+	}
+	article header .meta p {
+		margin-left: 0;
+		font-size: smaller;
+	}
+
+	article p {
+		max-width: 65ch;
+	}
+
+	p + p {
+		margin-top: 1em;
+	}
+
+	article a {
+		color: var(--color-d, blue);
+	}
+
+	br {
+		display: block;
+		margin-top: 0.25em;
+	}
+
+	hr {
+		margin: 2em auto;
+		border: 2px solid var(--color-c, aquagreen);
+		border-radius: 10px;
+		max-width: 60%;
+	}
+</style>

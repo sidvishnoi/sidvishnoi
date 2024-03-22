@@ -10,6 +10,7 @@ import HomeLayout from '$layouts/HomeLayout.astro';
 		<p class="subtitle">I like web development and building software.</p>
 		<nav class="primary">
 			<a href="/about/" class="button">About</a>
+			<a href="/blog/" class="button">Blog</a>
 			<a href="/resume/" class="button">Resume</a>
 		</nav>
 	</header>
@@ -94,8 +95,7 @@ import HomeLayout from '$layouts/HomeLayout.astro';
 	</section>
 </HomeLayout>
 
-<style>
-	/* projects */
+<style is:global>
 	.projects {
 		max-width: calc(100% - 2 * var(--border-thickness));
 		margin: 0 auto;

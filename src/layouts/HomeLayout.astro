@@ -5,7 +5,7 @@ import '$assets/style.css';
 
 import SocialNav from '$components/SocialNav.astro';
 
-type Props = Props_ & {
+export type Props = Props_ & {
 	hideSocial?: boolean;
 };
 const { title, preload, meta, hideSocial = false } = Astro.props;

@@ -31,12 +31,14 @@
 html[data-theme='light'] {
 	--background: var(--theme-light-background);
 	--color: var(--theme-light-color);
+	--color-alt: #555;
 	--color-dark: var(--theme-light-color-dark);
 	--color-light: var(--theme-light-color-light);
 }
 html[data-theme='dark'] {
 	--background: var(--theme-dark-background);
 	--color: var(--theme-dark-color);
+	--color-alt: rgb(150, 150, 150);
 	--color-dark: var(--theme-dark-color-dark);
 	--color-light: var(--theme-dark-color-light);
 }
@@ -219,15 +221,15 @@ img {
 	line-height: 1.2;
 	padding: 3vmin 1vmin;
 }
-.header .title {
+.title {
 	font-size: 8vmin;
 	text-transform: uppercase;
 }
-.header .title a {
+.title a {
 	text-decoration: none;
 	color: var(--color);
 }
-.header .subtitle {
+.subtitle {
 	font-size: 5vmin;
 	font-weight: normal;
 }

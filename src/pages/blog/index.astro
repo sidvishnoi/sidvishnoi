@@ -1,0 +1,180 @@
+---
+import { getCollection } from 'astro:content';
+import HomeLayout from '$layouts/HomeLayout.astro';
+
+const allPosts = await getCollection('posts');
+---
+
+<HomeLayout title="Sid Vishnoi's blog" hideSocial>
+	<header class="header">
+		<h1 class="title">
+			<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
+		</h1>
+		<nav class="primary" style="margin-top: -1rem;">
+			<a href="/about/" class="button">About</a>
+			<a href="/blog/" class="button">Blog</a>
+			<a href="/resume/" class="button">Resume</a>
+		</nav>
+	</header>
+
+	<div id="main" class="blog">
+		<h2>Blog</h2>
+		<ul>
+			{
+				allPosts.map((post) => (
+					<li>
+						<article>
+							<h3>
+								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+							</h3>
+
+							<p>{post.data.description}</p>
+
+							<div class="meta">
+								<p>
+									Published{' '}
+									<time datetime={post.data.pubDate.toISOString()}>
+										{post.data.pubDate.toLocaleDateString('en', {
+											dateStyle: 'full',
+										})}
+									</time>
+								</p>
+							</div>
+						</article>
+					</li>
+				))
+			}
+			{!allPosts.length && <p>Coming soon</p>}
+		</ul>
+	</div>
+</HomeLayout>
+
+<style is:global>
+	.blog {
+		max-width: calc(100% - 2 * var(--border-thickness));
+		margin: 1em auto;
+		padding: 1em;
+		padding-bottom: 8em;
+		font-size: 1.5rem;
+		font-size: calc(16px + (24 - 16) * (100vw - 320px) / (750 - 320));
+	}
+
+	@media (min-width: 750px) {
+		.blog {
+			font-size: 24px;
+		}
+	}
+
+	.blog h2 {
+		font-size: 2em;
+		display: flex;
+		width: 100%;
+		margin: 1em auto;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	.blog h2:before,
+	.blog h2:after {
+		content: '';
+		border-top: 1rem double var(--color-dark);
+		margin: 0 1rem 0 0;
+		flex: 1 0 1rem;
+	}
+
+	.blog h2:after {
+		margin: 0 0 0 1rem;
+	}
+
+	.blog ul {
+		list-style: none;
+	}
+
+	.blog li {
+		padding: 1em;
+		max-width: 80ch;
+		margin: 0 auto;
+		position: relative;
+	}
+	/*
+	.blog li a::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+	}
+  */
+
+	.blog p {
+		max-width: 80ch;
+		padding: 0 0.5rem;
+	}
+
+	.blog .meta {
+		font-size: smaller;
+		text-align: right;
+	}
+	.blog .meta p {
+		font-size: smaller;
+		margin-left: 0;
+		max-width: 100%;
+		color: var(--color-alt);
+	}
+
+	.blog h3 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		font-size: 1.2em;
+		line-height: 1.1;
+	}
+
+	.blog h3:after {
+		content: '';
+		display: block;
+		flex: 1;
+		height: 1em;
+		background: transparent;
+	}
+
+	.blog:not(:focus-within) li:hover h3:after,
+	.blog li:focus-within h3:after {
+		background: var(--color-dark);
+	}
+
+	.blog:hover li:hover,
+	.blog li:focus-within {
+		background: var(--color-light);
+	}
+
+	.blog h3 a {
+		color: var(--color);
+		background: transparent;
+		padding: 0.2em 0.5em;
+		text-decoration: none;
+	}
+
+	.blog:not(:focus-within) li:hover h3 a,
+	.blog h3 a:focus {
+		color: var(--background);
+		background: var(--color);
+		outline: none;
+	}
+
+	@media (max-width: 640px) {
+		.blog {
+			padding: 0;
+		}
+		.blog li {
+			text-align: left;
+			padding: 2em 0;
+		}
+		.blog li:last-of-type {
+			padding-bottom: 1em;
+		}
+		.blog p {
+			width: 100%;
+		}
+	}
+</style>
