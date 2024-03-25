@@ -1,6 +1,6 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
-import SocialNav from '$components/SocialNav.astro';
+import Header from '$components/Header.astro';
 
 import { Content } from './_about.md';
 ---
@@ -10,18 +10,9 @@ import { Content } from './_about.md';
 	meta={{
 		description: `I'm Sid, a passionate software engineer and full-stack web developer with a knack for front-end development.`,
 	}}
-	hideSocial
 >
-	<header class="header" id="main">
-		<h1 class="title">
-			<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
-		</h1>
-		<h2 class="subtitle">About</h2>
-	</header>
-
+	<Header subtitle="About" hideNav />
 	<Content />
-
-	<SocialNav />
 </HomeLayout>
 
 <style is:global>
@@ -39,10 +30,6 @@ import { Content } from './_about.md';
 
 	p + p {
 		margin-top: 1em;
-	}
-
-	a {
-		color: var(--color-d-alt, blue);
 	}
 
 	br {

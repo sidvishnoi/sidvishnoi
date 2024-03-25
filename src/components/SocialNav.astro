@@ -1,5 +1,5 @@
 ---
-import socialIconsSvg from '$assets/icons/social.svg?url';
+import iconSvg from '$assets/icons/social.svg?url';
 ---
 
 <nav class="social">
@@ -9,8 +9,9 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		href="https://github.com/sidvishnoi"
 		class="icon-github"
 	>
-		<svg width="24"
-			><use xlink:href={`${socialIconsSvg}#icon-github`}></use></svg
+		<span class="visually-hidden">@sidvishnoi on Github</span>
+		<svg width="24" aria-hidden="true"
+			><use xlink:href={`${iconSvg}#icon-github`}></use></svg
 		>
 	</a>
 	<a
@@ -19,8 +20,9 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		href="https://mastodon.social/@sidvishnoi"
 		class="icon-mastodon"
 	>
-		<svg width="24"
-			><use xlink:href={`${socialIconsSvg}#icon-mastodon`}></use></svg
+		<span class="visually-hidden">@sidvishnoi on Mastodon.social</span>
+		<svg width="24" aria-hidden="true"
+			><use xlink:href={`${iconSvg}#icon-mastodon`}></use></svg
 		>
 	</a>
 	<a
@@ -29,8 +31,9 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		href="https://linkedin.com/in/sudhanshu-vishnoi"
 		class="icon-linkedin"
 	>
-		<svg width="24"
-			><use xlink:href={`${socialIconsSvg}#icon-linkedin`}></use></svg
+		<span class="visually-hidden">@sudhanshu-vishnoi on Linkedin</span>
+		<svg width="24" aria-hidden="true"
+			><use xlink:href={`${iconSvg}#icon-linkedin`}></use></svg
 		>
 	</a>
 	<a
@@ -39,7 +42,10 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		href="https://dev.to/sidvishnoi"
 		class="icon-dev"
 	>
-		<svg width="24"><use xlink:href={`${socialIconsSvg}#icon-dev`}></use></svg>
+		<span class="visually-hidden">@sidvishnoi on Dev.to</span>
+		<svg width="24" aria-hidden="true"
+			><use xlink:href={`${iconSvg}#icon-dev`}></use></svg
+		>
 	</a>
 	<a
 		rel="me"
@@ -47,8 +53,9 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		href="https://stackoverflow.com/users/3367669/sid-vishnoi"
 		class="icon-stackoverflow"
 	>
-		<svg width="24"
-			><use xlink:href={`${socialIconsSvg}#icon-stackoverflow`}></use></svg
+		<span class="visually-hidden">@sid-vishnoi on StackOverflow</span>
+		<svg width="24" aria-hidden="true"
+			><use xlink:href={`${iconSvg}#icon-stackoverflow`}></use></svg
 		>
 	</a>
 	<a
@@ -57,8 +64,9 @@ import socialIconsSvg from '$assets/icons/social.svg?url';
 		href="https://codepen.io/sidvishnoi/"
 		class="icon-codepen"
 	>
-		<svg width="24"
-			><use xlink:href={`${socialIconsSvg}#icon-codepen`}></use></svg
+		<span class="visually-hidden">@sidvishnoi on CodePen</span>
+		<svg width="24" aria-hidden="true"
+			><use xlink:href={`${iconSvg}#icon-codepen`}></use></svg
 		>
 	</a>
 </nav>

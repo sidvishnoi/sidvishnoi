@@ -1,6 +1,5 @@
 ---
 import BaseLayout, { type Props as Props_ } from '$layouts/BaseLayout.astro';
-import iconsSvg from '$assets/icons/icons.svg?url';
 import '$assets/style.css';
 
 import SocialNav from '$components/SocialNav.astro';
@@ -16,71 +15,16 @@ const { title, preload, meta, hideSocial = false } = Astro.props;
 		>Jump to main content</a
 	>
 
-	<aside id="preferences" class="pref" hidden>
-		<form name="preferences">
-			<fieldset id="theme">
-				<legend>Color Scheme</legend>
-				<label
-					><input type="radio" name="theme" value="light" /><span>Light</span
-					></label
-				>
-				<label
-					><input type="radio" name="theme" value="dark" /><span>Dark</span
-					></label
-				>
-			</fieldset>
-		</form>
-	</aside>
-
 	<div class="splash-borders">
 		<div class="top"></div><div class="right"></div><div class="bottom">
 		</div><div class="left"></div>
 	</div>
 
-	<div class="subnav">
-		<button id="preferences-menu-toggle" aria-label="Change visual preferences">
-			<svg width="24" height="24" focusable="false" aria-hidden="true"
-				><use xlink:href={`${iconsSvg}#icon-preferences`}></use></svg
-			>
-			<span>Preferences</span>
-		</button>
-
-		{!hideSocial && <SocialNav />}
-	</div>
-
 	<main>
 		<slot />
 	</main>
+
+	<footer class="footer">
+		{!hideSocial && <SocialNav />}
+	</footer>
 </BaseLayout>
-
-<script>
-	const $id = (id: string) => document.getElementById(id);
-
-	const preferences = document.forms.namedItem('preferences')!;
-
-	const setTheme = (theme: string) => {
-		localStorage.setItem('theme', theme);
-		document.documentElement.dataset.theme = theme;
-	};
-
-	const currentTheme =
-		localStorage.getItem('theme') ||
-		(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-	preferences.theme.value = currentTheme;
-	setTheme(currentTheme);
-
-	preferences.addEventListener('change', (ev) => {
-		if (ev.target instanceof HTMLInputElement && ev.target.name === 'theme') {
-			setTheme(preferences.theme.value);
-		}
-	});
-
-	$id('preferences-menu-toggle')!.addEventListener('click', () => {
-		const isVisible = $id('preferences')!.hidden;
-		$id('preferences')!.hidden = !isVisible;
-		if (isVisible) {
-			preferences.tabIndex = 0;
-			preferences.focus();
-		}
-	});
-</script>

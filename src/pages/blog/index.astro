@@ -1,21 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import HomeLayout from '$layouts/HomeLayout.astro';
+import Header from '$components/Header.astro';
 
 const allPosts = await getCollection('posts');
 ---
 
-<HomeLayout title="Sid Vishnoi's blog" hideSocial>
-	<header class="header">
-		<h1 class="title">
-			<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
-		</h1>
-		<nav class="primary" style="margin-top: -1rem;">
-			<a href="/about/" class="button">About</a>
-			<a href="/blog/" class="button">Blog</a>
-			<a href="/resume/" class="button">Resume</a>
-		</nav>
-	</header>
+<HomeLayout title="Sid Vishnoi's blog">
+	<Header isSmall />
 
 	<div id="main" class="blog">
 		<h2>Blog</h2>
@@ -69,7 +61,7 @@ const allPosts = await getCollection('posts');
 		font-size: 2em;
 		display: flex;
 		width: 100%;
-		margin: 1em auto;
+		margin: 0 auto 1em;
 		justify-content: center;
 		align-items: center;
 		text-align: center;

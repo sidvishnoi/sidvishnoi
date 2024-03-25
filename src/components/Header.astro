@@ -1,0 +1,37 @@
+---
+interface Props {
+	subtitle?: string;
+	isSmall?: boolean;
+	hideNav?: boolean;
+}
+
+const { subtitle, isSmall, hideNav } = Astro.props;
+---
+
+<header class="header">
+	<h1 class="title">
+		<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
+	</h1>
+	{subtitle && <p class="subtitle">{subtitle}</p>}
+	{
+		!hideNav && (
+			<nav class:list={['primary', isSmall && 'small']}>
+				<a href="/about/" class="button">
+					About
+				</a>
+				<a href="/blog/" class="button">
+					Blog
+				</a>
+				<a href="/resume/" class="button">
+					Resume
+				</a>
+			</nav>
+		)
+	}
+</header>
+
+<style>
+	.primary.small {
+		margin-top: -1rem;
+	}
+</style>

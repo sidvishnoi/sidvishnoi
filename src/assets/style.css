@@ -9,38 +9,32 @@
 	--color-b-alt: hsl(325, 62%, 46%);
 	--color-c: hsl(140, 72%, 41%);
 	--color-c-alt: hsl(140, 72%, 31%);
-	--color-d: hsl(201, 90%, 41%);
+	--color-d: hsl(201, 90%, 43%);
 	--color-d-alt: hsl(201, 90%, 31%);
 
-	--theme-light-background: #fff;
-	--theme-light-color: #111;
-	--theme-light-color-dark: hsl(241, 85%, 70%);
-	--theme-light-color-light: hsl(241, 85%, 90%);
+	--background: #fff;
+	--color: #111;
+	--color-link: var(--color-d-alt, blue);
+	--color-alt: #555;
+	--color-dark: hsl(241, 85%, 70%);
+	--color-light: hsl(241, 85%, 90%);
+}
 
-	--theme-dark-background: #111;
-	--theme-dark-color: rgb(217, 217, 217);
-	--theme-dark-color-dark: hsl(241, 57%, 23%);
-	--theme-dark-color-light: hsl(241, 89%, 14%);
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #111;
+		--color: rgb(217, 217, 217);
+		--color-link: var(--color-d, blue);
+		--color-alt: rgb(150, 150, 150);
+		--color-dark: hsl(241, 57%, 23%);
+		--color-light: hsl(241, 89%, 14%);
+	}
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
-html[data-theme='light'] {
-	--background: var(--theme-light-background);
-	--color: var(--theme-light-color);
-	--color-alt: #555;
-	--color-dark: var(--theme-light-color-dark);
-	--color-light: var(--theme-light-color-light);
-}
-html[data-theme='dark'] {
-	--background: var(--theme-dark-background);
-	--color: var(--theme-dark-color);
-	--color-alt: rgb(150, 150, 150);
-	--color-dark: var(--theme-dark-color-dark);
-	--color-light: var(--theme-dark-color-light);
 }
 
 body {
@@ -56,6 +50,10 @@ body {
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+a {
+	color: var(--color-link, blue);
 }
 
 .visually-hidden {
@@ -173,45 +171,8 @@ img {
 	width: var(--thickness);
 }
 
-.subnav {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	padding: calc(1em + var(--border-thickness));
-}
-.subnav button {
-	border: none;
-	background: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: var(--font-family);
-	padding: 0.4rem;
-	font-size: 1rem;
-	cursor: pointer;
-	color: var(--color);
-}
-.subnav button svg {
-	height: 24px;
-	width: 24px;
-	margin-right: 6px;
-	fill: var(--color);
-}
-@media (max-width: 640px) {
-	.subnav button span {
-		clip: rect(0 0 0 0);
-		height: 1px;
-		margin: -1px;
-		overflow: hidden;
-		padding: 0;
-		position: absolute;
-		width: 1px;
-	}
-}
-
 .header,
-.container-main,
-.pref {
+.container-main {
 	max-width: calc(100% - 2 * var(--border-thickness));
 	margin: 0 auto;
 }
@@ -219,7 +180,7 @@ img {
 .header {
 	text-align: center;
 	line-height: 1.2;
-	padding: 3vmin 1vmin;
+	padding: 8vmin 1vmin;
 }
 .title {
 	font-size: 8vmin;
@@ -232,6 +193,13 @@ img {
 .subtitle {
 	font-size: 5vmin;
 	font-weight: normal;
+}
+
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: calc(1em + var(--border-thickness));
 }
 
 .button {
@@ -299,54 +267,10 @@ nav.primary a:nth-child(3) {
 fieldset {
 	border: none;
 }
-.pref {
-	display: block;
-	position: relative;
-	top: var(--border-thickness);
-	width: 100%;
-	background: var(--color-light);
-	color: var(--color);
-	padding: 2vmin;
-}
-.pref[hidden] {
-	display: none;
-}
-.pref label {
-	position: relative;
-}
-.pref input[type='radio'] {
-	height: 100%;
-	left: 0;
-	opacity: 0.0001;
-	position: absolute;
-	top: 0;
-	width: 100%;
-}
-.pref label:focus-within,
-.pref label:hover,
-.pref input:focus + span {
-	outline: 1px dashed;
-	cursor: pointer;
-}
-#theme span {
-	display: inline-block;
-	color: var(--text-color);
-	background-color: var(--bg-color);
-	border: 2px solid var(--border-color);
-	padding: 0.5rem;
-}
-#theme input[value='light'] + span {
-	--bg-color: var(--theme-light-background);
-	--text-color: var(--theme-light-color);
-	--border-color: var(--theme-light-color-dark);
-}
-#theme input[value='dark'] + span {
-	--bg-color: var(--theme-dark-background);
-	--text-color: var(--theme-dark-color);
-	--border-color: var(--theme-dark-color-light);
-}
 
-html[data-theme='dark'] .splash-borders > div,
-html[data-theme='dark'] nav.primary a {
-	filter: saturate(85%);
+@media (prefers-color-scheme: dark) {
+	.splash-borders > div,
+	nav.primary a {
+		filter: saturate(85%);
+	}
 }

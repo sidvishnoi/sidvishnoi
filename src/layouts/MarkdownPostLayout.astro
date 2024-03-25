@@ -1,5 +1,6 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
+import Header from '$components/Header.astro';
 import '$assets/style.css';
 import type { CollectionEntry } from 'astro:content';
 
@@ -21,18 +22,8 @@ const formatDate = (date: Date) =>
 <HomeLayout
 	title=`${title} | Sid Vishnoi's blog`
 	meta={{ canonical, description, shareImage }}
-	hideSocial
 >
-	<header class="header">
-		<h1 class="title">
-			<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
-		</h1>
-		<nav class="primary" style="margin-top: -1rem;">
-			<a href="/about/" class="button">About</a>
-			<a href="/blog/" class="button">Blog</a>
-			<a href="/resume/" class="button">Resume</a>
-		</nav>
-	</header>
+	<Header isSmall />
 
 	<article id="main">
 		<header>
@@ -98,10 +89,6 @@ const formatDate = (date: Date) =>
 
 	p + p {
 		margin-top: 1em;
-	}
-
-	article a {
-		color: var(--color-d-alt, blue);
 	}
 
 	br {

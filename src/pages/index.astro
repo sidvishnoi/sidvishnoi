@@ -1,5 +1,6 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
+import Header from '$components/Header.astro';
 ---
 
 <HomeLayout
@@ -8,19 +9,9 @@ import HomeLayout from '$layouts/HomeLayout.astro';
 		description: `Software engineer and full-stack web developer with a knack for front-end development`,
 	}}
 >
-	<header class="header" id="main">
-		<h1 class="title">
-			<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
-		</h1>
-		<p class="subtitle">I like web development and building software.</p>
-		<nav class="primary">
-			<a href="/about/" class="button">About</a>
-			<a href="/blog/" class="button">Blog</a>
-			<a href="/resume/" class="button">Resume</a>
-		</nav>
-	</header>
+	<Header subtitle="I like web development and building software." />
 
-	<section class="container-main projects">
+	<section class="container-main projects" id="main">
 		<h2 id="projects">Projects</h2>
 		<ul>
 			<li>
