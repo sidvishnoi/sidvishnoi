@@ -38,7 +38,7 @@
 }
 
 body {
-	font-size: 16px;
+	font-size: clamp(1rem, 0.793rem + 1.296vw, 1.7rem);
 	line-height: 1.4;
 	position: relative;
 	padding: var(--thickness);
@@ -183,7 +183,7 @@ a {
 	padding: 8vmin 1vmin;
 }
 .title {
-	font-size: 8vmin;
+	font-size: clamp(2rem, 1.111rem + 5.556vw, 5rem);
 	text-transform: uppercase;
 }
 .title a {
@@ -191,7 +191,7 @@ a {
 	color: var(--color);
 }
 .subtitle {
-	font-size: 5vmin;
+	font-size: clamp(1.2rem, 0.815rem + 2.407vw, 2.5rem);
 	font-weight: normal;
 }
 
@@ -214,7 +214,7 @@ a {
 	text-transform: uppercase;
 	font-weight: bold;
 	color: var(--text-color);
-	box-shadow: 8px 7px 0px 0px var(--bg-color-alt);
+	box-shadow: 0.5em 0.48em 0px 0px var(--bg-color-alt);
 	transition: all 0.2s cubic-bezier(0.18, 0.74, 0.27, 0.86);
 }
 .button:hover,
