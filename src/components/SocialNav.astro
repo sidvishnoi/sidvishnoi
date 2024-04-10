@@ -1,84 +1,69 @@
 ---
 import iconSvg from '$assets/icons/social.svg?url';
+
+const items: Array<{ title: string; icon: string; href: string }> = [
+	{
+		title: '@sidvishnoi on GitHub',
+		icon: 'icon-github',
+		href: 'https://github.com/sidvishnoi',
+	},
+	{
+		title: '@sidvishnoi on Mastodon.social',
+		icon: 'icon-mastodon',
+		href: 'https://mastodon.social/@sidvishnoi',
+	},
+	{
+		title: '@sudhanshu-vishnoi on LinkedIn',
+		icon: 'icon-linkedin',
+		href: 'https://linkedin.com/in/sudhanshu-vishnoi',
+	},
+	{
+		title: '@sid-vishnoi on StackOverflow',
+		icon: 'icon-stackoverflow',
+		href: 'https://stackoverflow.com/users/1607105/sid-vishnoi',
+	},
+	{
+		title: '@sidvishnoi on Dev.to',
+		icon: 'icon-dev',
+		href: 'https://dev.to/sidvishnoi',
+	},
+	{
+		title: '@sidvishnoi on CodePen',
+		icon: 'icon-codepen',
+		href: 'https://codepen.io/sidvishnoi/',
+	},
+];
 ---
 
 <nav class="social">
-	<a
-		rel="me"
-		title="@sidvishnoi on Github"
-		href="https://github.com/sidvishnoi"
-		class="icon-github"
-	>
-		<span class="visually-hidden">@sidvishnoi on Github</span>
-		<svg width="24" height="24" aria-hidden="true"
-			><use xlink:href={`${iconSvg}#icon-github`}></use></svg
-		>
-	</a>
-	<a
-		rel="me"
-		title="@sidvishnoi on Mastodon.social"
-		href="https://mastodon.social/@sidvishnoi"
-		class="icon-mastodon"
-	>
-		<span class="visually-hidden">@sidvishnoi on Mastodon.social</span>
-		<svg width="24" height="24" aria-hidden="true"
-			><use xlink:href={`${iconSvg}#icon-mastodon`}></use></svg
-		>
-	</a>
-	<a
-		rel="me"
-		title="@sudhanshu-vishnoi on Linkedin"
-		href="https://linkedin.com/in/sudhanshu-vishnoi"
-		class="icon-linkedin"
-	>
-		<span class="visually-hidden">@sudhanshu-vishnoi on Linkedin</span>
-		<svg width="24" height="24" aria-hidden="true"
-			><use xlink:href={`${iconSvg}#icon-linkedin`}></use></svg
-		>
-	</a>
-	<a
-		rel="me"
-		title="@sidvishnoi on Dev.to"
-		href="https://dev.to/sidvishnoi"
-		class="icon-dev"
-	>
-		<span class="visually-hidden">@sidvishnoi on Dev.to</span>
-		<svg width="24" height="24" aria-hidden="true"
-			><use xlink:href={`${iconSvg}#icon-dev`}></use></svg
-		>
-	</a>
-	<a
-		rel="me"
-		title="@sid-vishnoi on StackOverflow"
-		href="https://stackoverflow.com/users/3367669/sid-vishnoi"
-		class="icon-stackoverflow"
-	>
-		<span class="visually-hidden">@sid-vishnoi on StackOverflow</span>
-		<svg width="24" height="24" aria-hidden="true"
-			><use xlink:href={`${iconSvg}#icon-stackoverflow`}></use></svg
-		>
-	</a>
-	<a
-		rel="me"
-		title="@sidvishnoi on CodePen"
-		href="https://codepen.io/sidvishnoi/"
-		class="icon-codepen"
-	>
-		<span class="visually-hidden">@sidvishnoi on CodePen</span>
-		<svg width="24" height="24" aria-hidden="true"
-			><use xlink:href={`${iconSvg}#icon-codepen`}></use></svg
-		>
-	</a>
+	<ul>
+		{
+			items.map((item) => (
+				<li>
+					<a rel="me" title={item.title} href={item.href} class={item.icon}>
+						<span class="visually-hidden">{item.title}</span>
+						<svg width="24" height="24" aria-hidden="true">
+							<use xlink:href={`${iconSvg}#${item.icon}`} />
+						</svg>
+					</a>
+				</li>
+			))
+		}
+	</ul>
 </nav>
 
 <style>
-	.social {
+	.social ul {
 		display: grid;
 		grid-template-columns: repeat(6, max-content);
 		grid-gap: 0.5rem;
 		gap: 0.5rem;
 		justify-content: end;
 		overflow-x: auto;
+	}
+	.social ul li {
+		list-style: none;
+		margin: 0;
 	}
 	.social a {
 		padding: 0.5em;
