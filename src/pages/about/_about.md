@@ -1,4 +1,4 @@
-I'm Sid, a passionate software engineer and full-stack web developer with a knack for front-end development.
+I'm Sid, a passionate software engineer and full-stack web developer with a knack for front-end development. Fueled by a passion for technology, I embarked on my self-taught developer journey 12 years <!-- NOTE: update number of years since 2008 every year; count sounds better than actual year here --> ago, and I haven't stopped learning since.
 
 I leverage my expertise in modern web development principles to build performant and interactive web applications, with a commitment to creating accessible user experiences.
 
@@ -6,9 +6,9 @@ I'm a quick learner with a proficiency in various programming languages and fram
 
 ---
 
-For the last 2.5+ years, I've been working remotely at [Monetized.link] (and [Keyosk.co]) as a full-stack developer. As a founding engineer, I spearheaded the development of a no-code paywall platform built with SvelteKit/TailwindCSS/TypeScript, Firebase, ElasticSearch and Google Cloud.
-I was responsible for end-to-end development of the product, ensuring a seamless user journey for complex functionalities -- multi-tenant architecture, analytics, Stripe integration, and Web3 (Ethereum) protocols.
-This project not only challenged me technically, but also allowed me to demonstrate my ability to deliver complex functionalities while ensuring a seamless user journey.
+For the past 2.5+ years, I've been a founding engineer at [Monetized.link] (and [Keyosk.co]), leading the full-stack development of a no-code paywall platform.
+I owned the entire development lifecycle, including designing complex features like multi-tenant architecture, providing insights to creators and admins, and integrating Stripe & Web3 (Ethereum) protocols. Built with SvelteKit/TailwindCSS/TypeScript for a smooth user experience, Firebase for backend power, ElasticSearch and Redis for fast search, and Google Cloud for a scalable foundation.
+Besides pushing my technical boundaries, this project allowed me to showcase my ability to deliver intricate functionalities that provide a pleasant user experience.
 
 **Some history:** I've been coding since nearly 2009 and decided to take on software development professionally in 2016.
 In 2018, I was a [Google Summer of Code scholar for Mozilla][gsoc]. Since then, I've continued to be an active contributor in the open-source community, where I focused on bringing new tools and services [widely used at the W3C][spec-prod]. I presented my W3C tooling-related work at W3C TPAC 2019 in Fukuoka, Japan. In 2020, I was awarded the Mozilla Open Source Support ([MOSS]) award to work on the same project.
