@@ -12,7 +12,7 @@ const { subtitle, isSmall, hideNav } = Astro.props;
 	<h1 class="title">
 		<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
 	</h1>
-	{subtitle && <p class="subtitle">{subtitle}</p>}
+	{subtitle && <h2 class="subtitle">{subtitle}</h2>}
 	{
 		!hideNav && (
 			<nav class:list={['primary', isSmall && 'small']}>
