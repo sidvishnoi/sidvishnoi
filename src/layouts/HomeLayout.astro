@@ -11,6 +11,8 @@ const { title, preload, meta, hideSocial = false } = Astro.props;
 ---
 
 <BaseLayout {title} {preload} {meta}>
+	<slot slot="head" name="head" />
+
 	<a href="#main" class="visually-hidden" id="jump-to-main"
 		>Jump to main content</a
 	>

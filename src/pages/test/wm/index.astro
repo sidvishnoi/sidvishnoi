@@ -1,0 +1,91 @@
+---
+import HomeLayout from '$layouts/HomeLayout.astro';
+import Header from '$components/Header.astro';
+---
+
+<HomeLayout title="Web Monetization test" meta={{}}>
+	<Fragment slot="head">
+		<link
+			rel="monetization"
+			href="https://ilp.interledger-test.dev/sid-mxn-1"
+		/>
+	</Fragment>
+
+	<Header subtitle="Web Monetization Test #1" hideNav />
+
+	<p>
+		This page is testing Web Monetization for wallet address: <a
+			href="https://ilp.interledger-test.dev/sid-mxn-1"
+			>https://ilp.interledger-test.dev/sid-mxn-1</a
+		>
+	</p>
+
+	<p>
+		Received amount: <span
+			id="amount"
+			style="font-variant-numeric: tabular-nums; font-weight: bold"
+			>MX$0.00</span
+		>
+	</p>
+
+	<strong>Monetization Events:</strong>
+	<pre
+		id="events-log"
+		style="font-size: small; height: 8rem; overflow: auto; background-color: #eee; padding: 1em">
+	</pre>
+</HomeLayout>
+
+<script>
+	let totalAmountReceived = 0;
+
+	window.addEventListener('monetization', (ev) => {
+		console.log(ev);
+		const amountSent: string = (ev as any).amountSent.value;
+		const currency: string = (ev as any).amountSent.currency;
+		const amount = Number(amountSent);
+		totalAmountReceived = Number(totalAmountReceived) + amount;
+		document.getElementById('amount')!.textContent = new Intl.NumberFormat(
+			undefined,
+			{ style: 'currency', currency: 'MXN' },
+		).format(totalAmountReceived);
+
+		const log = document.getElementById('events-log')!;
+		log.prepend(
+			document.createTextNode(
+				new Date().toLocaleTimeString() +
+					': ' +
+					currency +
+					' ' +
+					amountSent +
+					'\n',
+			),
+		);
+	});
+</script>
+
+<style is:global>
+	main {
+		max-width: calc(100% - 2 * var(--border-thickness));
+		margin: 0 auto;
+		padding: 0 1em 1em;
+	}
+
+	p {
+		max-width: 65ch;
+		margin: auto;
+	}
+
+	p + p {
+		margin-top: 1em;
+	}
+
+	br {
+		display: block;
+		margin-top: 0.3em;
+	}
+
+	main .social {
+		margin-top: 2em;
+		justify-content: center !important;
+	}
+</style>
