@@ -31,7 +31,16 @@ import Header from '$components/Header.astro';
 	<strong>Monetization Events:</strong>
 	<pre
 		id="events-log"
-		style="font-size: small; height: 8rem; overflow: auto; background-color: #eee; padding: 1em">
+		style={{
+			fontSize: 'small',
+			height: '8rem',
+			overflow: 'auto',
+			padding: '1em',
+			color: 'var(--color-alt)',
+			border: '1px solid currentColor',
+			borderRadius: '4px',
+			background: 'light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1))',
+		}}>
 	</pre>
 </HomeLayout>
 
