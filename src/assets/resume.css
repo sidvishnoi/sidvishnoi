@@ -1,10 +1,26 @@
 :root {
+	--color-bg: #fff;
+	--color-fg: #111;
+	--color-link: #0d4ac5;
+	--color-border: #ccc;
+	--color-link-hover: 116deg;
+
 	--font-family: 'Source Sans Pro', 'Lato', 'Helvetica', 'Open Sans', 'Arial',
 		sans-serif;
 	--font-monospace: 'DejaVu Sans Mono', 'Fira Code', 'Courier New', monospace;
-	--border-main: 2px solid #ccc;
+	--border-main: 2px solid var(--color-border);
 	--left-width: 63%;
 	--right-width: 37%;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #181616;
+		--color-fg: #e5e5e5;
+		--color-border: #312c2c;
+		--color-link: #5684e2;
+		--color-link-hover: 210deg;
+	}
 }
 
 * {
@@ -19,7 +35,8 @@ html {
 }
 
 body {
-	background: #fff;
+	background: var(--color-bg);
+	color: var(--color-fg);
 	width: 100%;
 	max-width: 21cm;
 	margin: 0 auto;
@@ -47,14 +64,15 @@ hr {
 }
 
 a {
-	color: #0d4ac5;
+	color: var(--color-link);
 }
 
 a:hover,
 a:focus {
 	outline: none;
-	background: hsl(116deg 100% 50% / 30%);
-	box-shadow: 0px 0 0 0.1em hsl(176deg 100% 50% / 30%);
+	background: hsl(var(--color-link-hover, 116deg) 100% 50% / 30%);
+	box-shadow: 0px 0 0 0.1em
+		hsl(calc(var(--color-link-hover, 116deg) + 60deg) 100% 50% / 30%);
 }
 
 .monospace {
