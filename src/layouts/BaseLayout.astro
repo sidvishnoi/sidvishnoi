@@ -36,6 +36,8 @@ const {
 				preload.map((e) => <link rel="preload" href={e.href} as={e.as} />)
 		}
 
+		<link rel="monetization" href="/.well-known/pay" />
+
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		{canonical && <link rel="canonical" href={canonical} />}
 		{canonical && <meta property="og:url" content={canonical} />}
