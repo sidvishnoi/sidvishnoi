@@ -1,0 +1,297 @@
+---
+import HomeLayout from '$layouts/HomeLayout.astro';
+import Header from '$components/Header.astro';
+---
+
+<HomeLayout title="Web Monetization Offerwall test" meta={{}} hideSocial>
+	<Fragment slot="head">
+		<link
+			rel="monetization"
+			href="https://ilp.interledger-test.dev/sid-mxn-1"
+		/>
+		<script
+			async
+			src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+			crossorigin="anonymous"></script>
+	</Fragment>
+
+	<Header subtitle="Web Monetization Offerwall Test #1" hideNav />
+
+	<p>
+		This is an experiment to integrate <a href="https://webmonetization.org"
+			>Web Monetization</a
+		> with <a
+			href="https://support.google.com/admanager/answer/13860694"
+			target="_blank"
+			rel="noopener noreferrer">Google's Offerwall</a
+		>.
+	</p>
+</HomeLayout>
+
+<script>
+	declare enum InitializeResponseEnum {
+		CUSTOM_CHOICE_DISABLED,
+		ACCESS_GRANTED,
+		ACCESS_NOT_GRANTED,
+	}
+
+	declare global {
+		interface Window {
+			googlefc?: {
+				offerwall?: {
+					customchoice?: {
+						InitializeResponseEnum?: typeof InitializeResponseEnum;
+						registry?: WebMonetizationCustomOfferwallChoice;
+					};
+				};
+			};
+			googletag?: {
+				cmd?: (() => void)[];
+				enableServices?: () => void;
+			};
+		}
+	}
+
+	interface InitializeParams {
+		offerwallLanguageCode?: string;
+	}
+
+	declare class MonetizationEvent extends Event {
+		amountSent: { value: string; currency: string };
+		paymentPointer: string;
+		incomingPayment: string;
+	}
+
+	/** Polyfill for `Promise.withResolvers()` */
+	function withResolvers<T>() {
+		let resolve: (value: T | PromiseLike<T>) => void;
+		let reject: (reason?: unknown) => void;
+		const promise = new Promise<T>((res, rej) => {
+			resolve = res;
+			reject = rej;
+		});
+		// @ts-expect-error we know TypeScript!
+		return { resolve, reject, promise };
+	}
+
+	const sleep = (ms: number) => new Promise<void>((res) => setTimeout(res, ms));
+
+	// Define your custom choice.
+	class WebMonetizationCustomOfferwallChoice {
+		#monetizationEvents: MonetizationEvent[] = [];
+
+		// Initialize your custom choice, which may include loading or preparing any
+		// resources required to function.
+		async initialize(
+			params: InitializeParams,
+		): Promise<InitializeResponseEnum> {
+			window.addEventListener('monetization', (ev) => {
+				this.#monetizationEvents.push(ev as MonetizationEvent);
+			});
+
+			// If your custom choice is inoperable on this page, return CUSTOM_CHOICE_DISABLED,
+			// causing your Offerwall to exclude the custom choice option when rendering.
+			if (!this.supportsWebMonetization()) {
+				return window.googlefc!.offerwall!.customchoice!.InitializeResponseEnum!
+					.CUSTOM_CHOICE_DISABLED;
+			}
+
+			// If the user should automatically be granted page access on page load, return
+			// ACCESS_GRANTED, causing your Offerwall to be ineligible to render on this page.
+			const isAccessGranted = await this.shouldUserBeGrantedPageAccess();
+			if (isAccessGranted) {
+				return window.googlefc!.offerwall!.customchoice!.InitializeResponseEnum!
+					.ACCESS_GRANTED;
+			}
+
+			// If the user shouldn't automatically be granted page access on page load, return
+			// ACCESS_NOT_GRANTED, causing your Offerwall to be eligible to render on this page.
+			return window.googlefc!.offerwall!.customchoice!.InitializeResponseEnum!
+				.ACCESS_NOT_GRANTED;
+		}
+
+		// Show your custom choice on the web page, which may be a subscription
+		// service, micropayments service, rewarded ad, etc.
+		async show(): Promise<boolean> {
+			const html = String.raw;
+			const dialog = document.createElement('dialog');
+			dialog.id = 'wm-custom-offerwall';
+
+			const cancelButton = document.createElement('button');
+			cancelButton.textContent = 'Cancel';
+
+			const abort = new AbortController();
+			cancelButton.addEventListener(
+				'click',
+				() => {
+					dialog.close();
+					abort.abort();
+				},
+				{ once: true },
+			);
+
+			window.addEventListener('monetization', (event) => {
+				this.#monetizationEvents.push(event as MonetizationEvent);
+			});
+
+			const p = document.createElement('p');
+			p.innerHTML = `Waiting for a <code>MonetizationEvent</code>...`;
+
+			dialog.appendChild(cancelButton);
+			dialog.appendChild(p);
+			document.body.appendChild(dialog);
+
+			const style = document.createElement('style');
+			const css = String.raw;
+			style.textContent = css`
+				dialog#wm-custom-offerwall {
+					place-self: center;
+					padding: 1em;
+					border-radius: 5px;
+					font-size: 1.5rem;
+				}
+				dialog#wm-custom-offerwall::backdrop {
+					background-image: linear-gradient(
+						45deg,
+						magenta,
+						rebeccapurple,
+						dodgerblue,
+						green
+					);
+					opacity: 0.75;
+				}
+			`;
+			document.body.appendChild(style);
+
+			dialog.showModal();
+
+			const MAX_ATTEMPT = 5;
+			let attempt = 0;
+			while (!abort.signal.aborted && attempt < MAX_ATTEMPT) {
+				++attempt;
+				p.innerHTML = `Waiting for a <code>MonetizationEvent</code>... Attempt #${attempt}/${MAX_ATTEMPT}`;
+
+				if (this.#monetizationEvents.length) {
+					const ev = this.#monetizationEvents.find((ev) => this.isOkEvent(ev));
+					if (ev) {
+						const isVerified = await this.isVerifiedPayment(ev);
+						if (isVerified) {
+							dialog.close();
+							return isVerified;
+						}
+					}
+				}
+				const { resolve, promise, reject } = withResolvers<MonetizationEvent>();
+				window.addEventListener(
+					'monetization',
+					(event) => resolve(event as MonetizationEvent),
+					{ once: true },
+				);
+				abort.signal.addEventListener('abort', reject);
+
+				// wait upto 5s for next attempt
+				const timeout = sleep(5000);
+
+				try {
+					const event = await Promise.race([promise, timeout]);
+					if (!event) continue;
+					if (this.isOkEvent(event)) {
+						p.innerHTML = html`Verifying payment...`;
+						const isVerified = await this.isVerifiedPayment(event);
+						if (isVerified) {
+							dialog.close();
+							return isVerified;
+						}
+						p.textContent = 'Could not verify payment';
+						await sleep(1000);
+					}
+				} catch (error) {
+					if (error instanceof DOMException) {
+						if (error.name === 'AbortError') {
+							p.textContent = 'Aborted by user';
+							return false;
+						} else {
+							p.textContent = error.message;
+						}
+					} else {
+						p.textContent = error?.message ?? error;
+						return false;
+					}
+				}
+			}
+
+			p.innerHTML = html`Timed out waiting for a <code>MonetizationEvent</code>...`;
+			cancelButton.textContent = 'Close';
+			return false;
+		}
+
+		private async shouldUserBeGrantedPageAccess() {
+			const ev = this.#monetizationEvents.find((ev) => this.isOkEvent(ev));
+			if (!ev) return false;
+			return await this.isVerifiedPayment(ev);
+		}
+
+		private supportsWebMonetization() {
+			const link = document.querySelector<HTMLLinkElement>(
+				'link[rel="monetization"]',
+			);
+			if (link) {
+				return link.relList.supports('monetization');
+			}
+			return false;
+		}
+
+		private isOkEvent(ev: MonetizationEvent) {
+			if (!(ev instanceof MonetizationEvent)) {
+				return false;
+			}
+			return Number(ev.amountSent.value) > 0;
+		}
+
+		private async isVerifiedPayment(ev: MonetizationEvent) {
+			if (!ev.incomingPayment) return false;
+			try {
+				// can use a verifier service in backend to verify, but this is a fine placeholder
+				const res = await fetch(ev.incomingPayment);
+				if (!res.ok) return false;
+				return true;
+			} catch (error) {
+				return false;
+			}
+		}
+	}
+
+	// Register your custom choice with your Offerwall.
+	window.googlefc ||= {};
+	window.googlefc.offerwall ||= {};
+	window.googlefc.offerwall.customchoice ||= {};
+	window.googlefc.offerwall.customchoice.registry =
+		new WebMonetizationCustomOfferwallChoice();
+
+	window.googletag ||= { cmd: [] };
+	window.googletag!.cmd!.push(() => {
+		window.googletag!.enableServices!();
+	});
+</script>
+
+<style is:global>
+	main {
+		max-width: calc(100% - 2 * var(--border-thickness));
+		margin: 0 auto;
+		padding: 0 1em 1em;
+	}
+
+	p {
+		max-width: 70ch;
+		margin: auto;
+	}
+
+	p + p {
+		margin-top: 1em;
+	}
+
+	br {
+		display: block;
+		margin-top: 0.3em;
+	}
+</style>
