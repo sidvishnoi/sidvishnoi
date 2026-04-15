@@ -5,8 +5,8 @@
 	--color-border: #ccc;
 	--color-link-hover: 116deg;
 
-	--font-family: 'Source Sans Pro', 'Lato', 'Helvetica', 'Open Sans', 'Arial',
-		sans-serif;
+	--font-family:
+		'Source Sans Pro', 'Lato', 'Helvetica', 'Open Sans', 'Arial', sans-serif;
 	--font-monospace: 'DejaVu Sans Mono', 'Fira Code', 'Courier New', monospace;
 	--border-main: 2px solid var(--color-border);
 	--left-width: 63%;

@@ -16,10 +16,10 @@
 	"devDependencies": {
 		"@astrojs/check": "^0.9.8",
 		"@astrojs/sitemap": "3.7.2",
-		"@fontsource/source-sans-pro": "^5.0.8",
+		"@fontsource/source-sans-pro": "^5.2.5",
 		"astro": "^6.1.6",
-		"prettier": "^3.2.5",
-		"prettier-plugin-astro": "^0.13.0",
+		"prettier": "^3.8.3",
+		"prettier-plugin-astro": "^0.14.1",
 		"remark-breaks": "^4.0.0",
 		"typescript": "^5.4.2"
 	}
