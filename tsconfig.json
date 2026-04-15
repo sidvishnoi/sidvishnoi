@@ -1,7 +1,6 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
-		"downlevelIteration": true,
 		"useUnknownInCatchVariables": false,
 		"allowSyntheticDefaultImports": true,
 		"allowJs": true,
@@ -11,13 +10,12 @@
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"strict": true,
-		"baseUrl": "./",
 		"paths": {
-			"$components/*": ["src/components/*"],
-			"$assets/*": ["src/assets/*"],
-			"$lib/*": ["src/lib/*"],
-			"$layouts/*": ["src/layouts/*"],
-			"$api/*": ["src/pages/api/*"]
+			"$components/*": ["./src/components/*"],
+			"$assets/*": ["./src/assets/*"],
+			"$lib/*": ["./src/lib/*"],
+			"$layouts/*": ["./src/layouts/*"],
+			"$api/*": ["./src/pages/api/*"]
 		}
 	}
 }
