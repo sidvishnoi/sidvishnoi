@@ -5,7 +5,7 @@ import '$assets/style.css';
 import type { CollectionEntry } from 'astro:content';
 
 type Props = {
-	frontmatter: CollectionEntry<'posts'>['data'];
+	frontmatter: CollectionEntry<'blog'>['data'];
 };
 
 const { frontmatter: fm } = Astro.props;

@@ -1,9 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
+
 import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/Header.astro';
 
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection('blog');
 ---
 
 <HomeLayout title="Sid Vishnoi's blog">
@@ -17,7 +18,7 @@ const allPosts = await getCollection('posts');
 					<li>
 						<article>
 							<h3>
-								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
 							</h3>
 
 							<p>{post.data.description}</p>
