@@ -4,7 +4,9 @@ import { getCollection } from 'astro:content';
 import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/Header.astro';
 
-const allPosts = await getCollection('blog');
+const allPosts = (await getCollection('blog')).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <HomeLayout title="Sid Vishnoi's blog">
@@ -26,8 +28,8 @@ const allPosts = await getCollection('blog');
 							<div class="meta">
 								<p>
 									Published{' '}
-									<time datetime={post.data.pubDate.toISOString()}>
-										{post.data.pubDate.toLocaleDateString('en', {
+									<time datetime={post.data.date.toISOString()}>
+										{post.data.date.toLocaleDateString('en', {
 											dateStyle: 'full',
 										})}
 									</time>
@@ -92,7 +94,7 @@ const allPosts = await getCollection('blog');
 
 	.blog p {
 		max-width: 80ch;
-		padding: 0 0.5rem;
+		padding: 0 0.5em;
 	}
 
 	.blog .meta {

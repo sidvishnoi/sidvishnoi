@@ -1,6 +1,7 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/Header.astro';
+import { withParams } from '$lib/utils.ts';
 import '$assets/style.css';
 import type { CollectionEntry } from 'astro:content';
 
@@ -11,7 +12,7 @@ type Props = {
 const { frontmatter: fm } = Astro.props;
 const { title, description } = fm;
 const shareImage = fm.image?.url ? new URL(fm.image?.url) : undefined;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const canonical = new URL(fm.canonical || Astro.url.pathname, Astro.site);
 
 const formatDate = (date: Date) =>
 	date.toLocaleDateString('en', {
@@ -33,16 +34,32 @@ const formatDate = (date: Date) =>
 
 			<div class="meta">
 				<p>
-					Published <time datetime={fm.pubDate.toISOString()}
-						>{formatDate(fm.pubDate)}</time
+					Published <time datetime={fm.date.toISOString()}
+						>{formatDate(fm.date)}</time
 					>
 					{
-						fm.modDate && (
+						fm.modified && (
 							<Fragment>
 								and last updated{' '}
-								<time datetime={fm.modDate.toISOString()}>
-									{formatDate(fm.modDate)}
+								<time datetime={fm.modified.toISOString()}>
+									{formatDate(fm.modified)}
 								</time>
+							</Fragment>
+						)
+					}
+					{
+						fm.canonical && (
+							<Fragment>
+								∙ Originally published on{' '}
+								<a
+									href={
+										withParams(fm.canonical, { ref: 'sidvishnoi.com' }).href
+									}
+									target="_blank"
+									rel="nofollow"
+								>
+									{new URL(fm.canonical).hostname}
+								</a>
 							</Fragment>
 						)
 					}
@@ -56,7 +73,7 @@ const formatDate = (date: Date) =>
 
 <style is:global>
 	article {
-		max-width: calc(100% - 2 * var(--border-thickness));
+		max-width: min(calc(100% - 2 * var(--border-thickness)), 80ch);
 		margin: 0 auto;
 		margin-top: 3rem;
 		padding: 0 1em 1em;
@@ -64,6 +81,9 @@ const formatDate = (date: Date) =>
 
 	article h1 {
 		max-width: 65ch;
+		font-size: 2.5em;
+		line-height: 1.1;
+		margin-bottom: 0.25em;
 	}
 
 	article h1 a {
@@ -82,17 +102,37 @@ const formatDate = (date: Date) =>
 		font-size: smaller;
 	}
 
-	article p {
+	article :is(h2, h3, h4, h5) {
+		margin-block: 1em 0.5em;
+	}
+
+	article h2 {
+		font-size: 1.5em;
+	}
+
+	article h3 {
+		font-size: 1.25em;
+	}
+
+	article :is(ul, ol) {
+		padding-left: 1.5em;
+	}
+
+	article :is(p, li) {
 		max-width: 65ch;
+	}
+
+	article sup {
+		font-size: 0.5em;
+	}
+
+	article :is(p, li) code {
+		font-size: 0.8em;
+		font-family: var(--font-mono);
 	}
 
 	p + p {
 		margin-top: 1em;
-	}
-
-	br {
-		display: block;
-		margin-top: 0.25em;
 	}
 
 	hr {
