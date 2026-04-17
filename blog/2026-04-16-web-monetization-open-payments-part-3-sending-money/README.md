@@ -9,7 +9,7 @@ tags:
   - Web Monetization
 ---
 
-In [Part 1](./web-monetization-open-payments-part-1-connecting-wallet/) of the series, we covered how to link your wallet to the extension and secure the access tokens required for future transactions. In [Part 2](./web-monetization-open-payments-part-2-payment-sessions/), we explored the receiving side: identifying a website's receiving wallet addresses via `<link rel="monetization">` and calculating the amounts our wallet can pay into them. Now, we'll combine these elements to actually move money.
+In [Part 1](../web-monetization-open-payments-part-1-connecting-wallet/) of the series, we covered how to link your wallet to the extension and secure the access tokens required for future transactions. In [Part 2](../web-monetization-open-payments-part-2-payment-sessions/), we explored the receiving side: identifying a website's receiving wallet addresses via `<link rel="monetization">` and calculating the amounts our wallet can pay into them. Now, we'll combine these elements to actually move money.
 
 Thanks to the Open Payments API, sending the payment is now actually the simplest step. This article focuses more on the extension's internal payment logic and flow. I'll assume you're already familiar with basic browser extension architecture, [Web Monetization](https://webmonetization.org/), and [Open Payments API](https://openpayments.dev/) from the previous articles.
 
