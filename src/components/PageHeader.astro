@@ -1,18 +1,16 @@
 ---
 interface Props {
-	subtitle?: string;
 	isSmall?: boolean;
 	hideNav?: boolean;
 }
 
-const { subtitle, isSmall, hideNav } = Astro.props;
+const { isSmall, hideNav } = Astro.props;
 ---
 
 <header class="header">
 	<h1 class="title">
 		<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
 	</h1>
-	{subtitle && <h2 class="subtitle">{subtitle}</h2>}
 	{
 		!hideNav && (
 			<nav class:list={['primary', isSmall && 'small']}>
@@ -33,5 +31,26 @@ const { subtitle, isSmall, hideNav } = Astro.props;
 <style>
 	.primary.small {
 		margin-top: -1rem;
+	}
+
+	.header {
+		text-align: center;
+		line-height: 1.2;
+		padding: 8vmin 1vmin;
+	}
+	.title {
+		font-size: clamp(2rem, 1.111rem + 5.556vw, 5rem);
+		text-transform: uppercase;
+		margin: 0;
+		font-weight: bold;
+	}
+	.title a {
+		text-decoration: none;
+		color: var(--color);
+	}
+	.subtitle {
+		font-size: clamp(1.2rem, 0.815rem + 2.407vw, 2.5rem);
+		font-weight: normal;
+		margin: 0;
 	}
 </style>

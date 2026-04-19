@@ -1,6 +1,6 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/Header.astro';
+import Header from '$components/NavHeader.astro';
 import { withParams } from '$lib/utils.ts';
 import '$assets/style.css';
 import type { CollectionEntry } from 'astro:content';
@@ -28,7 +28,7 @@ const formatDate = (date: Date) =>
 
 	<article id="main">
 		<header>
-			<h1 style="font-weight: bold">
+			<h1>
 				<a href={canonical.href}>{title}</a>
 			</h1>
 
@@ -74,27 +74,27 @@ const formatDate = (date: Date) =>
 </HomeLayout>
 
 <style is:global>
-	main * {
+	main :where(*) {
 		margin: revert;
 		padding: revert;
 	}
 
-	article {
-		max-width: min(calc(100% - 2 * var(--border-thickness)), 80ch);
-		margin: 0 auto;
-		margin-top: 3rem;
-		padding: 0 1em 1em;
-		font-size: clamp(1em, 18px + 0.24vw, 2.125em);
-	}
-
-	article > *  {
+	main {
 		max-width: 65ch;
 		margin: 0 auto;
+		padding: 0 1em 1em;
+	}
+
+	article {
+		margin: 0 auto;
+		font-size: clamp(1em, 18px + 0.24vw, 2.125em);
 	}
 
 	article h1 {
 		line-height: 1.1;
 		margin-bottom: 0.25em;
+		font-weight: bold;
+		text-wrap: balance;
 	}
 
 	article h1 a {
@@ -130,5 +130,17 @@ const formatDate = (date: Date) =>
 		border: 2px solid var(--color-c, aquagreen);
 		border-radius: 10px;
 		max-width: 60%;
+	}
+
+	.footnotes {
+		font-size: smaller;
+		margin-top: 3em;
+		border-top: 1px dashed var(--color-alt);
+	}
+
+	@media screen and (max-width: 48rem) {
+		article h1 {
+			font-size: xx-large;
+		}
 	}
 </style>

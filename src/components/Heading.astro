@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'h1' | 'h2'> {
+	tag?: 'h1' | 'h2';
+}
+
+const { tag: Tag = 'h2', ...rest } = Astro.props;
+---
+
+<Tag {...rest} class="heading"><slot /></Tag>
+
+<style>
+	.heading {
+		font-size: 2em;
+		display: flex;
+		width: 100%;
+		margin: 0 auto 1em;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	.heading:before,
+	.heading:after {
+		content: '';
+		border-top: 1rem double var(--color-dark);
+		margin: 0 1rem 0 0;
+		flex: 1 0 1rem;
+	}
+
+	.heading:after {
+		margin: 0 0 0 1rem;
+	}
+</style>

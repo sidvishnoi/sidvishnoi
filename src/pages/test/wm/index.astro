@@ -1,6 +1,7 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/Header.astro';
+import NavHeader from '$components/NavHeader.astro';
+import Heading from '$components/Heading.astro';
 ---
 
 <HomeLayout title="Web Monetization test" meta={{}}>
@@ -11,10 +12,12 @@ import Header from '$components/Header.astro';
 		/>
 	</Fragment>
 
-	<Header subtitle="Web Monetization Test #1" hideNav />
+	<NavHeader noBorder />
+	<Heading tag="h1">Web Monetization Test #1</Heading>
 
 	<p>
 		This page is testing Web Monetization for wallet address: <a
+			style="display:block; margin-left: 1em; font-size: 0.85em; font-family: var(--font-mono, monospace);"
 			href="https://ilp.interledger-test.dev/sid-mxn-1"
 			>https://ilp.interledger-test.dev/sid-mxn-1</a
 		>
@@ -74,23 +77,9 @@ import Header from '$components/Header.astro';
 
 <style is:global>
 	main {
-		max-width: calc(100% - 2 * var(--border-thickness));
 		margin: 0 auto;
 		padding: 0 1em 1em;
-	}
-
-	p {
 		max-width: 65ch;
-		margin: auto;
-	}
-
-	p + p {
-		margin-top: 1em;
-	}
-
-	br {
-		display: block;
-		margin-top: 0.3em;
 	}
 
 	main .social {

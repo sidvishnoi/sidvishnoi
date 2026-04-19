@@ -17,11 +17,6 @@ const { title, preload, meta, hideSocial = false } = Astro.props;
 		>Jump to main content</a
 	>
 
-	<div class="splash-borders">
-		<div class="top"></div><div class="right"></div><div class="bottom">
-		</div><div class="left"></div>
-	</div>
-
 	<main>
 		<slot />
 	</main>
@@ -30,10 +25,3 @@ const { title, preload, meta, hideSocial = false } = Astro.props;
 		{!hideSocial && <SocialNav />}
 	</footer>
 </BaseLayout>
-
-<style>
-	main :global(*) {
-		margin: 0;
-		padding: 0;
-	}
-</style>

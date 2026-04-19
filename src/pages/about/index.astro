@@ -1,6 +1,7 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/Header.astro';
+import Header from '$components/PageHeader.astro';
+import Heading from '$components/Heading.astro';
 
 import { Content } from './_about.md';
 ---
@@ -11,13 +12,14 @@ import { Content } from './_about.md';
 		description: `I'm Sid, a passionate software engineer and full-stack web developer with a knack for front-end development.`,
 	}}
 >
-	<Header subtitle="About" hideNav />
+	<Header />
+	<Heading tag="h2">About</Heading>
+
 	<Content />
 </HomeLayout>
 
 <style is:global>
 	main {
-		max-width: calc(100% - 2 * var(--border-thickness));
 		margin: 0 auto;
 		padding: 0 1em 1em;
 	}

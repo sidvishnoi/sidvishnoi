@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 
 import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/Header.astro';
+import Header from '$components/PageHeader.astro';
+import Heading from '$components/Heading.astro';
 
 const allPosts = (await getCollection('blog')).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -10,10 +11,10 @@ const allPosts = (await getCollection('blog')).sort(
 ---
 
 <HomeLayout title="Sid Vishnoi's blog">
-	<Header isSmall />
+	<Header />
+	<Heading tag="h2">Blog</Heading>
 
 	<div id="main" class="blog">
-		<h2>Blog</h2>
 		<ul>
 			{
 				allPosts.map((post) => (
@@ -45,37 +46,23 @@ const allPosts = (await getCollection('blog')).sort(
 </HomeLayout>
 
 <style is:global>
+	main * {
+		margin: 0;
+		padding: 0;
+	}
+
+	main {
+		margin: 0 auto;
+		padding: 0 1em 1em;
+	}
+
 	.blog {
-		max-width: calc(100% - 2 * var(--border-thickness));
-		margin: 1em auto;
-		padding: 1em;
-		padding-bottom: 8em;
-	}
-
-	.blog h2 {
-		font-size: 2em;
-		display: flex;
-		width: 100%;
-		margin: 0 auto 1em;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-	}
-
-	.blog h2:before,
-	.blog h2:after {
-		content: '';
-		border-top: 1rem double var(--color-dark);
-		margin: 0 1rem 0 0;
-		flex: 1 0 1rem;
-	}
-
-	.blog h2:after {
-		margin: 0 0 0 1rem;
+		padding-bottom: 4em;
 	}
 
 	.blog ul {
 		list-style: none;
+		margin: 0;
 	}
 
 	.blog li {
@@ -84,13 +71,16 @@ const allPosts = (await getCollection('blog')).sort(
 		margin: 0 auto;
 		position: relative;
 	}
-	/*
+
+	.blog li + li {
+		margin-top: 1em;
+	}
+
 	.blog li a::after {
 		content: '';
 		position: absolute;
 		inset: 0;
 	}
-  */
 
 	.blog p {
 		max-width: 80ch;

@@ -1,6 +1,6 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/Header.astro';
+import Heading from '$components/Heading.astro';
 ---
 
 <HomeLayout
@@ -9,10 +9,22 @@ import Header from '$components/Header.astro';
 		description: `Software engineer and full-stack web developer with a knack for front-end development`,
 	}}
 >
-	<Header subtitle="I like web development and building software." />
+	<header class="header">
+		<h1 class="title">
+			<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
+		</h1>
+		<p class="subtitle">I like web development and building software.</p>
+
+		<nav class:list={['primary']}>
+			<a href="/about/" class="button"> About </a>
+			<a href="/blog/" class="button"> Blog </a>
+			<a href="/resume/" class="button"> Resume </a>
+		</nav>
+	</header>
 
 	<section class="container-main projects" id="main">
-		<h2 id="projects">Projects</h2>
+		<Heading tag="h2" id="projects">Projects</Heading>
+
 		<ul>
 			<li>
 				<h3>
@@ -91,33 +103,37 @@ import Header from '$components/Header.astro';
 	</section>
 </HomeLayout>
 
-<style is:global>
+<style>
+	:global(main *) {
+		margin: 0;
+		padding: 0;
+	}
+
+	.header {
+		text-align: center;
+		line-height: 1.2;
+		padding: 8vmin 1vmin;
+		max-width: 0 auto;
+	}
+	.title {
+		font-size: clamp(2rem, 1.111rem + 5.556vw, 5rem);
+		text-transform: uppercase;
+		margin: 0;
+		font-weight: bold;
+	}
+	.title a {
+		text-decoration: none;
+		color: var(--color);
+	}
+	.subtitle {
+		font-size: clamp(1.2rem, 0.815rem + 2.407vw, 2.5rem);
+		font-weight: normal;
+		margin: 0;
+	}
+
 	.projects {
-		max-width: calc(100% - 2 * var(--border-thickness));
 		margin: 0 auto;
 		padding: 1em;
-	}
-
-	.projects h2 {
-		font-size: 2em;
-		display: flex;
-		width: 100%;
-		margin: 1em auto;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-	}
-
-	.projects h2:before,
-	.projects h2:after {
-		content: '';
-		border-top: 1rem double var(--color-dark);
-		margin: 0 1rem 0 0;
-		flex: 1 0 1rem;
-	}
-
-	.projects h2:after {
-		margin: 0 0 0 1rem;
 	}
 
 	.projects ul {

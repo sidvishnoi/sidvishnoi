@@ -58,7 +58,8 @@ a {
 	color: var(--color-link, blue);
 }
 
-.visually-hidden {
+.visually-hidden,
+.sr-only {
 	border: 0;
 	clip: rect(0 0 0 0);
 	height: 1px;
@@ -81,127 +82,15 @@ a {
 	padding: 0.5rem;
 }
 
-.splash-borders {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	--thickness: var(--border-thickness);
-}
-.splash-borders > div {
-	width: 100%;
-	position: absolute;
-}
-.splash-borders > div::after {
-	content: '';
-	display: block;
-	height: var(--thickness);
-	left: calc(50% - var(--thickness) * 2.5);
-	position: absolute;
-	top: 0;
-	width: calc(var(--thickness) * 5);
-}
-.splash-borders > div,
-.splash-borders > div::after {
-	background: linear-gradient(
-		var(--angle),
-		var(--color-1) 0,
-		var(--color-1) 50%,
-		var(--color-2) 0,
-		var(--color-2)
-	);
-}
-.splash-borders .top {
-	--angle: 90deg;
-	--color-1: var(--color-a);
-	--color-2: var(--color-b);
-}
-.splash-borders .top::after {
-	--angle: 25deg;
-}
-.splash-borders .right {
-	--angle: 180deg;
-	--color-1: var(--color-b);
-	--color-2: var(--color-c);
-	right: 0;
-	top: 0;
-}
-.splash-borders .right::after {
-	--angle: -55deg;
-	--color-1: var(--color-c);
-	--color-2: var(--color-b);
-}
-.splash-borders .bottom {
-	--angle: 90deg;
-	--color-1: var(--color-d);
-	--color-2: var(--color-c);
-	bottom: 0;
-	top: auto;
-}
-.splash-borders .bottom::after {
-	--angle: 25deg;
-}
-.splash-borders .left {
-	--angle: 180deg;
-	--color-1: var(--color-a);
-	--color-2: var(--color-d);
-	left: 0;
-	top: 0;
-}
-.splash-borders .left::after {
-	--angle: -55deg;
-	--color-1: var(--color-d);
-	--color-2: var(--color-a);
-}
-.splash-borders .top,
-.splash-borders .bottom {
-	height: var(--thickness);
-}
-.splash-borders .right,
-.splash-borders .left {
-	height: 100%;
-	width: var(--thickness);
-}
-.splash-borders .right::after,
-.splash-borders .left::after {
-	height: calc(var(--thickness) * 5);
-	left: auto;
-	right: 0;
-	top: calc(50% - var(--thickness) * 2.5);
-	width: var(--thickness);
-}
-
-.header,
 .container-main {
-	max-width: calc(100% - 2 * var(--border-thickness));
 	margin: 0 auto;
-}
-
-.header {
-	text-align: center;
-	line-height: 1.2;
-	padding: 8vmin 1vmin;
-}
-.title {
-	font-size: clamp(2rem, 1.111rem + 5.556vw, 5rem);
-	text-transform: uppercase;
-}
-.title a {
-	text-decoration: none;
-	color: var(--color);
-}
-.subtitle {
-	font-size: clamp(1.2rem, 0.815rem + 2.407vw, 2.5rem);
-	font-weight: normal;
 }
 
 .footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: calc(1em + var(--border-thickness));
+	padding: 1em;
 }
 
 .button {
@@ -271,7 +160,6 @@ fieldset {
 }
 
 @media (prefers-color-scheme: dark) {
-	.splash-borders > div,
 	nav.primary a {
 		filter: saturate(85%);
 	}

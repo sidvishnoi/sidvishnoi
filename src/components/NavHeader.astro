@@ -1,0 +1,56 @@
+---
+interface Props {
+	noBorder?: boolean;
+}
+
+const { noBorder = false } = Astro.props;
+---
+
+<nav class:list={noBorder ? '' : 'border'}>
+	<ul>
+		<li><a href="/">Sid Vishnoi</a></li>
+		<li><a href="/about/">About</a></li>
+		<li><a href="/blog/">Blog</a></li>
+	</ul>
+</nav>
+
+<style>
+	nav {
+		margin: 1rem auto 2rem;
+		font-size: clamp(1em, 16px + 0.24vw, 2em);
+	}
+
+	nav.border {
+		border-bottom: 2px solid var(--color-alt);
+	}
+
+	nav ul {
+		display: flex;
+		margin: 0;
+		padding: 1em 0 0.5em;
+		list-style: none;
+		gap: 1em;
+		width: 100%;
+		justify-content: flex-end;
+	}
+
+	nav li {
+		margin: 0;
+		padding: 0;
+	}
+
+	nav ul li:first-child {
+		margin-right: auto;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+
+	nav a {
+		text-decoration: none;
+		color: var(--color);
+	}
+
+	nav a:hover {
+		color: var(--color-link);
+	}
+</style>
