@@ -30,3 +30,10 @@ const { title, preload, meta, hideSocial = false } = Astro.props;
 		{!hideSocial && <SocialNav />}
 	</footer>
 </BaseLayout>
+
+<style>
+	main :global(*) {
+		margin: 0;
+		padding: 0;
+	}
+</style>

@@ -28,7 +28,7 @@ const formatDate = (date: Date) =>
 
 	<article id="main">
 		<header>
-			<h1 class="subtitle" style="font-weight: bold">
+			<h1 style="font-weight: bold">
 				<a href={canonical.href}>{title}</a>
 			</h1>
 
@@ -67,21 +67,32 @@ const formatDate = (date: Date) =>
 			</div>
 		</header>
 
-		<slot />
+		<div>
+			<slot />
+		</div>
 	</article>
 </HomeLayout>
 
 <style is:global>
+	main * {
+		margin: revert;
+		padding: revert;
+	}
+
 	article {
 		max-width: min(calc(100% - 2 * var(--border-thickness)), 80ch);
 		margin: 0 auto;
 		margin-top: 3rem;
 		padding: 0 1em 1em;
+		font-size: clamp(1em, 18px + 0.24vw, 2.125em);
+	}
+
+	article > *  {
+		max-width: 65ch;
+		margin: 0 auto;
 	}
 
 	article h1 {
-		max-width: 65ch;
-		font-size: 2.5em;
 		line-height: 1.1;
 		margin-bottom: 0.25em;
 	}
@@ -98,41 +109,20 @@ const formatDate = (date: Date) =>
 		color: var(--color-alt, #777);
 	}
 	article header .meta p {
-		margin-left: 0;
 		font-size: smaller;
 	}
 
-	article :is(h2, h3, h4, h5) {
-		margin-block: 1em 0.5em;
+	article ol {
+		margin-left: -0.5em;
 	}
 
-	article h2 {
-		font-size: 1.5em;
-	}
-
-	article h3 {
-		font-size: 1.25em;
-	}
-
-	article :is(ul, ol) {
-		padding-left: 1.5em;
-	}
-
-	article :is(p, li) {
-		max-width: 65ch;
-	}
-
-	article sup {
-		font-size: 0.5em;
+	article ul {
+		margin-left: -1.5em;
 	}
 
 	article :is(p, li) code {
-		font-size: 0.8em;
 		font-family: var(--font-mono);
-	}
-
-	p + p {
-		margin-top: 1em;
+		font-size: 0.85em;
 	}
 
 	hr {

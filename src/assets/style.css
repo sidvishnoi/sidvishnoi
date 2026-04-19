@@ -35,12 +35,11 @@
 }
 
 * {
-	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
 }
 
 body {
+	margin: 0;
 	font-size: clamp(1rem, 0.793rem + 1.296vw, 1.7rem);
 	line-height: 1.4;
 	position: relative;
