@@ -1,0 +1,74 @@
+main :where(*) {
+	margin: revert;
+	padding: revert;
+}
+
+main {
+	max-width: 65ch;
+	margin: 0 auto;
+	padding: 0 1em 1em;
+}
+
+article {
+	margin: 0 auto;
+	font-size: clamp(1em, 18px + 0.24vw, 2.125em);
+}
+
+article h1 {
+	line-height: 1.1;
+	margin-bottom: 0.25em;
+	font-weight: bold;
+	text-wrap: balance;
+}
+
+article h1 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+article header .meta {
+	margin-bottom: 2rem;
+	border-bottom: 1px solid #ddd;
+	font-size: smaller;
+	color: var(--color-alt, #777);
+}
+article header .meta p {
+	font-size: smaller;
+}
+
+article :is(h2, h3, h4, h5) {
+	line-height: 1.2;
+}
+
+article ol {
+	margin-left: -1rem;
+}
+
+article ul {
+	margin-left: -1.5em;
+}
+
+article :is(p, li) code {
+	font-family: var(--font-mono);
+	font-size: 0.85em;
+	word-break: break-word;
+}
+
+hr {
+	margin: 2em auto;
+	border: 2px solid var(--color-c, aquagreen);
+	border-radius: 10px;
+	max-width: 60%;
+}
+
+.footnotes {
+	font-size: smaller;
+	margin-top: 3em;
+	border-top: 1px dashed var(--color-alt);
+}
+
+@media screen and (max-width: 48rem) {
+	article h1 {
+		font-size: xx-large;
+	}
+}
