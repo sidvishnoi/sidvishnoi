@@ -15,10 +15,10 @@
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.8",
+		"@astrojs/prism": "^4.0.1",
 		"@astrojs/sitemap": "3.7.2",
 		"@fontsource/source-sans-pro": "^5.2.5",
 		"astro": "^6.1.6",
-		"astro-expressive-code": "^0.41.7",
 		"prettier": "^3.8.3",
 		"prettier-plugin-astro": "^0.14.1",
 		"remark-breaks": "^4.0.0",

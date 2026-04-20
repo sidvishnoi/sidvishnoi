@@ -1,11 +1,10 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import remarkBreaks from 'remark-breaks';
 import sitemap from '@astrojs/sitemap';
-import expressiveCode from 'astro-expressive-code';
 
 export default defineConfig({
 	site: 'https://sidvishnoi.com',
-	integrations: [sitemap(), expressiveCode()],
+	integrations: [sitemap()],
 	output: 'static',
 	compressHTML: import.meta.env.PROD,
 	scopedStyleStrategy: 'where',
@@ -18,6 +17,7 @@ export default defineConfig({
 	},
 	trailingSlash: 'always',
 	markdown: {
+		syntaxHighlight: 'prism',
 		remarkPlugins: [remarkBreaks],
 	},
 });
