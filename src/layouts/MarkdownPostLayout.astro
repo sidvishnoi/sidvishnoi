@@ -58,7 +58,7 @@ const formatDate = (date: Date) =>
 									target="_blank"
 									rel="nofollow"
 								>
-									{new URL(fm.canonical).hostname}
+									{canonical.hostname.replace(/^www\./, '')}
 								</a>
 							</Fragment>
 						)

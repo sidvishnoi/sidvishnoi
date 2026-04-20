@@ -3,6 +3,7 @@
 	"compilerOptions": {
 		"useUnknownInCatchVariables": false,
 		"allowSyntheticDefaultImports": true,
+		"verbatimModuleSyntax": true,
 		"allowJs": true,
 		"checkJs": true,
 		"noEmit": true,
