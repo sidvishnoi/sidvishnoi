@@ -15,21 +15,19 @@ const shareImage = fm.image?.url ? new URL(fm.image?.url) : undefined;
 const canonical = new URL(fm.canonical || Astro.url.pathname, Astro.site);
 
 const formatDate = (date: Date) =>
-	date.toLocaleDateString('en', {
-		dateStyle: 'long',
-	});
+	date.toLocaleDateString('en', { dateStyle: 'medium' });
 ---
 
 <HomeLayout
 	title=`${title} | Sid Vishnoi's blog`
 	meta={{ canonical, description, shareImage }}
 >
-	<Header isSmall />
+	<Header />
 
 	<article id="main">
 		<header>
 			<h1>
-				<a href={canonical.href}>{title}</a>
+				<a href={Astro.url.pathname}>{title}</a>
 			</h1>
 
 			<div class="meta">
@@ -112,8 +110,12 @@ const formatDate = (date: Date) =>
 		font-size: smaller;
 	}
 
+	article :is(h2, h3, h4, h5) {
+		line-height: 1.2;
+	}
+
 	article ol {
-		margin-left: -0.5em;
+		margin-left: -1rem;
 	}
 
 	article ul {
@@ -123,6 +125,7 @@ const formatDate = (date: Date) =>
 	article :is(p, li) code {
 		font-family: var(--font-mono);
 		font-size: 0.85em;
+		word-break: break-word;
 	}
 
 	hr {

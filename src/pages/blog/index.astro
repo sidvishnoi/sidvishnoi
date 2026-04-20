@@ -28,10 +28,10 @@ const allPosts = (await getCollection('blog')).sort(
 
 							<div class="meta">
 								<p>
-									Published{' '}
+									<span class="sr-only">Published </span>
 									<time datetime={post.data.date.toISOString()}>
 										{post.data.date.toLocaleDateString('en', {
-											dateStyle: 'full',
+											dateStyle: 'medium',
 										})}
 									</time>
 								</p>
@@ -54,6 +54,7 @@ const allPosts = (await getCollection('blog')).sort(
 	main {
 		margin: 0 auto;
 		padding: 0 1em 1em;
+		font-size: clamp(1em, 18px + 0.24vw, 2.125em);
 	}
 
 	.blog {
@@ -73,7 +74,7 @@ const allPosts = (await getCollection('blog')).sort(
 	}
 
 	.blog li + li {
-		margin-top: 1em;
+		margin-top: 0.5em;
 	}
 
 	.blog li a::after {
@@ -105,6 +106,7 @@ const allPosts = (await getCollection('blog')).sort(
 		width: 100%;
 		font-size: 1.2em;
 		line-height: 1.1;
+		margin-bottom: 0.5em;
 	}
 
 	.blog h3:after {
@@ -140,12 +142,19 @@ const allPosts = (await getCollection('blog')).sort(
 	}
 
 	@media (max-width: 640px) {
+		main {
+			padding: 0 0.25em 1em;
+		}
+		main > header,
+		main > .heading {
+			padding-inline: 0.5em;
+		}
 		.blog {
 			padding: 0;
 		}
 		.blog li {
 			text-align: left;
-			padding: 2em 0;
+			padding: 1em 0;
 		}
 		.blog li:last-of-type {
 			padding-bottom: 1em;
