@@ -17,6 +17,9 @@ importers:
       '@astrojs/sitemap':
         specifier: 3.7.2
         version: 3.7.2
+      '@fontsource/alegreya-sans':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/source-sans-pro':
         specifier: ^5.2.5
         version: 5.2.5
@@ -288,6 +291,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/alegreya-sans@5.2.8':
+    resolution: {integrity: sha512-kXUTR1S6dsWa7rBxaDJ3P05HodmYmxfY20aQtQ4SYVmrEYrWtaw5A1n+h+wcCF0nAMwf+CQ4M435dNuWD1YfMg==}
 
   '@fontsource/source-sans-pro@5.2.5':
     resolution: {integrity: sha512-ypendqc4pYUc+EgF7qqPY9iVYEz1t/Qr03VojKxG/2g3dnpHa1B6DOlDxWQjQXDj5QrG6inEqGT0g+edjALZyg==}
@@ -2033,6 +2039,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.27.7':
     optional: true
+
+  '@fontsource/alegreya-sans@5.2.8': {}
 
   '@fontsource/source-sans-pro@5.2.5': {}
 

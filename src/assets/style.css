@@ -1,7 +1,10 @@
+@import url('@fontsource/alegreya-sans/latin-400.css');
+@import url('@fontsource/alegreya-sans/latin-700.css');
+
 :root {
 	--font-family:
-		Optima, Candara, Avenir, Corbel, 'Palatino Linotype', 'Bitstream Charter',
-		'URW Palladio L', 'Noto Sans', source-sans-pro, sans-serif;
+		Optima, Candara, Avenir, Corbel, 'PT Sans', 'Alegreya Sans',
+		source-sans-pro, sans-serif;
 	--font-mono:
 		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
 		'Courier New', monospace;
