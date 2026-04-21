@@ -1,0 +1,51 @@
+pre.astro-code {
+	--shiki-foreground: hsl(240, 3%, 15%);
+	--shiki-background: hsl(0, 0%, 98%);
+	--shiki-selection-bg: hsl(217, 90%, 88%);
+
+	--shiki-comment: hsl(40, 40%, 35%);
+	--shiki-storage: hsl(220, 9%, 55%);
+	--shiki-punctuation: hsl(217, 4%, 65%);
+	--shiki-keyword: hsl(218, 11%, 45%);
+	--shiki-data: hsl(85, 50%, 30%);
+	--shiki-accent: hsl(217, 70%, 45%);
+	--shiki-object-key: hsl(0, 0%, 40%);
+
+	padding: 1em;
+	overflow: auto;
+	border-radius: 0.3em;
+	white-space: pre;
+	word-break: normal;
+	tab-size: 2;
+	hyphens: none;
+}
+
+pre.astro-code::selection,
+pre.astro-code *::selection {
+	background: var(--shiki-selection-bg);
+	color: inherit;
+}
+
+pre.astro-code,
+pre.astro-code code,
+code {
+	font-family: var(--font-mono);
+	font-size: 0.85em;
+	line-height: 1.25;
+}
+
+@media (prefers-color-scheme: dark) {
+	pre.astro-code {
+		--shiki-foreground: hsl(0, 0%, 99%);
+		--shiki-background: hsl(240, 3%, 10%);
+		--shiki-selection-bg: hsl(217, 50%, 25%);
+
+		--shiki-comment: hsl(45, 43%, 70%);
+		--shiki-storage: hsl(220, 9%, 46%);
+		--shiki-punctuation: hsl(220, 8%, 35%);
+		--shiki-keyword: hsl(218, 11%, 65%);
+		--shiki-data: hsl(85, 41%, 54%);
+		--shiki-accent: hsl(217, 76%, 78%);
+		--shiki-object-key: hsl(0, 0%, 87%);
+	}
+}

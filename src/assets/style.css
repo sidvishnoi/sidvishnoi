@@ -6,8 +6,9 @@
 		Optima, Candara, Avenir, Corbel, 'PT Sans', 'Alegreya Sans',
 		source-sans-pro, sans-serif;
 	--font-mono:
-		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-		'Courier New', monospace;
+		SFMono-Regular, 'Cascadia Mono', 'JetBrains Mono NL', 'Dank Mono',
+		'Operator Mono Book', 'Iosevka Fixed', 'Source Code Pro', 'SF Mono',
+		'Liberation Mono', Menlo, Monaco, Consolas, 'Courier New', cursive;
 	--border-thickness: 10px;
 	--color-a: hsl(44, 86%, 52%);
 	--color-a-alt: hsl(44, 86%, 42%);
