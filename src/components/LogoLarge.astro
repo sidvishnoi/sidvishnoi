@@ -1,0 +1,31 @@
+---
+import Logo from '$assets/logo.svg';
+---
+
+<h1>
+	<a href="/">
+		<Logo />
+		<span>Sid Vishnoi</span>
+	</a>
+</h1>
+
+<style>
+	h1 {
+		font-size: clamp(4rem, 0.893rem + 1.396vw, 4rem);
+		text-transform: uppercase;
+		margin: 0;
+		font-weight: bold;
+		margin: 0;
+	}
+	h1 a {
+		text-decoration: none;
+		color: var(--color);
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	h1 svg {
+		height: 2em;
+		fill: currentColor;
+	}
+</style>

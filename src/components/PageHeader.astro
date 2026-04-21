@@ -1,4 +1,6 @@
 ---
+import LogoLarge from '$components/LogoLarge.astro';
+
 interface Props {
 	isSmall?: boolean;
 	hideNav?: boolean;
@@ -8,9 +10,7 @@ const { isSmall, hideNav } = Astro.props;
 ---
 
 <header class="header">
-	<h1 class="title">
-		<a href="/"><span>Sid</span> <span>Vishnoi</span></a>
-	</h1>
+	<LogoLarge />
 	{
 		!hideNav && (
 			<nav class:list={['primary', isSmall && 'small']}>

@@ -1,4 +1,6 @@
 ---
+import Logo from '$assets/logo.svg';
+
 interface Props {
 	noBorder?: boolean;
 }
@@ -8,7 +10,12 @@ const { noBorder = false } = Astro.props;
 
 <nav class:list={noBorder ? '' : 'border'}>
 	<ul>
-		<li><a href="/">Sid Vishnoi</a></li>
+		<li class="home">
+			<a href="/">
+				<Logo />
+				<span>Sid Vishnoi</span>
+			</a>
+		</li>
 		<li><a href="/about/">About</a></li>
 		<li><a href="/blog/">Blog</a></li>
 	</ul>
@@ -16,7 +23,7 @@ const { noBorder = false } = Astro.props;
 
 <style>
 	nav {
-		margin: 1rem auto 2rem;
+		margin: 0rem auto 2rem;
 		font-size: clamp(1em, 16px + 0.24vw, 2em);
 	}
 
@@ -25,24 +32,19 @@ const { noBorder = false } = Astro.props;
 	}
 
 	nav ul {
-		display: flex;
 		margin: 0;
+		display: flex;
 		padding: 1em 0 0.5em;
 		list-style: none;
 		gap: 1em;
 		width: 100%;
 		justify-content: flex-end;
+		align-items: center;
 	}
 
 	nav li {
 		margin: 0;
 		padding: 0;
-	}
-
-	nav ul li:first-child {
-		margin-right: auto;
-		text-transform: uppercase;
-		font-weight: bold;
 	}
 
 	nav a {
@@ -52,5 +54,27 @@ const { noBorder = false } = Astro.props;
 
 	nav a:hover {
 		color: var(--color-link);
+	}
+
+	nav li.home {
+		margin-right: auto;
+		text-transform: uppercase;
+		font-weight: bold;
+		position: relative;
+
+		a {
+			display: inline-flex;
+			align-items: center;
+
+			svg {
+				position: absolute;
+				height: 1.75em;
+				fill: currentColor;
+			}
+
+			span {
+				margin-left: 1.75em;
+			}
+		}
 	}
 </style>

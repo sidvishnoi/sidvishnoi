@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <path id="a" d="M382.32 46.49v48l-206 78 206 78v48.5l-255-98.5v-55.5Z"/>
+    <style>
+    path { fill: #111; }
+    @media (prefers-color-scheme: dark) {
+      path { fill: white; }
+    }
+  </style>
+  </defs>
+  <use xlink:href="#a"/>
+  <use xlink:href="#a" transform="rotate(180 255 255)"/>
+</svg>
