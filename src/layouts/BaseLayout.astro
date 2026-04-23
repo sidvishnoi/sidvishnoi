@@ -1,4 +1,6 @@
 ---
+import logo from '$assets/logo.svg?url&no-inline';
+
 export type Props = {
 	title: string;
 	meta?: Partial<{
@@ -45,8 +47,15 @@ const {
 
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		{canonical && <link rel="canonical" href={canonical} />}
-		{canonical && <meta property="og:url" content={canonical} />}
 
+		<meta property="og:title" content={title} />
+		<meta
+			property="og:url"
+			content={new URL(Astro.url.pathname, Astro.site).href}
+		/>
+		<meta property="og:logo" content={new URL(logo, Astro.site).href} />
+		<meta property="og:site_name" content="Sid Vishnoi" />
+		<meta name="fediverse:creator" content="@sidvishnoi@mastodon.social" />
 		{shareImage && <meta property="og:image" content={shareImage} />}
 		{shareImage && <meta name="twitter:image" content={shareImage} />}
 		{description && <meta name="description" content={description} />}

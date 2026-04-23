@@ -24,6 +24,20 @@ const formatDate = (date: Date) =>
 	title=`${title} | Sid Vishnoi's blog`
 	meta={{ canonical, description, shareImage }}
 >
+	<Fragment slot="head">
+		<meta property="og:type" content="article" />
+		<meta property="article:author" content="https://sidvishnoi.com/about/" />
+		<meta property="article:published_time" content={fm.date.toISOString()} />
+		{
+			fm.modified && (
+				<meta
+					property="article:modified_time"
+					content={fm.modified.toISOString()}
+				/>
+			)
+		}
+	</Fragment>
+
 	<Header />
 
 	<article id="main" class="h-entry">

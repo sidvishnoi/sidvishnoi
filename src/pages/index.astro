@@ -10,6 +10,10 @@ import LogoLarge from '$components/LogoLarge.astro';
 		description: `Software engineer and full-stack web developer with a knack for front-end development`,
 	}}
 >
+	<Fragment slot="head">
+		<meta property="og:type" content="website" />
+	</Fragment>
+
 	<header class="header">
 		<LogoLarge />
 		<p class="subtitle">I like web development and building software.</p>
