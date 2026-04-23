@@ -62,6 +62,18 @@ hr {
 	border-top: 1px dashed var(--color-alt);
 }
 
+:target {
+	scroll-margin: 1em;
+	animation: target-target 3s step-end;
+}
+
+@keyframes target-target {
+	from {
+		background-color: var(--color-light);
+		box-shadow: 0 0 0 0.25em var(--color-light);
+	}
+}
+
 @media screen and (max-width: 48rem) {
 	article h1 {
 		font-size: xx-large;
