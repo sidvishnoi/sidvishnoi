@@ -1,0 +1,12 @@
+name = "sidvishnoi"
+account_id = "dbee11ce53d02b7ef43eb9deb629e72f"
+compatibility_date = "2026-04-23"
+
+preview_urls = false
+workers_dev = false
+
+[build]
+command = "pnpm build"
+
+[assets]
+directory = "./dist/"
