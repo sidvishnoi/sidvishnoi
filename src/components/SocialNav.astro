@@ -1,36 +1,26 @@
 ---
-import iconSvg from '$assets/icons/social.svg?url';
+import iconSvg from '$assets/icons/social.svg?url&no-inline';
 
 const items: Array<{ title: string; icon: string; href: string }> = [
 	{
-		title: '@sidvishnoi on GitHub',
+		title: 'GitHub',
 		icon: 'icon-github',
 		href: 'https://github.com/sidvishnoi',
 	},
 	{
-		title: '@sidvishnoi on Mastodon.social',
+		title: 'Mastodon.social',
 		icon: 'icon-mastodon',
 		href: 'https://mastodon.social/@sidvishnoi',
 	},
 	{
-		title: '@sudhanshu-vishnoi on LinkedIn',
+		title: 'LinkedIn',
 		icon: 'icon-linkedin',
 		href: 'https://linkedin.com/in/sudhanshu-vishnoi',
 	},
 	{
-		title: '@sid-vishnoi on StackOverflow',
+		title: 'StackOverflow',
 		icon: 'icon-stackoverflow',
 		href: 'https://stackoverflow.com/users/3367669/sid-vishnoi',
-	},
-	{
-		title: '@sidvishnoi on Dev.to',
-		icon: 'icon-dev',
-		href: 'https://dev.to/sidvishnoi',
-	},
-	{
-		title: '@sidvishnoi on CodePen',
-		icon: 'icon-codepen',
-		href: 'https://codepen.io/sidvishnoi/',
 	},
 ];
 ---
@@ -55,7 +45,7 @@ const items: Array<{ title: string; icon: string; href: string }> = [
 <style>
 	.social ul {
 		display: grid;
-		grid-template-columns: repeat(6, max-content);
+		grid-template-columns: repeat(4, max-content);
 		grid-gap: 0.5rem;
 		gap: 0.5rem;
 		justify-content: end;
@@ -91,9 +81,6 @@ const items: Array<{ title: string; icon: string; href: string }> = [
 	.social a:focus svg {
 		fill: var(--icon-fill, #000);
 	}
-	.social a.icon-twitter {
-		--icon-color: #1ca2f2;
-	}
 	.social a.icon-mastodon {
 		--icon-color: #6364ff;
 		--icon-fill: #fff;
@@ -102,19 +89,12 @@ const items: Array<{ title: string; icon: string; href: string }> = [
 		--icon-color: #000;
 		--icon-fill: #fff;
 	}
-	.social a.icon-dev {
-		--icon-color: #4e57ef;
-		--icon-fill: #fff;
-	}
 	.social a.icon-stackoverflow {
 		--icon-color: #f48024;
 	}
 	.social a.icon-linkedin {
 		--icon-color: #0084bf;
 		--icon-fill: #fff;
-	}
-	.social a.icon-codepen {
-		--icon-color: #fcd000;
 	}
 
 	@media (max-width: 640px) {
