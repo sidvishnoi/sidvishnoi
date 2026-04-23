@@ -26,22 +26,22 @@ const formatDate = (date: Date) =>
 >
 	<Header />
 
-	<article id="main">
+	<article id="main" class="h-entry">
 		<header>
 			<h1>
-				<a href={Astro.url.pathname}>{title}</a>
+				<a href={Astro.url.pathname} class="p-name u-url">{title}</a>
 			</h1>
 
 			<div class="meta">
 				<p>
-					Published <time datetime={fm.date.toISOString()}
+					Published <time class="dt-published" datetime={fm.date.toISOString()}
 						>{formatDate(fm.date)}</time
 					>
 					{
 						fm.modified && (
 							<Fragment>
 								and last updated{' '}
-								<time datetime={fm.modified.toISOString()}>
+								<time class="dt-updated" datetime={fm.modified.toISOString()}>
 									{formatDate(fm.modified)}
 								</time>
 							</Fragment>
@@ -67,7 +67,7 @@ const formatDate = (date: Date) =>
 			</div>
 		</header>
 
-		<div>
+		<div class="e-content">
 			<slot />
 		</div>
 	</article>
