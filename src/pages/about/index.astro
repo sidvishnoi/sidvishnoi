@@ -2,6 +2,7 @@
 import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/PageHeader.astro';
 import Heading from '$components/Heading.astro';
+import '$assets/article.css';
 
 import { Content } from './_about.md';
 ---
@@ -13,40 +14,15 @@ import { Content } from './_about.md';
 	}}
 >
 	<Header />
-	<Heading tag="h2">About</Heading>
-
-	<Content />
+	<article>
+		<Heading tag="h2">About</Heading>
+		<Content />
+	</article>
 </HomeLayout>
 
 <style is:global>
-	main {
-		margin: 0 auto;
-		padding: 0 1em 1em;
-	}
-
-	p {
-		max-width: 65ch;
-		margin: auto;
-	}
-
-	p + p {
-		margin-top: 1em;
-	}
-
 	br {
 		display: block;
 		margin-top: 0.3em;
-	}
-
-	hr {
-		margin: 2em auto;
-		border: 2px solid var(--color-c, aquagreen);
-		border-radius: 10px;
-		max-width: 60%;
-	}
-
-	main .social {
-		margin-top: 2em;
-		justify-content: center !important;
 	}
 </style>
