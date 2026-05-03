@@ -5,14 +5,14 @@ import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/PageHeader.astro';
 import Heading from '$components/Heading.astro';
 
-const allPosts = (await getCollection('blog')).sort(
+const allPosts = (await getCollection('articles')).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 ---
 
-<HomeLayout title="Sid Vishnoi's blog">
+<HomeLayout title="Sid Vishnoi's articles">
 	<Header />
-	<Heading tag="h2">Blog</Heading>
+	<Heading tag="h2">Articles</Heading>
 
 	<div id="main" class="blog">
 		<ul>
@@ -21,7 +21,7 @@ const allPosts = (await getCollection('blog')).sort(
 					<li>
 						<article>
 							<h3>
-								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+								<a href={`/articles/${post.id}/`}>{post.data.title}</a>
 							</h3>
 
 							<p>{post.data.description}</p>
@@ -40,7 +40,6 @@ const allPosts = (await getCollection('blog')).sort(
 					</li>
 				))
 			}
-			{!allPosts.length && <p>Coming soon</p>}
 		</ul>
 	</div>
 </HomeLayout>

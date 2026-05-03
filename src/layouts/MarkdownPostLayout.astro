@@ -8,7 +8,7 @@ import '$assets/styles/shiki.css';
 import type { CollectionEntry } from 'astro:content';
 
 type Props = {
-	frontmatter: CollectionEntry<'blog'>['data'];
+	frontmatter: CollectionEntry<'articles'>['data'];
 };
 
 const { frontmatter: fm } = Astro.props;
@@ -21,7 +21,7 @@ const formatDate = (date: Date) =>
 ---
 
 <HomeLayout
-	title=`${title} | Sid Vishnoi's blog`
+	title=`${title} | Sid Vishnoi`
 	meta={{ canonical, description, shareImage }}
 >
 	<Fragment slot="head">
