@@ -44,7 +44,7 @@
 
 body {
 	margin: 0;
-	font-size: clamp(1rem, 0.793rem + 1.296vw, 1.7rem);
+	font-size: clamp(1.25rem, 0.793rem + 1.296vw, 1.6rem);
 	line-height: 1.4;
 	position: relative;
 	padding: var(--thickness);
