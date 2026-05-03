@@ -1,4 +1,4 @@
-import { toString } from 'mdast-util-to-string';
+import { toMarkdown } from 'mdast-util-to-markdown';
 import type { RemarkPlugins } from 'astro';
 
 /**
@@ -12,7 +12,14 @@ export const remarkHeading: RemarkPlugins[number] = () => {
 		if (titleIndex === -1) {
 			throw new Error(`Missing #h1 in ${file.path}`);
 		}
-		const heading = toString(tree.children[titleIndex]);
+		const hTree = tree.children[titleIndex];
+		if (hTree.type !== 'heading') {
+			throw new Error('Unexpected: type should be heading');
+		}
+		const heading = toMarkdown({
+			type: 'root',
+			children: hTree.children,
+		}).trim();
 		tree.children[titleIndex] = { type: 'html', value: '' };
 
 		file.data.astro!.frontmatter!.heading = heading;

@@ -8,3 +8,7 @@ export function withParams(
 	}
 	return url;
 }
+
+export function mdBackticksToHTML(str: string) {
+	return str.replace(/`([^`]+)`/g, '<code>$1</code>');
+}

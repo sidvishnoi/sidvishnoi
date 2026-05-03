@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/PageHeader.astro';
 import Heading from '$components/Heading.astro';
+import { mdBackticksToHTML } from '$lib/utils.ts';
 
 const allPosts = (await getCollection('articles')).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -21,7 +22,10 @@ const allPosts = (await getCollection('articles')).sort(
 					<li>
 						<article>
 							<h3>
-								<a href={`/articles/${post.id}/`}>{post.data.title}</a>
+								<a
+									href={`/articles/${post.id}/`}
+									set:html={mdBackticksToHTML(post.data.title)}
+								/>
 							</h3>
 
 							<p>{post.data.description}</p>
