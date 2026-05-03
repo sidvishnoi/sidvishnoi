@@ -1,8 +1,8 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import remarkBreaks from 'remark-breaks';
 import sitemap from '@astrojs/sitemap';
-import theme from './src/assets/syntax-highlight/shiki-theme.ts';
-import langWebidl from './src/assets/syntax-highlight/lang-webidl.ts';
+import theme from './.config/syntax-highlight/shiki-theme.ts';
+import langWebidl from './.config/syntax-highlight/lang-webidl.ts';
 
 export default defineConfig({
 	site: 'https://sidvishnoi.com',

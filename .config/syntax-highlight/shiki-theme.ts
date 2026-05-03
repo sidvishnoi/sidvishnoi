@@ -1,5 +1,5 @@
 type ThemeRegistration =
-	import('../../../node_modules/shiki/dist/types.d.mts').ThemeRegistration;
+	import('../../node_modules/.pnpm/shiki@4.0.2/node_modules/shiki/dist/types.d.mts').ThemeRegistration;
 
 export default {
 	colors: {

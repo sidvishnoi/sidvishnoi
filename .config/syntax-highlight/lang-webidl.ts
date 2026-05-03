@@ -1,5 +1,5 @@
 type LanguageRegistration =
-	import('../../../node_modules/shiki/dist/types.d.mts').LanguageRegistration;
+	import('../../node_modules/.pnpm/shiki@4.0.2/node_modules/shiki/dist/types.d.mts').LanguageRegistration;
 
 export default {
 	name: 'webidl',
