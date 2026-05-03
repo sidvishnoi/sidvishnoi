@@ -3,6 +3,7 @@ import remarkBreaks from 'remark-breaks';
 import sitemap from '@astrojs/sitemap';
 import theme from './.config/syntax-highlight/shiki-theme.ts';
 import langWebidl from './.config/syntax-highlight/lang-webidl.ts';
+import { remarkHeading } from './.config/markdown/remark-heading.ts';
 
 export default defineConfig({
 	site: 'https://sidvishnoi.com',
@@ -24,6 +25,7 @@ export default defineConfig({
 			theme,
 			langs: [langWebidl],
 		},
-		remarkPlugins: [remarkBreaks],
+		remarkPlugins: [remarkBreaks, remarkHeading],
+		rehypePlugins: [],
 	},
 });

@@ -9,6 +9,8 @@ tags:
   - Web Monetization
 ---
 
+# How Web Monetization uses Open Payments - Part 2: Payment Sessions
+
 In the previous article, we discussed how the [Web Monetization extension connects to your wallet](..//web-monetization-open-payments-part-1-connecting-wallet/) using the Open Payments API. This article will explore the next steps for sending money: discovering the receiving wallet addresses on websites and setting up the necessary payment sessions. Like the previous article, we'll assume a conceptual understanding of [Web Monetization](https://webmonetization.org/) and [Open Payments API](https://openpayments.dev/).
 
 ## Finding receiving wallet addresses

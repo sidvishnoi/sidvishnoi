@@ -1,3 +1,5 @@
+# About
+
 I'm Sid, a web-focused product engineer, who cares about user experience, accessibility, and performance.
 
 My relationship with the web began 17 years<!-- NOTE: update number of years since 2009 every year; count sounds better than actual year here --> ago as a self-taught hobbyist, which has since evolved into a career spent building with the platform and building the platform itself.

@@ -9,6 +9,8 @@ tags:
   - Web Monetization
 ---
 
+# How Web Monetization uses Open Payments - Part 1: Connecting Wallet
+
 Welcome to the first of a three-part series on how Open Payments powers Web Monetization. We’ll also explore the mechanics of the Web Monetization browser extension, which serves as a temporary agent until web browsers natively support this technology.
 
 I assume a conceptual understanding of the underlying technologies — the [Web Monetization](https://webmonetization.org) standard and the supporting [Open Payments API](https://openpayments.dev) — since I'll be speaking about the relationship between the two throughout the series.

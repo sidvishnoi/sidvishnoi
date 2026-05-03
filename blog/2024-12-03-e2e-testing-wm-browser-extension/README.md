@@ -8,6 +8,8 @@ tags:
   - Web Monetization
 ---
 
+# End-to-end testing the Web Monetization browser extension
+
 A sharp test suite anticipates problems, catching them before they surprise users. As developers, we often get a bit too familiar with our own code. With our inevitably biased views, we often end up overlooking issues from outlier scenarios, or usability considerations, all the way to the "oops" bugs. End-to-end tests help us view the product more objectively, from a user's perspective. Automating these tests saves time and ensures consistent quality throughout the development process.
 
 However, automated end-to-end testing of a browser extension is a bit… complicated. But don't worry, we're up for this challenge! I'll share with you how we do end-to-end testing of the [Web Monetization browser extension](https://github.com/interledger/web-monetization-extension).

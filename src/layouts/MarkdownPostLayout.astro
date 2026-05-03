@@ -12,7 +12,7 @@ type Props = {
 };
 
 const { frontmatter: fm } = Astro.props;
-const { title, description } = fm;
+const { title, heading, description } = fm;
 const shareImage = fm.image?.url ? new URL(fm.image?.url) : undefined;
 const canonical = new URL(fm.canonical || Astro.url.pathname, Astro.site);
 
@@ -43,7 +43,7 @@ const formatDate = (date: Date) =>
 	<article id="main" class="h-entry">
 		<header>
 			<h1>
-				<a href={Astro.url.pathname} class="p-name u-url">{title}</a>
+				<a href={Astro.url.pathname} class="p-name u-url">{heading!}</a>
 			</h1>
 
 			<div class="meta">
