@@ -19,16 +19,47 @@ const articles = defineCollection({
 					alt: z.string(),
 				})
 				.optional(),
-			tags: z.array(z.string()).optional(),
+			tags: z
+				.array(z.string())
+				.optional()
+				.transform((tags) => tags?.map((tag) => tag.replace(/^[\\]?#/, ''))),
 			canonical: z.url().optional(),
 		})
 		.transform((data) => {
-			if (data.heading) return data;
 			return {
 				...data,
-				heading: data.heading as string,
+				heading: data.heading!,
 			};
 		}),
 });
 
-export const collections = { articles };
+const notes = defineCollection({
+	loader: glob({
+		base: './notes',
+		pattern: ['**/*.md', '!_legacy/*'],
+		generateId({ entry, data }) {
+			if (typeof data.slug === 'string') return data.slug;
+			// entry has format: yyyy/mm-dd-slug-part.md. we only want the slug part
+			return entry.replace(/^.*\/|\d{2}-\d{2}-|\.md$/g, '').toLowerCase();
+		},
+	}),
+	schema: z
+		.object({
+			description: z.string(),
+			tags: z
+				.array(z.string())
+				.transform((tags) => tags.map((tag) => tag.replace(/^[\\]?#/, ''))),
+			modified: z.date().optional(),
+			/** Set from markdown. */
+			heading: z.string().optional(),
+		})
+		.transform((data) => {
+			return {
+				...data,
+				title: data.heading!,
+				heading: data.heading!,
+			};
+		}),
+});
+
+export const collections = { articles, notes };

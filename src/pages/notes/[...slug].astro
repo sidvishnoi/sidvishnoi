@@ -1,0 +1,21 @@
+---
+import { getCollection, render } from 'astro:content';
+import MarkdownNoteLayout from '$layouts/MarkdownNoteLayout.astro';
+import { extendEntry } from './_utils.js';
+
+export async function getStaticPaths() {
+	const notes = await getCollection('notes');
+	return notes.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(entry);
+const { data: frontmatter } = extendEntry(entry, { remarkPluginFrontmatter });
+---
+
+<MarkdownNoteLayout frontmatter={frontmatter}>
+	<Content />
+</MarkdownNoteLayout>

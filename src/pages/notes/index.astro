@@ -1,0 +1,193 @@
+---
+import { getCollection } from 'astro:content';
+
+import HomeLayout from '$layouts/HomeLayout.astro';
+import Header from '$components/PageHeader.astro';
+import Heading from '$components/Heading.astro';
+import { render } from 'astro:content';
+import { extendEntry } from './_utils.js';
+import { mdBackticksToHTML } from '$lib/utils.ts';
+
+const baseNotes = await getCollection('notes');
+const notes = await Promise.all(
+	baseNotes.slice(0, 10).map((e) => render(e).then((r) => extendEntry(e, r))),
+);
+---
+
+<HomeLayout title="Sid Vishnoi's notes">
+	<Header />
+	<Heading tag="h2">Notes</Heading>
+
+	<div id="main" class="blog">
+		<ul>
+			{
+				notes.map((note) => (
+					<li>
+						<article>
+							<h3>
+								<a
+									href={`/notes/${note.id}/`}
+									set:html={mdBackticksToHTML(note.data.heading)}
+								/>
+							</h3>
+
+							<p>{note.data.description}</p>
+
+							<div class="meta">
+								<p>
+									<span class="sr-only">Published </span>
+									<time datetime={note.data.date.toISOString()}>
+										{note.data.date.toLocaleDateString('en', {
+											dateStyle: 'medium',
+										})}
+									</time>
+								</p>
+								<div>
+									<span class="sr-only">Tagged under: </span>
+									<ul class="tags">
+										{note.data.tags.map((tag) => (
+											<li>
+												<a href={`./tags/${tag}/`}>#{tag}</a>
+											</li>
+										))}
+									</ul>
+								</div>
+							</div>
+						</article>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</HomeLayout>
+
+<style is:global>
+	main * {
+		margin: 0;
+		padding: 0;
+	}
+
+	main {
+		margin: 0 auto;
+		padding: 0 1em 1em;
+		font-size: clamp(1em, 18px + 0.24vw, 2.125em);
+	}
+
+	.blog {
+		padding-bottom: 4em;
+	}
+
+	.blog ul {
+		list-style: none;
+		margin: 0;
+	}
+
+	.blog > ul > li {
+		padding: 1em;
+		max-width: 80ch;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.blog > ul > li + li {
+		margin-top: 0.5em;
+	}
+
+	.blog p {
+		max-width: 80ch;
+		padding: 0 0.5em;
+		margin-top: 0.25em;
+	}
+
+	.blog .meta {
+		font-size: smaller;
+		text-align: right;
+	}
+
+	.blog .meta > * {
+		display: inline-block;
+	}
+
+	.blog .meta p {
+		font-size: smaller;
+		margin-left: 0;
+		width: auto;
+		color: var(--color-alt);
+	}
+
+	.blog .meta .tags {
+		margin: 0;
+		padding: 0;
+		display: inline;
+		list-style: none;
+	}
+	.blog .meta .tags a {
+		color: var(--color-dark);
+		text-decoration: none;
+		font-style: italic;
+	}
+
+	.blog h3 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		font-size: 1.2em;
+		line-height: 1.1;
+	}
+
+	.blog h3:after {
+		content: '';
+		display: block;
+		flex: 1;
+		height: 1em;
+		background: transparent;
+	}
+
+	.blog:not(:focus-within) li:hover h3:after,
+	.blog li:focus-within h3:after {
+		background: var(--color-dark);
+	}
+
+	.blog:hover li:hover,
+	.blog li:focus-within {
+		background: var(--color-light);
+	}
+
+	.blog h3 a {
+		color: var(--color);
+		background: transparent;
+		padding: 0.2em 0.5em;
+		text-decoration: none;
+	}
+
+	.blog:not(:focus-within) li:hover h3 a,
+	.blog h3 a:focus {
+		color: var(--background);
+		background: var(--color);
+		outline: none;
+	}
+
+	@media (max-width: 640px) {
+		main {
+			padding: 0 0.25em 1em;
+		}
+		main > header,
+		main > .heading {
+			padding-inline: 0.5em;
+		}
+		.blog {
+			padding: 0;
+		}
+		.blog li {
+			text-align: left;
+			padding: 1em 0;
+		}
+		.blog li:last-of-type {
+			padding-bottom: 1em;
+		}
+		.blog p {
+			width: 100%;
+		}
+	}
+</style>

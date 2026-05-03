@@ -1,0 +1,99 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import HomeLayout from '$layouts/HomeLayout.astro';
+import Header from '$components/NavHeader.astro';
+import '$assets/styles/style.css';
+import '$assets/styles/article.css';
+import '$assets/styles/shiki.css';
+import { mdBackticksToHTML } from '$lib/utils.ts';
+
+type Props = {
+	frontmatter: CollectionEntry<'notes'>['data'] & { date: Date };
+};
+
+const { frontmatter: fm } = Astro.props;
+const { title, description, date } = fm;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const formatDate = (date: Date) =>
+	date.toLocaleDateString('en', { dateStyle: 'medium' });
+---
+
+<HomeLayout title=`${title} | Sid Vishnoi` meta={{ canonical, description }}>
+	<Fragment slot="head">
+		<meta property="og:type" content="article" />
+		<meta property="article:author" content="https://sidvishnoi.com/about/" />
+		<meta property="article:published_time" content={date.toISOString()} />
+		{
+			fm.modified && (
+				<meta
+					property="article:modified_time"
+					content={fm.modified.toISOString()}
+				/>
+			)
+		}
+	</Fragment>
+
+	<Header />
+
+	<article id="main" class="h-entry">
+		<header>
+			<h1>
+				<a
+					href={Astro.url.pathname}
+					class="p-name u-url"
+					set:html={mdBackticksToHTML(title)}
+				/>
+			</h1>
+
+			<div class="meta">
+				<p>
+					Published <time class="dt-published" datetime={date.toISOString()}
+						>{formatDate(date)}</time
+					>
+					{
+						fm.modified && (
+							<Fragment>
+								and last updated{' '}
+								<time class="dt-updated" datetime={fm.modified.toISOString()}>
+									{formatDate(fm.modified)}
+								</time>
+							</Fragment>
+						)
+					}
+				</p>
+			</div>
+		</header>
+
+		<div class="e-content">
+			<slot />
+		</div>
+
+		<footer>
+			<div class="tags">
+				Tags:
+				<ul aria-label="Tags">
+					{
+						fm.tags.map((tag) => (
+							<li>
+								<a href={`../tags/${tag}/`}>#{tag}</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</footer>
+	</article>
+</HomeLayout>
+
+<style>
+	.tags {
+		font-size: smaller;
+	}
+	.tags ul {
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		list-style: none;
+	}
+</style>
