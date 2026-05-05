@@ -8,7 +8,10 @@ import { extendEntry } from './_utils.js';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
 const baseNotes = await getCollection('notes');
-const notes = baseNotes.slice(0, 10).map((e) => extendEntry(e));
+const notes = baseNotes
+	.sort((a, b) => b.filePath!.localeCompare(a.filePath!))
+	.slice(0, 10)
+	.map((e) => extendEntry(e));
 ---
 
 <HomeLayout title="Sid Vishnoi's notes">
@@ -33,8 +36,8 @@ const notes = baseNotes.slice(0, 10).map((e) => extendEntry(e));
 							<div class="meta">
 								<p>
 									<span class="sr-only">Published </span>
-									<time datetime={note.data.date.toISOString()}>
-										{note.data.date.toLocaleDateString('en', {
+									<time datetime={note.data.date!.toISOString()}>
+										{note.data.date!.toLocaleDateString('en', {
 											dateStyle: 'medium',
 										})}
 									</time>
@@ -117,9 +120,10 @@ const notes = baseNotes.slice(0, 10).map((e) => extendEntry(e));
 		padding: 0;
 		display: inline;
 		list-style: none;
+		font-size: smaller;
 	}
 	.blog .meta .tags a {
-		color: var(--color-dark);
+		color: var(--color-alt);
 		text-decoration: none;
 		font-style: italic;
 	}
