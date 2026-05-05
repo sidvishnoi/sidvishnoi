@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: false
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@astrojs/markdown-remark':
+    hash: ef401711aaa2c09143769e3ef2a34ada983d3f30e58cf8bf50eca147af293620
+    path: patches/@astrojs__markdown-remark.patch
+
 importers:
 
   .:
@@ -26,12 +31,6 @@ importers:
       astro:
         specifier: ^6.2.1
         version: 6.2.1(@types/node@24.12.2)(rollup@4.60.1)(typescript@6.0.3)(yaml@2.8.3)
-      mdast-util-to-markdown:
-        specifier: ^2.1.2
-        version: 2.1.2
-      mdast-util-to-string:
-        specifier: ^4.0.0
-        version: 4.0.0
       prettier:
         specifier: ^3.8.3
         version: 3.8.3
@@ -1862,7 +1861,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@astrojs/markdown-remark@7.1.1':
+  '@astrojs/markdown-remark@7.1.1(patch_hash=ef401711aaa2c09143769e3ef2a34ada983d3f30e58cf8bf50eca147af293620)':
     dependencies:
       '@astrojs/internal-helpers': 0.9.0
       '@astrojs/prism': 4.0.1
@@ -2390,7 +2389,7 @@ snapshots:
     dependencies:
       '@astrojs/compiler': 4.0.0
       '@astrojs/internal-helpers': 0.9.0
-      '@astrojs/markdown-remark': 7.1.1
+      '@astrojs/markdown-remark': 7.1.1(patch_hash=ef401711aaa2c09143769e3ef2a34ada983d3f30e58cf8bf50eca147af293620)
       '@astrojs/telemetry': 3.3.1
       '@capsizecss/unpack': 4.0.0
       '@clack/prompts': 1.2.0

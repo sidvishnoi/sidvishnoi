@@ -1,0 +1,2 @@
+patchedDependencies:
+  '@astrojs/markdown-remark': patches/@astrojs__markdown-remark.patch

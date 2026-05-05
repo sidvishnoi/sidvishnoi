@@ -8,7 +8,7 @@ import '$assets/styles/shiki.css';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
 type Props = {
-	frontmatter: CollectionEntry<'notes'>['data'] & { date: Date };
+	frontmatter: CollectionEntry<'notes'>['data'];
 };
 
 const { frontmatter: fm } = Astro.props;
@@ -23,7 +23,7 @@ const formatDate = (date: Date) =>
 	<Fragment slot="head">
 		<meta property="og:type" content="article" />
 		<meta property="article:author" content="https://sidvishnoi.com/about/" />
-		<meta property="article:published_time" content={date.toISOString()} />
+		<meta property="article:published_time" content={date!.toISOString()} />
 		{
 			fm.modified && (
 				<meta

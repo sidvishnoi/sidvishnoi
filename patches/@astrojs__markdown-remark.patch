@@ -1,0 +1,17 @@
+diff --git a/dist/frontmatter.js b/dist/frontmatter.js
+index 163f4009a1fb727e0a88d248d5b815ddb11a736b..12cc65c1d85c2d27cc9adebc392bf3e6877851d3 100644
+--- a/dist/frontmatter.js
++++ b/dist/frontmatter.js
+@@ -45,6 +45,12 @@ function parseFrontmatter(code, options) {
+       );
+       break;
+   }
++
++  const h1Match = /^#\s+(.+)$/m.exec(content);
++  if (h1Match) {
++    frontmatter.heading = h1Match[1].trim();
++  }
++
+   return {
+     frontmatter,
+     rawFrontmatter,

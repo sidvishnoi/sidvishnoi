@@ -4,33 +4,26 @@ import { z } from 'astro/zod';
 
 const articles = defineCollection({
 	loader: glob({ base: './articles', pattern: '**/*.{md,mdx}' }),
-	schema: z
-		.object({
-			/** For `<title>`, `getCollection()` */
-			title: z.string(),
-			/** Set from markdown. */
-			heading: z.string().optional(),
-			date: z.date(),
-			modified: z.date().optional(),
-			description: z.string(),
-			image: z
-				.object({
-					url: z.string(),
-					alt: z.string(),
-				})
-				.optional(),
-			tags: z
-				.array(z.string().startsWith('#'))
-				.optional()
-				.transform((tags) => tags?.map((tag) => tag.replace(/^#/, ''))),
-			canonical: z.url().optional(),
-		})
-		.transform((data) => {
-			return {
-				...data,
-				heading: data.heading!,
-			};
-		}),
+	schema: z.object({
+		/** For `<title>`, `getCollection()` */
+		title: z.string(),
+		/** Extracted from markdown h1 by using `patches/@astrojs__markdown-remark.patch` */
+		heading: z.string(),
+		date: z.date(),
+		modified: z.date().optional(),
+		description: z.string(),
+		image: z
+			.object({
+				url: z.string(),
+				alt: z.string(),
+			})
+			.optional(),
+		tags: z
+			.array(z.string().startsWith('#'))
+			.optional()
+			.transform((tags) => tags?.map((tag) => tag.replace(/^#/, ''))),
+		canonical: z.url().optional(),
+	}),
 });
 
 const notes = defineCollection({
@@ -50,14 +43,15 @@ const notes = defineCollection({
 				.array(z.string().startsWith('#'))
 				.transform((tags) => tags.map((tag) => tag.replace(/^#/, ''))),
 			modified: z.date().optional(),
-			/** Set from markdown. */
-			heading: z.string().optional(),
+			/** Extracted from markdown h1 by using `patches/@astrojs__markdown-remark.patch` */
+			heading: z.string(),
+			/** Publish date. Added from file path if not available. */
+			date: z.date().optional(),
 		})
 		.transform((data) => {
 			return {
 				...data,
-				title: data.heading!,
-				heading: data.heading!,
+				title: data.heading,
 			};
 		}),
 });

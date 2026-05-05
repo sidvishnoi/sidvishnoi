@@ -4,26 +4,18 @@ import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/PageHeader.astro';
 import Heading from '$components/Heading.astro';
 import { mdBackticksToHTML } from '$lib/utils.ts';
-import { extendEntry } from '../_utils.ts';
 
 export async function getStaticPaths() {
 	const allNotes = await getCollection('notes');
 	const uniqueTags = [...new Set(allNotes.flatMap((post) => post.data.tags))];
-	console.log(uniqueTags);
 
-	return Promise.all(
-		uniqueTags.map(async (tag) => {
-			const filteredNotes = allNotes.filter((e) => e.data.tags.includes(tag));
-			const notes = await Promise.all(
-				filteredNotes.map((e) => render(e).then((r) => extendEntry(e, r))),
-			);
-
-			return {
-				params: { tag },
-				props: { notes },
-			};
-		}),
-	);
+	return uniqueTags.map((tag) => {
+		const notes = allNotes.filter((e) => e.data.tags.includes(tag));
+		return {
+			params: { tag },
+			props: { notes },
+		};
+	});
 }
 
 const { tag } = Astro.params;

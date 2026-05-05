@@ -4,14 +4,11 @@ import { getCollection } from 'astro:content';
 import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/PageHeader.astro';
 import Heading from '$components/Heading.astro';
-import { render } from 'astro:content';
 import { extendEntry } from './_utils.js';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
 const baseNotes = await getCollection('notes');
-const notes = await Promise.all(
-	baseNotes.slice(0, 10).map((e) => render(e).then((r) => extendEntry(e, r))),
-);
+const notes = baseNotes.slice(0, 10).map((e) => extendEntry(e));
 ---
 
 <HomeLayout title="Sid Vishnoi's notes">

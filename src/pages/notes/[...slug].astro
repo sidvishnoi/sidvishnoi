@@ -12,8 +12,8 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await render(entry);
-const { data: frontmatter } = extendEntry(entry, { remarkPluginFrontmatter });
+const { Content } = await render(entry);
+const { data: frontmatter } = extendEntry(entry);
 ---
 
 <MarkdownNoteLayout frontmatter={frontmatter}>
