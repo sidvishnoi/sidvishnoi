@@ -1,7 +1,7 @@
 ---
 title: Memorable wallet addresses on your own domain
 description: If you own a domain, you can set your Open Payments wallet address to be the same as your domain!
-date: 2025-09-09
+date: 2025-09-09T16:06:35+05:30
 slug: memorable-wallet-addresses-custom-domain
 canonical: https://interledger.org/developers/blog/memorable-wallet-addresses-custom-domain/
 tags:

@@ -1,7 +1,7 @@
 ---
 title: End-to-end testing the Web Monetization browser extension
 description: E2E testing browser extensions? It's tricky, but we've got it covered.
-date: 2024-12-03
+date: 2024-12-03T13:58:38+05:30
 slug: e2e-testing-wm-browser-extension
 canonical: https://interledger.org/developers/blog/e2e-testing-wm-browser-extension/
 tags:

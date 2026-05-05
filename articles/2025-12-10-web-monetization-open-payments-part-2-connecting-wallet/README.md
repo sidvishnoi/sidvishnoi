@@ -1,7 +1,7 @@
 ---
 title: 'How Web Monetization uses Open Payments - Part 2: Payment Sessions'
 description: 'Explore next steps for sending money: how the extension finds receiving wallet addresses and sets up the necessary payment sessions.'
-date: 2025-12-10
+date: 2025-12-10T13:05:06+05:30
 slug: web-monetization-open-payments-part-2-payment-sessions
 canonical: https://interledger.org/developers/blog/web-monetization-open-payments-part-2-payment-sessions/
 tags:

@@ -1,7 +1,7 @@
 ---
 title: 'How Web Monetization uses Open Payments - Part 1: Connecting Wallet'
 description: Understanding how the browser extension uses Open Payments to securely connect your wallet for Web Monetization
-date: 2025-12-03
+date: 2025-12-03T13:36:26+05:30
 slug: web-monetization-open-payments-part-1-connecting-wallet
 canonical: https://interledger.org/developers/blog/web-monetization-open-payments-part-1-connecting-wallet/
 tags:
