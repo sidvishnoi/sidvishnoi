@@ -5,8 +5,8 @@ date: 2026-04-16
 slug: web-monetization-open-payments-part-3-sending-money
 canonical: https://interledger.org/developers/blog/web-monetization-open-payments-part-3-sending-money/
 tags:
-  - Open Payments
-  - Web Monetization
+  - '#OpenPayments'
+  - '#WebMonetization'
 ---
 
 # How the Web Monetization Extension works - Part 3: Sending money for real

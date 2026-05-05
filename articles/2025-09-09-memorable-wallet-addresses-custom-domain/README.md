@@ -5,7 +5,7 @@ date: 2025-09-09
 slug: memorable-wallet-addresses-custom-domain
 canonical: https://interledger.org/developers/blog/memorable-wallet-addresses-custom-domain/
 tags:
-  - Open Payments
+  - '#OpenPayments'
 ---
 
 # Memorable wallet addresses on your own domain

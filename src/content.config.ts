@@ -20,9 +20,9 @@ const articles = defineCollection({
 				})
 				.optional(),
 			tags: z
-				.array(z.string())
+				.array(z.string().startsWith('#'))
 				.optional()
-				.transform((tags) => tags?.map((tag) => tag.replace(/^[\\]?#/, ''))),
+				.transform((tags) => tags?.map((tag) => tag.replace(/^#/, ''))),
 			canonical: z.url().optional(),
 		})
 		.transform((data) => {
@@ -47,8 +47,8 @@ const notes = defineCollection({
 		.object({
 			description: z.string(),
 			tags: z
-				.array(z.string())
-				.transform((tags) => tags.map((tag) => tag.replace(/^[\\]?#/, ''))),
+				.array(z.string().startsWith('#'))
+				.transform((tags) => tags.map((tag) => tag.replace(/^#/, ''))),
 			modified: z.date().optional(),
 			/** Set from markdown. */
 			heading: z.string().optional(),

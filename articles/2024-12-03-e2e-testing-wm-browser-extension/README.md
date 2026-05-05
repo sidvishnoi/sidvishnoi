@@ -5,7 +5,7 @@ date: 2024-12-03
 slug: e2e-testing-wm-browser-extension
 canonical: https://interledger.org/developers/blog/e2e-testing-wm-browser-extension/
 tags:
-  - Web Monetization
+  - '#WebMonetization'
 ---
 
 # End-to-end testing the Web Monetization browser extension

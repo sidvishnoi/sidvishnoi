@@ -5,8 +5,8 @@ date: 2025-12-03
 slug: web-monetization-open-payments-part-1-connecting-wallet
 canonical: https://interledger.org/developers/blog/web-monetization-open-payments-part-1-connecting-wallet/
 tags:
-  - Open Payments
-  - Web Monetization
+  - '#OpenPayments'
+  - '#WebMonetization'
 ---
 
 # How Web Monetization uses Open Payments - Part 1: Connecting Wallet

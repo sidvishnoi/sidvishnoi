@@ -5,8 +5,8 @@ date: 2025-12-10
 slug: web-monetization-open-payments-part-2-payment-sessions
 canonical: https://interledger.org/developers/blog/web-monetization-open-payments-part-2-payment-sessions/
 tags:
-  - Open Payments
-  - Web Monetization
+  - '#OpenPayments'
+  - '#WebMonetization'
 ---
 
 # How Web Monetization uses Open Payments - Part 2: Payment Sessions
