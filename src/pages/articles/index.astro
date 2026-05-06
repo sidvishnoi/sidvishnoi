@@ -6,7 +6,7 @@ import Header from '$components/PageHeader.astro';
 import Heading from '$components/Heading.astro';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
-const allPosts = (await getCollection('articles')).sort(
+const articles = (await getCollection('articles')).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 ---
@@ -18,23 +18,23 @@ const allPosts = (await getCollection('articles')).sort(
 	<div id="main" class="blog">
 		<ul>
 			{
-				allPosts.map((post) => (
+				articles.map((entry) => (
 					<li>
 						<article>
 							<h3>
 								<a
-									href={`/articles/${post.id}/`}
-									set:html={mdBackticksToHTML(post.data.title)}
+									href={`/articles/${entry.id}/`}
+									set:html={mdBackticksToHTML(entry.data.title)}
 								/>
 							</h3>
 
-							<p>{post.data.description}</p>
+							<p>{entry.data.description}</p>
 
 							<div class="meta">
 								<p>
 									<span class="sr-only">Published </span>
-									<time datetime={post.data.date.toISOString()}>
-										{post.data.date.toLocaleDateString('en', {
+									<time datetime={entry.data.date.toISOString()}>
+										{entry.data.date.toLocaleDateString('en', {
 											dateStyle: 'medium',
 										})}
 									</time>
