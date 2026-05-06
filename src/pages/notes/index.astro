@@ -120,6 +120,9 @@ const notes = baseNotes
 		list-style: none;
 		font-size: smaller;
 	}
+	.blog .meta .tags li {
+		display: inline;
+	}
 	.blog .meta .tags a {
 		color: var(--color-alt);
 		text-decoration: none;
@@ -178,11 +181,11 @@ const notes = baseNotes
 		.blog {
 			padding: 0;
 		}
-		.blog li {
+		.blog > ul > li {
 			text-align: left;
 			padding: 1em 0;
 		}
-		.blog li:last-of-type {
+		.blog > ul > li:last-of-type {
 			padding-bottom: 1em;
 		}
 		.blog p {
