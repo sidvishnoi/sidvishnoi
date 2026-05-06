@@ -42,11 +42,10 @@ const notes = defineCollection({
 			tags: z
 				.array(z.string().startsWith('#'))
 				.transform((tags) => tags.map((tag) => tag.replace(/^#/, ''))),
+			date: z.date(),
 			modified: z.date().optional(),
 			/** Extracted from markdown h1 by using `patches/@astrojs__markdown-remark.patch` */
 			heading: z.string(),
-			/** Publish date. Added from file path if not available. */
-			date: z.date().optional(),
 		})
 		.transform((data) => {
 			return {

@@ -4,14 +4,12 @@ import { getCollection } from 'astro:content';
 import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/PageHeader.astro';
 import Heading from '$components/Heading.astro';
-import { extendEntry } from './_utils.js';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
 const baseNotes = await getCollection('notes');
 const notes = baseNotes
-	.sort((a, b) => b.filePath!.localeCompare(a.filePath!))
-	.slice(0, 10)
-	.map((e) => extendEntry(e));
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+	.slice(0, 10);
 ---
 
 <HomeLayout title="Sid Vishnoi's notes">
@@ -36,8 +34,8 @@ const notes = baseNotes
 							<div class="meta">
 								<p>
 									<span class="sr-only">Published </span>
-									<time datetime={note.data.date!.toISOString()}>
-										{note.data.date!.toLocaleDateString('en', {
+									<time datetime={note.data.date.toISOString()}>
+										{note.data.date.toLocaleDateString('en', {
 											dateStyle: 'medium',
 										})}
 									</time>

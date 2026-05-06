@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import MarkdownNoteLayout from '$layouts/MarkdownNoteLayout.astro';
-import { extendEntry } from './_utils.js';
 
 export async function getStaticPaths() {
 	const notes = await getCollection('notes');
@@ -13,9 +12,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { data: frontmatter } = extendEntry(entry);
 ---
 
-<MarkdownNoteLayout frontmatter={frontmatter}>
+<MarkdownNoteLayout frontmatter={entry.data}>
 	<Content />
 </MarkdownNoteLayout>
