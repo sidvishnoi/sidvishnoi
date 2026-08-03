@@ -8,33 +8,25 @@ import Experience from './_assets/Experience.astro';
 // import OpenSource from './_assets/OpenSource.astro';
 // import Projects from './_assets/Projects.astro';
 import Skills from './_assets/Skills.astro';
-import { Header, References, Education, Contact } from './_assets/resume';
+import { Header, References, Education } from './_assets/resume';
 ---
 
 <BaseLayout
 	title="Sid Vishnoi — Resume"
 	meta={{
-		description: `Sudhanshu "Sid" Vishnoi is a senior full-stack engineer specializing in web platforms and W3C web standards, working primarily with JavaScript/TypeScript, with experience in C++, Python and Rust.`,
+		description: `Sudhanshu "Sid" Vishnoi is a senior full-stack engineer leading the Web Monetization browser extension and contributing to W3C web standards, working primarily in JavaScript/TypeScript, with experience in C++, Python, and Rust.`,
 	}}
 >
-	<slot name="head">
-		<link
-			href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
-			rel="stylesheet"
-		/>
-	</slot>
-
 	<Header title="Senior Full-Stack Engineer">
-		Full-stack engineer with 8+ years building web platforms and contributing to
-		W3C web standards. Owns problems end-to-end, from specification to
-		production, primarily in JavaScript/TypeScript, with experience in C++ and
-		Rust.
+		Product-focused engineer, 7+ years shipping software. Leading Web
+		Monetization at Interledger Foundation. Focused on accessibility, UX, and
+		performance. Ships faster with AI, carefully.
 	</Header>
 
 	<main>
 		<Experience />
 		<Education />
 		<Skills />
-		<References />
+		<!-- <References /> -->
 	</main>
 </BaseLayout>

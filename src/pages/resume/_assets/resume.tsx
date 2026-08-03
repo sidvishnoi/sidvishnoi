@@ -103,6 +103,6 @@ export const ExperienceItem = ({
 				{duration[0]} – {duration[1]}
 			</time>
 		</header>
-		<p>{children}</p>
+		<ul>{children}</ul>
 	</article>
 );
