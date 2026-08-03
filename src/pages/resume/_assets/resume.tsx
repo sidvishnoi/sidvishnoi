@@ -1,12 +1,19 @@
 import type { ComponentChildren } from 'preact';
-import { IconGitHub, IconLinkedIn, IconPdf } from './icons';
+import { IconEmail, IconGitHub, IconLinkedIn, IconPdf } from './icons';
 
-export const Header = () => (
+export const Header = ({
+	title,
+	children,
+}: {
+	title: string;
+	children: ComponentChildren;
+}) => (
 	<header className="header">
 		<h1>
 			<span>Sid</span> <span>Vishnoi</span>
 		</h1>
-		<p className="tagline">Senior Full-Stack Engineer</p>
+		<p className="tagline">{title}</p>
+		<p class="summary">{children}</p>
 		<a
 			rel="alternate"
 			type="application/pdf"
@@ -17,20 +24,21 @@ export const Header = () => (
 			<IconPdf />
 			PDF version
 		</a>
+
+		<Contact />
 	</header>
 );
 
 export const References = () => (
-	<section>
+	<section className="references">
 		<h2>References</h2>
 
-		<p>
-			Marcos Cáceres
-			<br />
-			WebKit Standards and Interop
-			<br />
-			<a href="mailto:marcosc@apple.com">marcosc@apple.com</a>
-		</p>
+		<ul>
+			<li>
+				Marcos Cáceres (WebKit Standards and Interop){' '}
+				<a href="mailto:marcosc@apple.com">marcosc@apple.com</a>
+			</li>
+		</ul>
 	</section>
 );
 
@@ -53,49 +61,27 @@ export const Education = () => (
 );
 
 export const Contact = () => (
-	<section className="contact">
-		<h2>Contact Information</h2>
+	<div className="contact">
+		<div>
+			<IconEmail />
+			<span className="visually-hidden">Email:</span>
+			<a href="mailto:hire@sidvishnoi.com">hire@sidvishnoi.com</a>
+		</div>
 
-		<dl>
-			<dt>
-				<strong aria-hidden="true" className="no-select">
-					e.
-				</strong>
-				<span className="visually-hidden">Email</span>
-			</dt>
-			<dd>
-				<a href="mailto:hire@sidvishnoi.com">hire@sidvishnoi.com</a>
-			</dd>
+		<div>
+			<IconGitHub />
+			<span className="visually-hidden">GitHub:</span>
+			<a href="https://www.github.com/sidvishnoi">github.com/sidvishnoi</a>
+		</div>
 
-			<dt>
-				<strong aria-hidden="true" className="no-select">
-					w.
-				</strong>
-				<span className="visually-hidden">Website</span>
-			</dt>
-			<dd>
-				<a href="https://sidvishnoi.com">sidvishnoi.com</a>
-			</dd>
-
-			<dt style="margin-top: 1em">
-				<IconGitHub />
-				<span className="visually-hidden">GitHub</span>
-			</dt>
-			<dd style="margin-top: 1em;">
-				<a href="https://www.github.com/sidvishnoi">github.com/sidvishnoi</a>
-			</dd>
-
-			<dt>
-				<IconLinkedIn />
-				<span className="visually-hidden">LinkedIn</span>
-			</dt>
-			<dd>
-				<a href="https://www.linkedin.com/in/sudhanshu-vishnoi/">
-					linkedin.com/in/sudhanshu-vishnoi
-				</a>
-			</dd>
-		</dl>
-	</section>
+		<div>
+			<IconLinkedIn />
+			<span className="visually-hidden">LinkedIn:</span>
+			<a href="https://www.linkedin.com/in/sudhanshu-vishnoi/">
+				linkedin.com/in/sudhanshu-vishnoi
+			</a>
+		</div>
+	</div>
 );
 
 interface ExperienceItemProps {
@@ -111,10 +97,12 @@ export const ExperienceItem = ({
 	children,
 }: ExperienceItemProps) => (
 	<article>
-		<h3>{title}</h3>
-		<time datetime={time}>
-			{duration[0]} – {duration[1]}
-		</time>
+		<header>
+			<h3>{title}</h3>
+			<time datetime={time}>
+				{duration[0]} – {duration[1]}
+			</time>
+		</header>
 		<p>{children}</p>
 	</article>
 );

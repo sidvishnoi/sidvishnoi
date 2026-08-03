@@ -14,23 +14,27 @@ import { Header, References, Education, Contact } from './_assets/resume';
 <BaseLayout
 	title="Sid Vishnoi — Resume"
 	meta={{
-		description: `Sudhanshu "Sid" Vishnoi is passionate about web development and building software. He loves to work with JavaScript and C++, with a growing curiosity towards Rust.`,
+		description: `Sudhanshu "Sid" Vishnoi is a senior full-stack engineer specializing in web platforms and W3C web standards, working primarily with JavaScript/TypeScript, with experience in C++, Python and Rust.`,
 	}}
 >
-	<Header />
+	<slot name="head">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+			rel="stylesheet"
+		/>
+	</slot>
+
+	<Header title="Senior Full-Stack Engineer">
+		Full-stack engineer with 8+ years building web platforms and contributing to
+		W3C web standards. Owns problems end-to-end, from specification to
+		production, primarily in JavaScript/TypeScript, with experience in C++ and
+		Rust.
+	</Header>
 
 	<main>
-		<div class="left">
-			<Experience />
-			<!-- <OpenSource /> -->
-			<!-- <Projects /> -->
-		</div>
-
-		<div class="right">
-			<Contact />
-			<Education />
-			<Skills />
-			<References />
-		</div>
+		<Experience />
+		<Education />
+		<Skills />
+		<References />
 	</main>
 </BaseLayout>
