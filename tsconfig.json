@@ -9,8 +9,10 @@
 		"noEmit": true,
 		"target": "ESNext",
 		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
+		"moduleResolution": "bundler",
 		"strict": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
 		"paths": {
 			"$components/*": ["./src/components/*"],
 			"$assets/*": ["./src/assets/*"],
@@ -18,5 +20,7 @@
 			"$layouts/*": ["./src/layouts/*"],
 			"$api/*": ["./src/pages/api/*"]
 		}
-	}
+	},
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["dist"]
 }
