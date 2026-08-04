@@ -1,30 +1,14 @@
 import type { ComponentChildren } from 'preact';
-import { IconEmail, IconGitHub, IconLinkedIn, IconPdf } from './icons';
+import { IconEmail, IconGitHub, IconLinkedIn } from './icons';
 
-export const Header = ({
-	title,
-	children,
-}: {
-	title: string;
-	children: ComponentChildren;
-}) => (
+export const Header = ({ title }: { title: string }) => (
 	<header className="header">
-		<h1>
-			<span>Sid</span> <span>Vishnoi</span>
-		</h1>
-		<p className="tagline">{title}</p>
-		<p class="summary">{children}</p>
-		<a
-			rel="alternate"
-			type="application/pdf"
-			href="/resume/sudhanshu-vishnoi-resume.pdf"
-			className="with-icon noprint"
-			title="Download Resume as PDF"
-		>
-			<IconPdf />
-			PDF version
-		</a>
-
+		<div>
+			<h1>
+				<span>Sid</span> <span>Vishnoi</span>
+			</h1>
+			<p className="tagline">{title}</p>
+		</div>
 		<Contact />
 	</header>
 );

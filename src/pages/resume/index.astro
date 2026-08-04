@@ -9,6 +9,7 @@ import Experience from './_assets/Experience.astro';
 // import Projects from './_assets/Projects.astro';
 import Skills from './_assets/Skills.astro';
 import { Header, References, Education } from './_assets/resume';
+import { IconPdf } from './_assets/icons';
 ---
 
 <BaseLayout
@@ -17,11 +18,22 @@ import { Header, References, Education } from './_assets/resume';
 		description: `Sudhanshu "Sid" Vishnoi is a senior full-stack engineer leading the Web Monetization browser extension and contributing to W3C web standards, working primarily in JavaScript/TypeScript, with experience in C++, Python, and Rust.`,
 	}}
 >
-	<Header title="Senior Full-Stack Engineer">
+	<Header title="Senior Full-Stack Engineer" />
+	<p class="summary">
 		Product-focused engineer, 7+ years shipping software. Leading Web
 		Monetization at Interledger Foundation. Focused on accessibility, UX, and
 		performance. Ships faster with AI, carefully.
-	</Header>
+		<a
+			rel="alternate"
+			type="application/pdf"
+			href="/resume/sudhanshu-vishnoi-resume.pdf"
+			class="with-icon noprint"
+			title="Download Resume as PDF"
+		>
+			<IconPdf />
+			PDF version
+		</a>
+	</p>
 
 	<main>
 		<Experience />

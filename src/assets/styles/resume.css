@@ -38,13 +38,11 @@ body {
 	width: 100%;
 	max-width: 21cm;
 	margin: 0 auto;
-	min-height: 29.7cm;
-	min-height: calc(29.7cm + 0.5cm);
 	display: flex;
 	flex-direction: column;
 	font-family: var(--font-family);
 	text-rendering: optimizeLegibility;
-	padding: 1.5rem;
+	padding: 2rem;
 }
 
 .icon {
@@ -109,11 +107,14 @@ li {
 
 .header {
 	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.6em;
 }
 
 .header h1,
 .header .tagline {
-	text-align: center;
 	line-height: 1.2;
 	text-transform: uppercase;
 }
@@ -123,18 +124,33 @@ li {
 }
 
 .header .tagline {
-	padding-top: 0;
-	margin: 0 0 0.6em;
 	font-weight: 400;
 	font-size: 1.2em;
 }
 
-.header .summary {
-	margin: 0 0 0.5em;
-	line-height: 1.5;
+.contact {
+	font-size: 0.85em;
+}
+.contact {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1em;
+	align-items: end;
+}
+.contact div {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+}
+.contact svg {
+	width: 12px;
 }
 
-.header a[rel='alternate'] {
+.summary {
+	line-height: 1.4;
+}
+
+a[rel='alternate'] {
 	position: absolute;
 	top: 1em;
 	right: 1em;
@@ -142,7 +158,7 @@ li {
 }
 
 h2 {
-	margin: 0.5em 0;
+	margin: 0.5em 0 0.25em;
 	font-size: 1.3rem;
 	line-height: 1.4;
 	text-transform: uppercase;
@@ -195,7 +211,7 @@ article + article {
 
 .skills li ul,
 .skills li ul li {
-	display: inline-block;
+	display: inline;
 	list-style: none;
 	margin: 0;
 }
@@ -211,20 +227,6 @@ article + article {
 .projects article header a::after {
 	color: initial;
 	content: ')';
-}
-
-.contact {
-	font-size: 0.9em;
-}
-.contact {
-	display: flex;
-	justify-content: space-between;
-	gap: 0.1em 0.5em;
-}
-.contact div {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.4em;
 }
 
 @media only print {
@@ -252,6 +254,12 @@ article + article {
 	body {
 		width: 100%;
 		height: 100%;
+		padding: 1rem;
+	}
+	.header {
+		flex-direction: column;
+		align-items: start;
+		gap: 0.5em;
 	}
 	.header h1 {
 		margin-top: 0.5em;
@@ -260,22 +268,20 @@ article + article {
 	.header .tagline {
 		font-size: 1em;
 	}
-	.header .summary {
+	.summary {
 		font-size: 0.9em;
 	}
 	.experience article header {
 		display: block;
 	}
-	.education {
-		flex-direction: column;
+	.education article + article {
+		margin-top: 0.5em;
+	}
+	.education article {
+		display: block;
 	}
 	.education > div:nth-child(n + 1) {
 		padding: 0.4em 0;
-	}
-	.header a[rel='alternate'] {
-		font-size: 12px;
-		top: 0.5rem;
-		right: 0.5rem;
 	}
 	.contact {
 		flex-direction: column;
