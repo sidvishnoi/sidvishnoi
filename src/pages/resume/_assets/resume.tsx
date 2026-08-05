@@ -49,7 +49,7 @@ export const Contact = () => (
 		<div>
 			<IconEmail />
 			<span className="visually-hidden">Email:</span>
-			<a href="mailto:hire@sidvishnoi.com">hire@sidvishnoi.com</a>
+			<a href="mailto:sid@sidvishnoi.com">sid@sidvishnoi.com</a>
 		</div>
 
 		<div>

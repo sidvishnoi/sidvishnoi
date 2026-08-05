@@ -42,7 +42,7 @@ body {
 	flex-direction: column;
 	font-family: var(--font-family);
 	text-rendering: optimizeLegibility;
-	padding: 2rem;
+	padding: 2.5rem;
 }
 
 .icon {
