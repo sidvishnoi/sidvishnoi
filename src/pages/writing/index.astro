@@ -2,8 +2,9 @@
 import { getCollection } from 'astro:content';
 
 import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/PageHeader.astro';
-import Heading from '$components/Heading.astro';
+import Header from '$components/NavHeader.astro';
+import PageTitle from '$components/PageTitle.astro';
+import '$assets/styles/listing.css';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
 const allPosts = await Promise.all([
@@ -18,9 +19,9 @@ const articles = allPosts
 
 <HomeLayout title="Sid Vishnoi's articles & notes">
 	<Header />
-	<Heading tag="h2">Articles & Notes</Heading>
+	<PageTitle>Articles & Notes</PageTitle>
 
-	<div id="main" class="blog">
+	<div id="main" class="items">
 		<ul>
 			{
 				articles.map((entry) => (
@@ -74,103 +75,37 @@ const articles = allPosts
 </HomeLayout>
 
 <style is:global>
-	main * {
-		margin: 0;
-		padding: 0;
-	}
-
-	main {
-		margin: 0 auto;
-		padding: 0 1em 1em;
-		font-size: clamp(1em, 18px + 0.24vw, 2.125em);
-	}
-
-	.blog {
-		padding-bottom: 4em;
-	}
-
-	.blog ul {
+	.items ul {
 		list-style: none;
 		margin: 0;
 		margin: 0 auto;
 		max-width: 80ch;
 	}
 
-	.blog li {
+	.items li {
 		padding: 1em;
 		margin: 0;
 		position: relative;
 	}
 
-	.blog li + li {
+	.items li + li {
 		margin-top: 0.5em;
 	}
 
-	.blog li a::after {
+	.items li a::after {
 		content: '';
 		position: absolute;
 		inset: 0;
 	}
 
-	.blog p {
-		max-width: 80ch;
-		padding: 0 0.5em;
-		margin-top: 0.25em;
-	}
-
-	.blog .meta {
-		font-size: smaller;
-		text-align: right;
-	}
-	.blog .meta p {
+	.items .meta p {
 		font-size: smaller;
 		margin-left: 0;
 		max-width: 100%;
 		color: var(--color-alt);
 	}
 
-	.blog h3 {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-		font-size: 1.2em;
-		line-height: 1.1;
-	}
-
-	.blog h3:after {
-		content: '';
-		display: block;
-		flex: 1;
-		height: 1em;
-		background: transparent;
-	}
-
-	.blog:not(:focus-within) li:hover h3:after,
-	.blog li:focus-within h3:after {
-		background: var(--color-dark);
-	}
-
-	.blog:hover li:hover,
-	.blog li:focus-within {
-		background: var(--color-light);
-	}
-
-	.blog h3 a {
-		color: var(--color);
-		background: transparent;
-		padding: 0.2em 0.5em;
-		text-decoration: none;
-	}
-
-	.blog:not(:focus-within) li:hover h3 a,
-	.blog h3 a:focus {
-		color: var(--background);
-		background: var(--color);
-		outline: none;
-	}
-
-	.blog li::before {
+	.items li::before {
 		position: absolute;
 		left: 3.5em;
 		top: 0em;
@@ -181,13 +116,13 @@ const articles = allPosts
 		padding: 0.2rem;
 	}
 
-	.blog li.notes::before {
+	.items li.notes::before {
 		content: 'NOTE';
 		background-color: var(--color-a);
 		color: #111;
 	}
 
-	.blog li.articles::before {
+	.items li.articles::before {
 		content: 'ARTICLE';
 		background-color: var(--color-b);
 		color: #fff;
@@ -204,28 +139,15 @@ const articles = allPosts
 	}
 
 	@media (max-width: 640px) {
-		main {
-			padding: 0 0.25em 1em;
-		}
-		main > header,
-		main > .heading {
-			padding-inline: 0.5em;
-		}
-		.blog {
-			padding: 0;
-		}
-		.blog li {
+		.items li {
 			text-align: left;
 			padding: 1em 0;
 		}
-		.blog li::before {
+		.items li::before {
 			left: 1.5em;
 		}
-		.blog li:last-of-type {
+		.items li:last-of-type {
 			padding-bottom: 1em;
-		}
-		.blog p {
-			width: 100%;
 		}
 	}
 </style>

@@ -1,3 +1,7 @@
+---
+modified: 2026-05-03
+---
+
 # About
 
 I'm Sid, a web-focused product engineer, who cares about user experience, accessibility, and performance.

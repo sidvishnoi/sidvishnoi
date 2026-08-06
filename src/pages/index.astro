@@ -1,6 +1,7 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
 import LogoLarge from '$components/LogoLarge.astro';
+import HeaderLinks from '$components/HeaderLinks.astro';
 ---
 
 <HomeLayout
@@ -15,26 +16,16 @@ import LogoLarge from '$components/LogoLarge.astro';
 
 	<header class="header">
 		<LogoLarge />
-		<p class="tagline">
-			Product engineer. 7+ years shipping software.<br />
-			Focused on accessibility, UX, and performance.<br />
-			Leading Web Monetization at Interledger Foundation.
-		</p>
-
-		<nav class="links">
-			<a href="/about/">About</a>
-			<a href="/writing/">Writing</a>
-			<a href="/resume/">Resume</a>
-		</nav>
 	</header>
+	<p class="summary">
+		Product engineer. 7+ years shipping software.<br />
+		Focused on accessibility, UX, and performance.<br />
+		Leading Web Monetization at Interledger Foundation.
+	</p>
+	<HeaderLinks />
 </HomeLayout>
 
 <style>
-	:global(main *) {
-		margin: 0;
-		padding: 0;
-	}
-
 	:global(body) {
 		display: flex;
 		flex-direction: column;
@@ -45,61 +36,20 @@ import LogoLarge from '$components/LogoLarge.astro';
 		flex: 1;
 	}
 
-	:global(.header h1) {
-		font-size: clamp(2rem, 1.27rem + 0.23vw, 4rem);
-	}
-
 	.header {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1.75rem;
 		text-align: center;
 		line-height: 1.2;
-		padding: 10vmin 1.5rem;
-		max-width: 38rem;
-		margin: 0 auto;
+		padding: 10vmin 1.5rem 0;
 	}
 
-	.tagline {
+	.summary {
 		font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.4rem);
 		font-weight: normal;
 		line-height: 1.5;
 		color: var(--color-alt);
-		margin: 0;
-	}
-
-	.links {
-		display: flex;
-		gap: 2rem;
-		font-size: 1.25rem;
-	}
-
-	.links a {
-		color: var(--color);
-		text-decoration: underline var(--color-link);
-		text-underline-offset: 0.25em;
-	}
-
-	.links a:hover,
-	.links a:focus {
-		text-decoration-thickness: 2px;
-	}
-
-	:global(.footer .social a) {
-		border: none !important;
-		background: transparent !important;
-		padding: 0.25em !important;
-	}
-
-	:global(.footer .social a svg) {
-		width: 18px !important;
-		height: 18px !important;
-		fill: var(--color-alt) !important;
-	}
-
-	:global(.footer .social a:hover svg),
-	:global(.footer .social a:focus svg) {
-		fill: var(--color) !important;
+		text-align: center;
+		max-width: 38rem;
+		margin: 1.75rem auto 0;
+		padding: 0 1.5rem;
 	}
 </style>

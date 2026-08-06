@@ -1,0 +1,94 @@
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
+	padding: 0 1em 1em;
+	font-size: clamp(1em, 18px + 0.24vw, 2.125em);
+}
+
+main > .page-title {
+	margin-bottom: 2rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #ddd;
+}
+
+.items * {
+	margin: 0;
+	padding: 0;
+}
+
+.items {
+	padding-bottom: 4em;
+}
+
+@media (min-width: 641px) {
+	.items {
+		margin-inline: -1em;
+	}
+}
+
+.items p {
+	max-width: 80ch;
+	padding: 0 0.5em;
+	margin-top: 0.25em;
+}
+
+.items .meta {
+	font-size: smaller;
+	text-align: right;
+}
+
+.items h3 {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	font-size: 1.2em;
+	line-height: 1.1;
+}
+
+.items h3:after {
+	content: '';
+	display: block;
+	flex: 1;
+	height: 1em;
+	background: transparent;
+}
+
+.items:not(:focus-within) li:hover h3:after,
+.items li:focus-within h3:after {
+	background: var(--color-dark);
+}
+
+.items:hover li:hover,
+.items li:focus-within {
+	background: var(--color-light);
+}
+
+.items h3 a {
+	color: var(--color);
+	background: transparent;
+	padding: 0.2em 0.5em;
+	text-decoration: none;
+}
+
+.items:not(:focus-within) li:hover h3 a,
+.items h3 a:focus {
+	color: var(--background);
+	background: var(--color);
+	outline: none;
+}
+
+@media (max-width: 640px) {
+	.items {
+		padding: 0;
+		margin-inline: -0.75em;
+	}
+	.items p {
+		width: 100%;
+	}
+}

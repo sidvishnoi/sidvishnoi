@@ -1,0 +1,26 @@
+<nav class="links">
+	<a href="/about/">About</a>
+	<a href="/writing/">Writing</a>
+	<a href="/resume/">Resume</a>
+</nav>
+
+<style>
+	.links {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		font-size: 1.25rem;
+		margin: 1.75rem 1.5rem 10vmin;
+	}
+
+	.links a {
+		color: var(--color);
+		text-decoration: underline var(--color-link);
+		text-underline-offset: 0.25em;
+	}
+
+	.links a:hover,
+	.links a:focus {
+		text-decoration-thickness: 2px;
+	}
+</style>

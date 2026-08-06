@@ -1,8 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/PageHeader.astro';
-import Heading from '$components/Heading.astro';
+import Header from '$components/NavHeader.astro';
+import PageTitle from '$components/PageTitle.astro';
+import '$assets/styles/listing.css';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
 export async function getStaticPaths() {
@@ -24,9 +25,10 @@ const { notes: posts } = Astro.props;
 
 <HomeLayout title={`#${tag} | Sid Vishnoi's notes`}>
 	<Header />
-	<Heading tag="h2">
-		<span>Notes with tag <span>#{tag}</span></span>
-	</Heading>
+	<PageTitle>
+		<a href="/notes/">Notes</a> / <a href="/notes/tags/">Tags</a> /
+		<span>#{tag}</span>
+	</PageTitle>
 
 	<ul>
 		{
@@ -43,8 +45,8 @@ const { notes: posts } = Astro.props;
 </HomeLayout>
 
 <style>
-	span span {
+	span {
 		display: inline-block;
-		color: var(--color-dark);
+		color: var(--color-alt);
 	}
 </style>

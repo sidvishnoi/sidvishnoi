@@ -9,13 +9,11 @@
 		SFMono-Regular, 'Cascadia Mono', 'JetBrains Mono NL', 'Dank Mono',
 		'Operator Mono Book', 'Iosevka Fixed', 'Source Code Pro', 'SF Mono',
 		'Liberation Mono', Menlo, Monaco, Consolas, 'Courier New', cursive;
-	--border-thickness: 10px;
 	--color-a: hsl(44, 86%, 52%);
 	--color-a-alt: hsl(44, 86%, 42%);
 	--color-b: hsl(325, 62%, 56%);
 	--color-b-alt: hsl(325, 62%, 46%);
 	--color-c: hsl(140, 72%, 41%);
-	--color-c-alt: hsl(140, 72%, 31%);
 	--color-d: hsl(201, 90%, 43%);
 	--color-d-alt: hsl(201, 90%, 31%);
 
@@ -47,7 +45,6 @@ body {
 	font-size: clamp(1.25rem, 0.793rem + 1.296vw, 1.6rem);
 	line-height: 1.4;
 	position: relative;
-	padding: var(--thickness);
 	background: var(--background);
 	color: var(--color);
 	font-family: var(--font-family);
@@ -120,52 +117,4 @@ a {
 	right: 2px;
 	top: 2px;
 	box-shadow: -8px -7px 0px 0px var(--bg-color-alt);
-}
-nav.primary {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 1rem;
-	justify-content: center;
-}
-nav.primary a {
-	margin: 0 0.8rem;
-}
-nav.primary a:first-child {
-	margin-left: 0;
-}
-nav.primary a:last-child {
-	margin-right: 0;
-}
-nav.primary a:nth-child(1) {
-	--bg-color: var(--color-b);
-	--bg-color-alt: var(--color-b-alt);
-}
-nav.primary a:nth-child(2) {
-	--bg-color: var(--color-a);
-	--bg-color-alt: var(--color-a-alt);
-}
-nav.primary a:nth-child(3) {
-	--bg-color: var(--color-c);
-	--bg-color-alt: var(--color-c-alt);
-}
-@media (max-width: 640px) {
-	nav.primary a {
-		padding: 0.4rem;
-	}
-}
-
-@media (max-width: 28em) {
-	header section {
-		padding-right: 0;
-	}
-}
-
-fieldset {
-	border: none;
-}
-
-@media (prefers-color-scheme: dark) {
-	nav.primary a {
-		filter: saturate(85%);
-	}
 }

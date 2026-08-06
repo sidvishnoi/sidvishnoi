@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import HomeLayout from '$layouts/HomeLayout.astro';
 import Header from '$components/NavHeader.astro';
+import PageTitle from '$components/PageTitle.astro';
 import '$assets/styles/style.css';
 import '$assets/styles/article.css';
 import '$assets/styles/shiki.css';
@@ -38,13 +39,13 @@ const formatDate = (date: Date) =>
 
 	<article id="main" class="h-entry">
 		<header>
-			<h1>
+			<PageTitle>
 				<a
 					href={Astro.url.pathname}
 					class="p-name u-url"
 					set:html={mdBackticksToHTML(title)}
 				/>
-			</h1>
+			</PageTitle>
 
 			<div class="meta">
 				<p>

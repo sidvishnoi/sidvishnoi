@@ -1,10 +1,14 @@
 ---
 import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/PageHeader.astro';
-import Heading from '$components/Heading.astro';
+import Header from '$components/NavHeader.astro';
+import PageTitle from '$components/PageTitle.astro';
 import '$assets/styles/article.css';
 
 import { Content, frontmatter } from './_about.md';
+
+const formatDate = (date: Date) =>
+	date.toLocaleDateString('en', { dateStyle: 'medium' });
+const modified = new Date(frontmatter.modified);
 ---
 
 <HomeLayout
@@ -22,7 +26,17 @@ import { Content, frontmatter } from './_about.md';
 
 	<Header />
 	<article>
-		<Heading tag="h2">{frontmatter.heading}</Heading>
+		<header>
+			<PageTitle>{frontmatter.heading || 'About'}</PageTitle>
+			<div class="meta">
+				<p>
+					Last modified{' '}
+					<time datetime={modified.toISOString()}>
+						{formatDate(modified)}
+					</time>
+				</p>
+			</div>
+		</header>
 		<Content />
 	</article>
 </HomeLayout>

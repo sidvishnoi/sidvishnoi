@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { noBorder = false } = Astro.props;
+const isAbout = Astro.url.pathname.startsWith('/about');
 ---
 
 <nav class:list={noBorder ? '' : 'border'}>
@@ -16,7 +17,9 @@ const { noBorder = false } = Astro.props;
 				<span>Sid Vishnoi</span>
 			</a>
 		</li>
-		<li><a href="/about/">About</a></li>
+		<li>
+			{isAbout ? <a href="/resume/">Resume</a> : <a href="/about/">About</a>}
+		</li>
 		<li><a href="/writing/">Writing</a></li>
 	</ul>
 </nav>
