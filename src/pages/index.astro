@@ -6,7 +6,7 @@ import LogoLarge from '$components/LogoLarge.astro';
 <HomeLayout
 	title="Sid Vishnoi"
 	meta={{
-		description: `Software engineer and full-stack web developer with a knack for front-end development`,
+		description: `Full-stack engineer, focused on accessibility, UX, and performance, with 7+ years experience.`,
 	}}
 >
 	<Fragment slot="head">
@@ -15,12 +15,16 @@ import LogoLarge from '$components/LogoLarge.astro';
 
 	<header class="header">
 		<LogoLarge />
-		<p class="subtitle">I like web development and building software.</p>
+		<p class="tagline">
+			Product engineer. 7+ years shipping software.<br />
+			Focused on accessibility, UX, and performance.<br />
+			Leading Web Monetization at Interledger Foundation.
+		</p>
 
-		<nav class:list={['primary']}>
-			<a href="/about/" class="button">About</a>
-			<a href="/writing/" class="button">Writing</a>
-			<a href="/resume/" class="button">Resume</a>
+		<nav class="links">
+			<a href="/about/">About</a>
+			<a href="/writing/">Writing</a>
+			<a href="/resume/">Resume</a>
 		</nav>
 	</header>
 </HomeLayout>
@@ -31,16 +35,71 @@ import LogoLarge from '$components/LogoLarge.astro';
 		padding: 0;
 	}
 
-	.header {
-		text-align: center;
-		line-height: 1.2;
-		padding: 8vmin 1vmin;
-		max-width: 0 auto;
+	:global(body) {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
 	}
 
-	.subtitle {
-		font-size: clamp(1.2rem, 0.815rem + 2.407vw, 2.5rem);
+	:global(main) {
+		flex: 1;
+	}
+
+	:global(.header h1) {
+		font-size: clamp(2rem, 1.27rem + 0.23vw, 4rem);
+	}
+
+	.header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.75rem;
+		text-align: center;
+		line-height: 1.2;
+		padding: 10vmin 1.5rem;
+		max-width: 38rem;
+		margin: 0 auto;
+	}
+
+	.tagline {
+		font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.4rem);
 		font-weight: normal;
+		line-height: 1.5;
+		color: var(--color-alt);
 		margin: 0;
+	}
+
+	.links {
+		display: flex;
+		gap: 2rem;
+		font-size: 1.25rem;
+	}
+
+	.links a {
+		color: var(--color);
+		text-decoration: underline var(--color-link);
+		text-underline-offset: 0.25em;
+	}
+
+	.links a:hover,
+	.links a:focus {
+		text-decoration-thickness: 2px;
+	}
+
+	:global(.footer .social a) {
+		border: none !important;
+		background: transparent !important;
+		padding: 0.25em !important;
+	}
+
+	:global(.footer .social a svg) {
+		width: 18px !important;
+		height: 18px !important;
+		fill: var(--color-alt) !important;
+	}
+
+	:global(.footer .social a:hover svg),
+	:global(.footer .social a:focus svg) {
+		fill: var(--color) !important;
 	}
 </style>
