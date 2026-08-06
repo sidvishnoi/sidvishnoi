@@ -1,0 +1,168 @@
+---
+import Heading from '$components/Heading.astro';
+---
+
+<section class="container-main projects premium-content" id="main">
+	<Heading tag="h2" id="projects">Projects</Heading>
+
+	<ul>
+		<li>
+			<h3>
+				<a href="https://community.interledger.org/sid">Web Monetization</a>
+			</h3>
+			<p>
+				Exploring how Web Monetization can be integrated into the Web Platform
+				by creating a reference implementation in Firefox.
+			</p>
+		</li>
+		<li>
+			<h3><a href="https://github.com/w3c/respec/">ReSpec</a></h3>
+			<p>
+				Tool for creating technical documents and web standards, extensively
+				used at W3C.
+			</p>
+		</li>
+		<li>
+			<h3><a href="https://github.com/w3c/spec-prod/">spec-prod</a></h3>
+			<p>
+				GitHub Action to automate validation and publishing of W3C
+				specifications.
+			</p>
+		</li>
+		<li>
+			<h3>
+				<a href="https://github.com/sidvishnoi/brotli-cli">Brotli CLI</a>
+			</h3>
+			<p>Lightweight CLI to quickly compress files with Brotli.</p>
+		</li>
+		<li>
+			<h3>
+				<a href="https://r.sidvishnoi.com/socket-chat">Socket Chat</a>
+			</h3>
+			<p>
+				A Chat Application using Unix network sockets featuring user
+				authentication, multiple chatrooms and private messaging &amp;
+				<abbr title="Terminal User Interface">TUI</abbr> (inspired by IRC).
+			</p>
+		</li>
+		<li>
+			<h3>
+				<a href="https://github.com/sidvishnoi/esm-to-cjs">esm-to-cjs</a>
+			</h3>
+			<p>
+				Transform ESM to Common JS for present Node.js, without any junk
+				wrappers or useless renaming.
+			</p>
+		</li>
+		<li>
+			<h3><a href="https://github.com/sidvishnoi/birk">Birk</a></h3>
+			<p>
+				Fast dependency-free HTML template engine with syntax similar to Ruby's
+				Liquid, written in JavaScript.
+			</p>
+		</li>
+		<li>
+			<h3><a href="https://r.sidvishnoi.com/bleu">Bleu</a></h3>
+			<p>
+				Fully featured and extensible smart static website generator. With Bleu,
+				every build is incremental build.
+			</p>
+		</li>
+		<li>
+			<h3>
+				<a href="https://r.sidvishnoi.com/fb-dev-interest"
+					>Merge Facebook Dev Circles by Interests</a
+				>
+			</h3>
+			<p>
+				Chrome extension that filters through Facebook Dev Circles around the
+				world to get only the interesting posts in your feed.
+			</p>
+		</li>
+	</ul>
+</section>
+
+<style>
+	.projects {
+		margin: 0 auto;
+		padding: 1em;
+	}
+
+	.projects ul {
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+	}
+
+	.projects li {
+		text-align: right;
+		padding: 1em;
+	}
+
+	.projects p {
+		max-width: 80ch;
+		margin-left: auto;
+		padding: 0 0.5em;
+	}
+
+	.projects h3 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		font-size: 1.2em;
+		line-height: 1.1;
+	}
+
+	.projects h3:before {
+		content: '';
+		display: block;
+		flex: 1;
+		height: 1em;
+		background: transparent;
+	}
+
+	.projects:not(:focus-within) li:hover h3:before,
+	.projects li:focus-within h3:before {
+		background: var(--color-dark);
+	}
+
+	.projects:hover li:hover,
+	.projects li:focus-within {
+		background: var(--color-light);
+	}
+
+	.projects h3 a {
+		text-transform: uppercase;
+		color: var(--color);
+		background: transparent;
+		padding: 0.2em 0.5em;
+		text-decoration: none;
+	}
+
+	.projects:not(:focus-within) li:hover h3 a,
+	.projects h3 a:focus {
+		color: var(--background);
+		background: var(--color);
+		outline: none;
+	}
+
+	@media (max-width: 640px) {
+		.projects {
+			padding: 0;
+		}
+		.projects li {
+			text-align: left;
+			padding: 1em 0;
+		}
+		.projects li:last-of-type {
+			padding-bottom: 1em;
+		}
+		.projects p {
+			width: 100%;
+		}
+		.projects h3:before {
+			order: 2;
+		}
+	}
+</style>
