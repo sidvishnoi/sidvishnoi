@@ -40,6 +40,10 @@
 	box-sizing: border-box;
 }
 
+html {
+	scrollbar-gutter: stable;
+}
+
 body {
 	margin: 0;
 	font-size: clamp(1.25rem, 0.793rem + 1.296vw, 1.6rem);

@@ -5,9 +5,10 @@ body {
 }
 
 main {
-  max-width: 65ch;
-	margin: 0 auto;
 	flex: 1;
+	width: 100%;
+	max-width: 58rem;
+	margin-inline: auto;
 	padding: 0 1em 1em;
 	font-size: clamp(1em, 18px + 0.24vw, 2.125em);
 }
@@ -34,7 +35,6 @@ main > .page-title {
 }
 
 .items p {
-	max-width: 80ch;
 	padding: 0 0.5em;
 	margin-top: 0.25em;
 }
