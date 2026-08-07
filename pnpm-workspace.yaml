@@ -1,6 +1,5 @@
 allowBuilds:
   esbuild: true
   sharp: true
-
 patchedDependencies:
-  '@astrojs/markdown-remark': patches/@astrojs__markdown-remark.patch
+  '@astrojs/internal-helpers@0.10.2': patches/@astrojs__internal-helpers@0.10.2.patch

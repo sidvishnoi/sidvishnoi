@@ -1,4 +1,5 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import remarkBreaks from 'remark-breaks';
 import sitemap from '@astrojs/sitemap';
 import preact from '@astrojs/preact';
@@ -21,12 +22,13 @@ export default defineConfig({
 	},
 	trailingSlash: 'always',
 	markdown: {
+		processor: unified({
+			remarkPlugins: [remarkBreaks, remarkHeading],
+		}),
 		syntaxHighlight: 'shiki',
 		shikiConfig: {
 			theme,
 			langs: [langWebidl],
 		},
-		remarkPlugins: [remarkBreaks, remarkHeading],
-		rehypePlugins: [],
 	},
 });
