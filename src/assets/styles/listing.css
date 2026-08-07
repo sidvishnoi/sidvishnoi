@@ -5,6 +5,8 @@ body {
 }
 
 main {
+  max-width: 65ch;
+	margin: 0 auto;
 	flex: 1;
 	padding: 0 1em 1em;
 	font-size: clamp(1em, 18px + 0.24vw, 2.125em);
@@ -27,7 +29,7 @@ main > .page-title {
 
 @media (min-width: 641px) {
 	.items {
-		margin-inline: -1em;
+		margin-inline: -1.5em;
 	}
 }
 
