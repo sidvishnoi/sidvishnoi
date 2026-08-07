@@ -5,7 +5,7 @@ export const Header = ({ title }: { title: string }) => (
 	<header className="header">
 		<div>
 			<h1>
-				<span>Sid</span> <span>Vishnoi</span>
+				<a href="https://sidvishnoi.com">Sid Vishnoi</a>
 			</h1>
 			<p className="tagline">{title}</p>
 		</div>
