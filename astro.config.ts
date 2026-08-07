@@ -1,11 +1,11 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
-import { unified } from '@astrojs/markdown-remark';
-import remarkBreaks from 'remark-breaks';
+import { satteri } from '@astrojs/markdown-satteri';
 import sitemap from '@astrojs/sitemap';
 import preact from '@astrojs/preact';
 import theme from './.config/syntax-highlight/shiki-theme.ts';
 import langWebidl from './.config/syntax-highlight/lang-webidl.ts';
-import { remarkHeading } from './.config/markdown/remark-heading.ts';
+import { satteriBreaks } from './.config/markdown/satteri-breaks.ts';
+import { satteriStripH1 } from './.config/markdown/satteri-strip-h1.ts';
 
 export default defineConfig({
 	site: 'https://sidvishnoi.com',
@@ -22,8 +22,8 @@ export default defineConfig({
 	},
 	trailingSlash: 'always',
 	markdown: {
-		processor: unified({
-			remarkPlugins: [remarkBreaks, remarkHeading],
+		processor: satteri({
+			mdastPlugins: [satteriBreaks, satteriStripH1],
 		}),
 		syntaxHighlight: 'shiki',
 		shikiConfig: {

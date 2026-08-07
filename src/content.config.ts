@@ -7,7 +7,7 @@ const articles = defineCollection({
 	schema: z.object({
 		/** For `<title>`, `getCollection()` */
 		title: z.string(),
-		/** Extracted from markdown h1 by using `patches/@astrojs__markdown-remark.patch` */
+		/** Extracted from markdown h1 by using `patches/@astrojs__internal-helpers.patch` */
 		heading: z.string(),
 		date: z.date(),
 		modified: z.date().optional(),
@@ -44,7 +44,7 @@ const notes = defineCollection({
 				.transform((tags) => tags.map((tag) => tag.replace(/^#/, ''))),
 			date: z.date(),
 			modified: z.date().optional(),
-			/** Extracted from markdown h1 by using `patches/@astrojs__markdown-remark.patch` */
+			/** Extracted from markdown h1 by using `patches/@astrojs__internal-helpers.patch` */
 			heading: z.string(),
 		})
 		.transform((data) => {
