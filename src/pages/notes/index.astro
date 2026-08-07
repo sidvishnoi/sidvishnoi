@@ -21,7 +21,7 @@ const notes = baseNotes
 		<ul>
 			{
 				notes.map((note) => (
-					<li>
+					<li class="item">
 						<article>
 							<h3>
 								<a
@@ -60,55 +60,8 @@ const notes = baseNotes
 	</div>
 </HomeLayout>
 
-<style is:global>
-	.items ul {
-		list-style: none;
-		margin: 0;
-	}
-
-	.items > ul > li {
-		padding: 1em;
-		position: relative;
-	}
-
-	.items > ul > li + li {
-		margin-top: 0.5em;
-	}
-
+<style>
 	.items .meta > * {
 		display: inline-block;
-	}
-
-	.items .meta p {
-		font-size: smaller;
-		margin-left: 0;
-		width: auto;
-		color: var(--color-alt);
-	}
-
-	.items .meta .tags {
-		margin: 0;
-		padding: 0;
-		display: inline;
-		list-style: none;
-		font-size: smaller;
-	}
-	.items .meta .tags li {
-		display: inline;
-	}
-	.items .meta .tags a {
-		color: var(--color-alt);
-		text-decoration: none;
-		font-style: italic;
-	}
-
-	@media (max-width: 640px) {
-		.items > ul > li {
-			text-align: left;
-			padding: 1em 0;
-		}
-		.items > ul > li:last-of-type {
-			padding-bottom: 1em;
-		}
 	}
 </style>

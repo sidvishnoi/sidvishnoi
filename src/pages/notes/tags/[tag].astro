@@ -27,25 +27,46 @@ const { notes: posts } = Astro.props;
 	<Header />
 	<PageTitle>
 		<a href="/notes/">Notes</a> / <a href="/notes/tags/">Tags</a> /
-		<span>#{tag}</span>
+		<span class="tag-name">#{tag}</span>
 	</PageTitle>
 
-	<ul>
-		{
-			posts.map((post) => (
-				<li>
-					<a
-						href={`/notes/${post.id}/`}
-						set:html={mdBackticksToHTML(post.data.heading)}
-					/>
-				</li>
-			))
-		}
-	</ul>
+	<div class="items">
+		<ul>
+			{
+				posts
+					.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+					.map((post) => (
+						<li class="item">
+							<article>
+								<h3>
+									<a
+										href={`/notes/${post.id}/`}
+										set:html={mdBackticksToHTML(post.data.heading)}
+									/>
+								</h3>
+
+								<p>{post.data.description}</p>
+
+								<div class="meta">
+									<p>
+										<span class="sr-only">Published </span>
+										<time datetime={post.data.date.toISOString()}>
+											{post.data.date.toLocaleDateString('en', {
+												dateStyle: 'medium',
+											})}
+										</time>
+									</p>
+								</div>
+							</article>
+						</li>
+					))
+			}
+		</ul>
+	</div>
 </HomeLayout>
 
 <style>
-	span {
+	.tag-name {
 		display: inline-block;
 		color: var(--color-alt);
 	}

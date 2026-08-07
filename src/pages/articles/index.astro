@@ -20,7 +20,7 @@ const articles = (await getCollection('articles')).sort(
 		<ul>
 			{
 				articles.map((entry) => (
-					<li>
+					<li class="item">
 						<article>
 							<h3>
 								<a
@@ -48,42 +48,3 @@ const articles = (await getCollection('articles')).sort(
 		</ul>
 	</div>
 </HomeLayout>
-
-<style is:global>
-	.items ul {
-		list-style: none;
-		margin: 0;
-	}
-
-	.items li {
-		padding: 1em;
-		position: relative;
-	}
-
-	.items li + li {
-		margin-top: 0.5em;
-	}
-
-	.items li a::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-	}
-
-	.items .meta p {
-		font-size: smaller;
-		margin-left: 0;
-		max-width: 100%;
-		color: var(--color-alt);
-	}
-
-	@media (max-width: 640px) {
-		.items li {
-			text-align: left;
-			padding: 1em 0;
-		}
-		.items li:last-of-type {
-			padding-bottom: 1em;
-		}
-	}
-</style>

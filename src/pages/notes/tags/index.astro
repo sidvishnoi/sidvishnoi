@@ -46,22 +46,23 @@ const tags = Object.keys(tagCounts).sort();
 		justify-content: center;
 		gap: 1.5rem;
 		padding: 2rem;
-		border: 1px solid #eee;
-		border-radius: 12px;
+		border: 1px solid var(--color-alt);
 	}
 
 	.tag-item {
-		text-decoration: none;
-		color: #333;
+		color: var(--color);
+		text-decoration: underline var(--color-link);
+		text-underline-offset: 0.2em;
 		transition: color 0.2s ease;
 	}
 
-	.tag-item:hover {
-		color: #4f46e5; /* A nice indigo */
+	.tag-item:hover,
+	.tag-item:focus {
+		color: var(--color-link);
 	}
 
 	.count {
-		font-size: 0.8rem;
+		font-size: 0.6em;
 		vertical-align: super;
 		opacity: 0.6;
 		margin-left: 0.2rem;
