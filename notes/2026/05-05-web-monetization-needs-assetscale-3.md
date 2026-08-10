@@ -14,7 +14,7 @@ At a rate of $0.60/hour, a user has to stay on a page for a full 60 seconds to p
 
 By supporting `assetScale` 3 (or higher), we can move $0.001 every six seconds at the same $0.60/hour rate. This shift in resolution is what makes the payment feel like a continuous stream. It allows a website to respond to a user's presence in near real-time.
 
-In many emerging markets, $0.01 actually buys something. We can't build a global micro-economy if the smallest building block is too expensive. Even in a [USD context](/notes/web-monetization-currency-dictates-rate-of-pay/), a $5 monthly budget is exhausted after just 500 page views if each hit costs a cent. We want more money to be sent to pages where we actually spend time.
+In many emerging markets, $0.01 actually buys something. We can't build a global micro-economy if the smallest building block is too expensive. Even in a [USD context](./05-06-web-monetization-currency-dictates-rate-of-pay.md), a $5 monthly budget is exhausted after just 500 page views if each hit costs a cent. We want more money to be sent to pages where we actually spend time.
 
 If we want to monetize a short blog post, a news story, or a few seconds of a song, we have to get comfortable with sub-cent math.
 

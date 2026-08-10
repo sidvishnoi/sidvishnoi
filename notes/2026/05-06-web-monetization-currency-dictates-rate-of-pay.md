@@ -19,7 +19,7 @@ In the MXN scenario, the publisher gets monetization events 16 times more freque
 
 We shouldn't have to switch to a different currency to get a higher _frame rate_ for our payments. The streaming logic should be independent of the unit.
 
-Under the current `assetScale=2` limitation, a smooth payment stream experience is an accidental byproduct of having a _weaker_ currency. This reinforces why a [higher `assetScale` of 3 or 4 is a must](/notes/web-monetization-needs-assetscale-3/) - it decouples (somewhat) the frequency of the payment from the value of the currency's base unit.
+Under the current `assetScale=2` limitation, a smooth payment stream experience is an accidental byproduct of having a _weaker_ currency. This reinforces why a [higher `assetScale` of 3 or 4 is a must](./05-05-web-monetization-needs-assetscale-3.md) - it decouples (somewhat) the frequency of the payment from the value of the currency's base unit.
 
 [^1]: This is where that 60s comes from:
 
