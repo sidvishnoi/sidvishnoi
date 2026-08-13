@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import preact from '@astrojs/preact';
 import theme from './.config/syntax-highlight/shiki-theme.ts';
 import langWebidl from './.config/syntax-highlight/lang-webidl.ts';
+import satteriExternalLinks from './.config/markdown/satteri-external-links.ts';
 import { satteriStripH1 } from './.config/markdown/satteri-strip-h1.ts';
 
 export default defineConfig({
@@ -23,6 +24,7 @@ export default defineConfig({
 	markdown: {
 		processor: satteri({
 			mdastPlugins: [satteriStripH1],
+			hastPlugins: [satteriExternalLinks],
 		}),
 		syntaxHighlight: 'shiki',
 		shikiConfig: {
