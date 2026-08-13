@@ -19,7 +19,7 @@ Implmented in both Python (in 2017) and C++ (2018) as a part of extended class p
 
 A picture is worth a thousand words, so a video should be worth atleast a million words:
 
-[![Video demo on YouTube](https://user-images.githubusercontent.com/8426945/42136552-58b57012-7d7b-11e8-9d37-d8cecc93a0f3.png)][2]
+[![Video demo on YouTube](https://user-images.githubusercontent.com/8426945/42136552-58b57012-7d7b-11e8-9d37-d8cecc93a0f3.png)][2]\
 _[https://www.youtube.com/watch?v=ghpnpZ5GKbk][2]_
 
 [1]: https://github.com/sidvishnoi/socket-chat

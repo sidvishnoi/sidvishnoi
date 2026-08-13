@@ -4,7 +4,6 @@ import sitemap from '@astrojs/sitemap';
 import preact from '@astrojs/preact';
 import theme from './.config/syntax-highlight/shiki-theme.ts';
 import langWebidl from './.config/syntax-highlight/lang-webidl.ts';
-import { satteriBreaks } from './.config/markdown/satteri-breaks.ts';
 import { satteriStripH1 } from './.config/markdown/satteri-strip-h1.ts';
 
 export default defineConfig({
@@ -23,7 +22,7 @@ export default defineConfig({
 	trailingSlash: 'always',
 	markdown: {
 		processor: satteri({
-			mdastPlugins: [satteriBreaks, satteriStripH1],
+			mdastPlugins: [satteriStripH1],
 		}),
 		syntaxHighlight: 'shiki',
 		shikiConfig: {

@@ -10,7 +10,7 @@ Bleu is fully functional and I've been using it on my website : [www.hoopsvilla.
 
 So far, Bleu is my largest project (also in terms on codebase - around 18 KLOC). Sadly, I haven't released it yet as I think the codebase has maintenance issues due to my lack of understanding and experience of designing large projects. Also, I've been busy in other projects and college. I'll release it as an open source project after a re-write (around October-November 2018).
 
-![bleu build demo](https://user-images.githubusercontent.com/8426945/62229429-42b7d900-b3dd-11e9-8fc1-4731f814ed0a.png)
+![bleu build demo](https://user-images.githubusercontent.com/8426945/62229429-42b7d900-b3dd-11e9-8fc1-4731f814ed0a.png)\
 ![bleu docs website](https://user-images.githubusercontent.com/8426945/62229463-53684f00-b3dd-11e9-8722-a8ef4410b67b.png)
 
 Although I haven't released Bleu, I've made it's documentation public (built using Bleu ofcourse). You can see the docs at: [bleu-docs-temp.surge.sh/docs/][2].
