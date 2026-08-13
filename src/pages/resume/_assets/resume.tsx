@@ -1,16 +1,25 @@
 import type { ComponentChildren } from 'preact';
 import { IconEmail, IconGitHub, IconLinkedIn } from './icons';
 
-export const Header = ({ title }: { title: string }) => (
-	<header className="header">
-		<div>
-			<h1>
-				<a href="https://sidvishnoi.com">Sid Vishnoi</a>
-			</h1>
-			<p className="tagline">{title}</p>
-		</div>
-		<Contact />
-	</header>
+export const Header = ({
+	title,
+	children,
+}: {
+	title: string;
+	children: ComponentChildren;
+}) => (
+	<>
+		<header className="header">
+			<div>
+				<h1>
+					<a href="https://sidvishnoi.com">Sid Vishnoi</a>
+				</h1>
+				<p className="tagline">{title}</p>
+			</div>
+			<Contact />
+		</header>
+		<p class="summary">{children}</p>
+	</>
 );
 
 export const References = () => (
