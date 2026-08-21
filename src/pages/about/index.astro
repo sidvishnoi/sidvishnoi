@@ -1,7 +1,6 @@
 ---
-import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/NavHeader.astro';
-import PageTitle from '$components/PageTitle.astro';
+import PageBaseLayout from '$layouts/PageBaseLayout.astro';
+import PageTitleHeader from '$components/PageTitleHeader.astro';
 import '$assets/styles/article.css';
 
 import { Content, frontmatter } from './_about.md';
@@ -11,7 +10,7 @@ const formatDate = (date: Date) =>
 const modified = new Date(frontmatter.modified);
 ---
 
-<HomeLayout
+<PageBaseLayout
 	title="About — Sid Vishnoi — Independent software engineer, full-stack developer"
 	meta={{
 		description: `I'm Sid, a passionate software engineer and full-stack web developer with a knack for front-end development.`,
@@ -24,19 +23,16 @@ const modified = new Date(frontmatter.modified);
 		<meta property="og:username" content="sidvishnoi" />
 	</Fragment>
 
-	<Header />
 	<article>
-		<header>
-			<PageTitle>{frontmatter.heading || 'About'}</PageTitle>
-			<div class="meta">
-				<p>
-					Last modified{' '}
-					<time datetime={modified.toISOString()}>
-						{formatDate(modified)}
-					</time>
-				</p>
-			</div>
-		</header>
-		<Content />
+		<PageTitleHeader title={frontmatter.heading || 'About'}>
+			<p>
+				Last modified{' '}
+				<time datetime={modified.toISOString()}>
+					{formatDate(modified)}
+				</time>
+			</p>
+		</PageTitleHeader>
+
+		<div><Content /></div>
 	</article>
-</HomeLayout>
+</PageBaseLayout>

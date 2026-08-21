@@ -1,0 +1,49 @@
+---
+interface Props {
+	title?: string;
+	href?: string;
+}
+const { title, href } = Astro.props;
+---
+
+<header>
+	<h1 class="page-title">
+		<slot name="title">
+			{href ? <a href={href}>{title}</a> : title}
+		</slot>
+	</h1>
+
+	<div class="meta">
+		<slot />
+	</div>
+</header>
+
+<style>
+	.page-title {
+		line-height: 1.1;
+		margin: 0 0 0.25em;
+		font-weight: bold;
+		text-wrap: balance;
+	}
+
+	.page-title :global(a) {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	header .meta {
+		margin-bottom: 2rem;
+		border-bottom: 1px solid #ddd;
+		font-size: smaller;
+		color: var(--color-alt, #777);
+	}
+	header .meta :global(p) {
+		font-size: smaller;
+	}
+
+	@media (max-width: 640px) {
+		.page-title {
+			font-size: xx-large;
+		}
+	}
+</style>

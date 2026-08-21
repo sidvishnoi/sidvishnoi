@@ -1,15 +1,8 @@
 ---
 import Logo from '$assets/logo.svg';
-
-interface Props {
-	noBorder?: boolean;
-}
-
-const { noBorder = false } = Astro.props;
-const isAbout = Astro.url.pathname.startsWith('/about');
 ---
 
-<nav class:list={noBorder ? '' : 'border'}>
+<nav aria-label="Main navigation">
 	<ul>
 		<li class="home">
 			<a href="/" class="h-card" rel="me">
@@ -25,10 +18,8 @@ const isAbout = Astro.url.pathname.startsWith('/about');
 <style>
 	nav {
 		margin: 0rem auto 2rem;
+		display: flex;
 		font-size: clamp(1em, 16px + 0.24vw, 2em);
-	}
-
-	nav.border {
 		border-bottom: 2px solid var(--color-alt);
 	}
 

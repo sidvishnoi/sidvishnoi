@@ -1,8 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/NavHeader.astro';
-import PageTitle from '$components/PageTitle.astro';
+import PageBaseLayout from './PageBaseLayout.astro';
+import PageTitleHeader from '$components/PageTitleHeader.astro';
 import '$assets/styles/style.css';
 import '$assets/styles/article.css';
 import '$assets/styles/shiki.css';
@@ -20,7 +19,10 @@ const formatDate = (date: Date) =>
 	date.toLocaleDateString('en', { dateStyle: 'medium' });
 ---
 
-<HomeLayout title=`${title} | Sid Vishnoi` meta={{ canonical, description }}>
+<PageBaseLayout
+	title=`${title} | Sid Vishnoi`
+	meta={{ canonical, description }}
+>
 	<Fragment slot="head">
 		<meta property="og:type" content="article" />
 		<meta property="article:author" content="https://sidvishnoi.com/about/" />
@@ -35,36 +37,31 @@ const formatDate = (date: Date) =>
 		}
 	</Fragment>
 
-	<Header />
-
 	<article id="main" class="h-entry">
-		<header>
-			<PageTitle>
-				<a
-					href={Astro.url.pathname}
-					class="p-name u-url"
-					set:html={mdBackticksToHTML(title)}
-				/>
-			</PageTitle>
+		<PageTitleHeader>
+			<a
+				href={Astro.url.pathname}
+				class="p-name u-url"
+				set:html={mdBackticksToHTML(title)}
+				slot="title"
+			/>
 
-			<div class="meta">
-				<p>
-					Published <time class="dt-published" datetime={date.toISOString()}
-						>{formatDate(date)}</time
-					>
-					{
-						fm.modified && (
-							<Fragment>
-								and last updated{' '}
-								<time class="dt-updated" datetime={fm.modified.toISOString()}>
-									{formatDate(fm.modified)}
-								</time>
-							</Fragment>
-						)
-					}
-				</p>
-			</div>
-		</header>
+			<p>
+				Published <time class="dt-published" datetime={date.toISOString()}
+					>{formatDate(date)}</time
+				>
+				{
+					fm.modified && (
+						<Fragment>
+							and last updated{' '}
+							<time class="dt-updated" datetime={fm.modified.toISOString()}>
+								{formatDate(fm.modified)}
+							</time>
+						</Fragment>
+					)
+				}
+			</p>
+		</PageTitleHeader>
 
 		<div class="e-content">
 			<slot />
@@ -85,7 +82,7 @@ const formatDate = (date: Date) =>
 			</div>
 		</footer>
 	</article>
-</HomeLayout>
+</PageBaseLayout>
 
 <style>
 	.tags {

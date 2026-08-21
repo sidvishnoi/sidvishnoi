@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 
-import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/NavHeader.astro';
-import PageTitle from '$components/PageTitle.astro';
+import PageBaseLayout from '$layouts/PageBaseLayout.astro';
+import PageTitleHeader from '$components/PageTitleHeader.astro';
 import '$assets/styles/listing.css';
 
 const notes = await getCollection('notes');
@@ -18,9 +17,12 @@ const tagCounts = allTags.reduce(
 const tags = Object.keys(tagCounts).sort();
 ---
 
-<HomeLayout title="All topics for Sid's Notes">
-	<Header />
-	<PageTitle><a href="/notes/">Notes</a> / Tags</PageTitle>
+<PageBaseLayout title="All topics for Sid's Notes">
+	<PageTitleHeader>
+		<Fragment slot="title">
+			<a href="/notes/">Notes</a> / Tags
+		</Fragment>
+	</PageTitleHeader>
 
 	<div class="tag-cloud">
 		{
@@ -36,7 +38,7 @@ const tags = Object.keys(tagCounts).sort();
 			})
 		}
 	</div>
-</HomeLayout>
+</PageBaseLayout>
 
 <style>
 	.tag-cloud {

@@ -1,10 +1,11 @@
 ---
-import HomeLayout from '$layouts/HomeLayout.astro';
+import BaseLayout from '$layouts/BaseLayout.astro';
 import LogoLarge from '$components/LogoLarge.astro';
-import HeaderLinks from '$components/HeaderLinks.astro';
+import SocialNav from '$components/SocialNav.astro';
+import '$assets/styles/style.css';
 ---
 
-<HomeLayout
+<BaseLayout
 	title="Sid Vishnoi"
 	meta={{
 		description: `Full-stack engineer, focused on accessibility, UX, and performance, with 7+ years experience.`,
@@ -14,16 +15,27 @@ import HeaderLinks from '$components/HeaderLinks.astro';
 		<meta property="og:type" content="website" />
 	</Fragment>
 
-	<header class="header">
-		<LogoLarge />
-	</header>
-	<p class="summary">
-		Product engineer. 7+ years shipping software.<br />
-		Focused on accessibility, UX, and performance.<br />
-		Leading Web Monetization at Interledger Foundation.
-	</p>
-	<HeaderLinks />
-</HomeLayout>
+	<main>
+		<header class="header">
+			<LogoLarge />
+		</header>
+		<p class="summary">
+			Product engineer. 7+ years shipping software.<br />
+			Focused on accessibility, UX, and performance.<br />
+			Leading Web Monetization at Interledger Foundation.
+		</p>
+
+		<nav class="links">
+			<a href="/about/">About</a>
+			<a href="/writing/">Writing</a>
+			<a href="/resume/">Resume</a>
+		</nav>
+	</main>
+
+	<footer class="footer">
+		<SocialNav />
+	</footer>
+</BaseLayout>
 
 <style>
 	:global(body) {
@@ -51,5 +63,24 @@ import HeaderLinks from '$components/HeaderLinks.astro';
 		max-width: 38rem;
 		margin: 1.75rem auto 0;
 		padding: 0 1.5rem;
+	}
+
+	.links {
+		display: flex;
+		justify-content: center;
+		gap: 2rem;
+		font-size: 1.25rem;
+		margin: 1.75rem 1.5rem 10vmin;
+	}
+
+	.links a {
+		color: var(--color);
+		text-decoration: underline var(--color-link);
+		text-underline-offset: 0.25em;
+	}
+
+	.links a:hover,
+	.links a:focus {
+		text-decoration-thickness: 2px;
 	}
 </style>

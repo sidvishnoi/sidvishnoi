@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 
-import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/NavHeader.astro';
-import PageTitle from '$components/PageTitle.astro';
+import PageBaseLayout from '$layouts/PageBaseLayout.astro';
+import PageTitleHeader from '$components/PageTitleHeader.astro';
 import '$assets/styles/listing.css';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
@@ -12,9 +11,8 @@ const articles = (await getCollection('articles')).sort(
 );
 ---
 
-<HomeLayout title="Sid Vishnoi's articles">
-	<Header />
-	<PageTitle>Articles</PageTitle>
+<PageBaseLayout title="Sid Vishnoi's articles">
+	<PageTitleHeader title="Articles" />
 
 	<div id="main" class="items">
 		<ul>
@@ -47,4 +45,4 @@ const articles = (await getCollection('articles')).sort(
 			}
 		</ul>
 	</div>
-</HomeLayout>
+</PageBaseLayout>

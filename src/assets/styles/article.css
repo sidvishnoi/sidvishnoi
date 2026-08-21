@@ -1,21 +1,5 @@
-main {
-	max-width: 58rem;
-	margin: 0 auto;
-	padding: 0 1em 1em;
-}
-
 article {
 	margin: 0 auto;
-}
-
-article header .meta {
-	margin-bottom: 2rem;
-	border-bottom: 1px solid #ddd;
-	font-size: smaller;
-	color: var(--color-alt, #777);
-}
-article header .meta p {
-	font-size: smaller;
 }
 
 article :is(h3, h4, h5) {

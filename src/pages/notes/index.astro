@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 
-import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/NavHeader.astro';
-import PageTitle from '$components/PageTitle.astro';
+import PageBaseLayout from '$layouts/PageBaseLayout.astro';
+import PageTitleHeader from '$components/PageTitleHeader.astro';
 import '$assets/styles/listing.css';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
@@ -13,9 +12,8 @@ const notes = baseNotes
 	.slice(0, 10);
 ---
 
-<HomeLayout title="Sid Vishnoi's notes">
-	<Header />
-	<PageTitle>Notes</PageTitle>
+<PageBaseLayout title="Sid Vishnoi's notes">
+	<PageTitleHeader title="Notes" />
 
 	<div id="main" class="items">
 		<ul>
@@ -58,7 +56,7 @@ const notes = baseNotes
 			}
 		</ul>
 	</div>
-</HomeLayout>
+</PageBaseLayout>
 
 <style>
 	.items .meta > * {

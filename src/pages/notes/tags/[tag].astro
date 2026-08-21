@@ -1,8 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
-import HomeLayout from '$layouts/HomeLayout.astro';
-import Header from '$components/NavHeader.astro';
-import PageTitle from '$components/PageTitle.astro';
+import PageBaseLayout from '$layouts/PageBaseLayout.astro';
+import PageTitleHeader from '$components/PageTitleHeader.astro';
 import '$assets/styles/listing.css';
 import { mdBackticksToHTML } from '$lib/utils.ts';
 
@@ -23,12 +22,13 @@ const { tag } = Astro.params;
 const { notes: posts } = Astro.props;
 ---
 
-<HomeLayout title={`#${tag} | Sid Vishnoi's notes`}>
-	<Header />
-	<PageTitle>
-		<a href="/notes/">Notes</a> / <a href="/notes/tags/">Tags</a> /
-		<span class="tag-name">#{tag}</span>
-	</PageTitle>
+<PageBaseLayout title=`#${tag} | Sid Vishnoi's notes`>
+	<PageTitleHeader>
+		<Fragment slot="title">
+			<a href="/notes/">Notes</a> / <a href="/notes/tags/">Tags</a> /
+			<span class="tag-name">#{tag}</span>
+		</Fragment>
+	</PageTitleHeader>
 
 	<div class="items">
 		<ul>
@@ -63,7 +63,7 @@ const { notes: posts } = Astro.props;
 			}
 		</ul>
 	</div>
-</HomeLayout>
+</PageBaseLayout>
 
 <style>
 	.tag-name {

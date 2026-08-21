@@ -1,0 +1,20 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '$components/NavHeader.astro';
+import SocialNav from '$components/SocialNav.astro';
+import '$assets/styles/style.css';
+
+const { title, preload, meta } = Astro.props;
+---
+
+<BaseLayout {title} {preload} {meta}>
+	<slot slot="head" name="head" />
+
+	<Header />
+
+	<main><slot /></main>
+
+	<footer class="footer">
+		<SocialNav />
+	</footer>
+</BaseLayout>

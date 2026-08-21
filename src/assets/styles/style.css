@@ -45,7 +45,9 @@ html {
 }
 
 body {
-	margin: 0;
+	max-width: 58rem;
+	margin: 0 auto;
+	padding: 0 1rem 1rem;
 	font-size: clamp(1.25rem, 0.793rem + 1.296vw, 1.6rem);
 	line-height: 1.4;
 	position: relative;
@@ -73,23 +75,6 @@ a {
 	padding: 0;
 	position: absolute;
 	width: 1px;
-}
-
-#jump-to-main:focus {
-	position: fixed;
-	clip: initial;
-	height: auto;
-	width: auto;
-	margin: 0;
-	background: var(--color);
-	color: var(--background);
-	z-index: 99;
-	font-size: 1rem;
-	padding: 0.5rem;
-}
-
-.container-main {
-	margin: 0 auto;
 }
 
 .footer {
